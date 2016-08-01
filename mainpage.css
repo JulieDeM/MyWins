@@ -53,9 +53,11 @@ body{
   height: 4em;
 }
 #gameon{
-  /*color: #FFFFFF;*/
+  color: #FFFFFF;
   font-family: 'Varela Round', sans-serif;
-
+  margin-left: 12em;
+  padding-top: 1em;
+  font-size: 20px;
 }
 /* Kick butt: */
 .kick-butt{
@@ -68,11 +70,10 @@ body{
 }
 #question{
   font-family: 'Varela Round', sans-serif;
-  font-size: 36px;
-  color: #FFFFFF;
+  font-size: 30px;
   letter-spacing: -0.09px;
-  margin: 0;
-  padding: 0;
+  padding: 10px;
+  padding-left: 3em;
 }
 
 /*@media (max-width: 600px) {
