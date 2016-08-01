@@ -65,6 +65,7 @@ block content
 		var photo = document.createElement('img');
 		function testAPI() {
 		FB.api('/me?fields=id,name,picture', function(response) {
+			//- window.location.href = '/signup'
 		document.getElementById('status').innerHTML =
 		'Thanks for logging in, ' + response.name + '!';
 		photo.src = response.picture.data.url;
