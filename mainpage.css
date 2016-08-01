@@ -1,0 +1,65 @@
+body{
+  margin: 0px;
+  padding: 0px;
+  max-width: 1800px;
+}
+#main-image{
+  background-image: url(players_BG@3x.png);
+  width:100%;
+  height: 600px;
+  max-height: 600px;
+  max-width: 1800px;
+  background-size: contain;
+}
+#banner{
+  width: 100%;
+  height: 15%;
+  max-width: 1800px;
+}
+#logo{
+  margin: 20px auto 20px 70px;
+}
+#signin{
+  float: right;
+  font-family: GothamRounded-Medium;
+  font-size: 18px;
+  font-weight: bold;
+  color: #4A4A4A;
+  letter-spacing: -0.05px;
+  margin: 20px 80px 20px auto;
+}
+.bothlandf{
+  columns: 2;
+}
+#right{
+  background-color: white;
+  width: 35em;
+  height: 20em;
+  float: right;
+  margin-right: 10em;
+  margin-top: 20em;
+  border-radius: 3%;
+  border-color: purple;
+}
+#left{
+  margin-left: 10em;
+  margin-top: 10em;
+  border-color: blue;
+}
+
+/* Kick butt: */
+.kick-butt{
+  font-family: GothamRounded-Medium;
+  font-size: 36px;
+  color: #FFFFFF;
+  letter-spacing: -0.09px;
+  margin: 0;
+  padding: 0;
+}
+
+
+/*@media (max-width: 600px) {
+.facet_sidebar {
+display: none;
+}
+}*/
