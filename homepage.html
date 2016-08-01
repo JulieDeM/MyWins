@@ -3,9 +3,17 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="mainpage.css" media="screen" title="no title" charset="utf-8">
     <title></title>
   </head>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
   <body>
     <div id="banner">
       <header>
@@ -20,8 +28,14 @@
           <p class="kick-butt">Take names.</p>
           <p class="kick-butt">And keep track of it all.</p>
         </div>
+        <div>
         <div id="right">
+          <div id="yellow"></div>
+          <p id="gameon"> Game on!  </p>
+          <p id="question"> Don't have an account yet? </p>
+          <div class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false"></div>
         </div>
+      </div>
       </div>
     </div>
 
