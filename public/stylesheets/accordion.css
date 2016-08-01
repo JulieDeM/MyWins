@@ -1,0 +1,45 @@
+.tab-group {
+  margin: 1em auto;
+  max-width: 40em;
+  width: 100%;
+}
+.tab {
+  position: relative;
+  width: 100%;
+}
+.tab input {
+  margin-left: 1%;
+  margin-top: 1%;
+  position: absolute;
+  z-index: -999;
+}
+.tab label {
+  background: navy;
+  color: white;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  line-height: 3;
+  padding-left: 0.5em;
+  transition: letter-spacing 0.55s ;
+}
+.tab input:focus + label,
+.tab label:hover{
+  background: #85D8CE ;
+  letter-spacing: 1px;
+}
+.tab-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.35s;
+}
+.tab-content .recordsAndStandings {
+  margin: 1em 0;
+}
+.tab input:checked ~ .tab-content {
+  max-height: 6.25em;
+}
+/*.tab > input:not(:focus) ~ .tab-content {
+    max-height: 0;
+    transition: all .75s cubic-bezier(0.19, 1, 0.22, 1) .15s;
+}*/

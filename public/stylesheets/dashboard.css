@@ -1,0 +1,50 @@
+*{
+  margin: 0;
+}
+body{
+  background-color: lavenderblush;
+}
+header{
+  background-color: white;
+  min-height: 3em;
+  line-height: 3em;
+}
+.mywins{
+  top: 5;
+  margin-left: 5%;
+}
+.signout{
+  margin-left: 80%;
+}
+.userData{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lavender;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+  height: 10em;
+  padding: 1%;
+}
+.userData img{
+  border-radius: 65px;
+}
+.tab{
+  background-color: #e8e8e8;
+}
+.tab-content{
+  display: flex;
+  justify-content: center;
+}
+.recordsAndStandings{
+  display: flex;
+  justify-content: space-around;
+  width: 85%;
+}
+.gameRecords{
+  background-color: white;
+}
+.currentStandings{
+  background-color: white;
+}
