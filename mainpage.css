@@ -1,0 +1,106 @@
+@media (max-width: 600px) {
+  .facet_sidebar {
+    display: none;
+  }
+}
+body{
+  margin: 0px;
+  padding: 0px;
+  max-width: 1800px;
+}
+#main-image{
+  background-image: url(players_BG@3x.png);
+  width:100%;
+  height: 600px;
+  max-height: 600px;
+  max-width: 1800px;
+  background-size: contain;
+}
+#banner{
+  width: 100%;
+  height: 15%;
+  max-width: 1800px;
+}
+#logo{
+  margin: 20px auto 20px 70px;
+}
+#signin{
+  float: right;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 18px;
+  color: #4A4A4A;
+  letter-spacing: -0.05px;
+  margin: 23px 80px 20px auto;
+}
+.bothlandf{
+  display: flex;
+}
+#left{
+  margin-left: 10em;
+  margin-top: 15em;
+  margin-right: 10em;
+  border-color: blue;
+}
+#right{
+  background-color: white;
+  width: 35em;
+  height: 20em;
+  float: right;
+  margin-right: 10em;
+  margin-top: 10em;
+  border-radius: 8px;
+  border-color: purple;
+}
+#yellow{
+  background-color: #FFCC00;
+  border-radius: 8px 8px 0px 0px;
+  width: 100%;
+  height: 4em;
+}
+#gameon{
+  color: #FFFFFF;
+  font-family: 'Varela Round', sans-serif;
+  margin-left: 12em;
+  padding-top: 1em;
+  font-size: 20px;
+}
+/* Kick butt: */
+.kick-butt{
+  font-family: 'Varela Round', sans-serif;
+  font-size: 36px;
+  color: #FFFFFF;
+  letter-spacing: -0.09px;
+  margin: 0;
+  padding: 0;
+}
+#question{
+  font-family: 'Varela Round', sans-serif;
+  font-size: 30px;
+  letter-spacing: -0.09px;
+  padding: 10px;
+  padding-left: 3em;
+  margin-top: 8px;
+}
+#loginfb{
+  width: 20em;
+  height: 5em;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 20px;
+  color: #FFFFFF;
+  background-color: #34AADC;
+  border-radius: 8px;
+  margin: 30px 5px 0px 80px;
+}
+#fbook{
+  width: 35px;
+  height: 60px;
+  margin-top: 14px;
+  margin-left: 2em;
+  border-radius: 5%;
+  align-content: center;
+}
+#log{
+  float: right;
+  margin-right:3em;
+  margin-top: 1.8em;
+}
