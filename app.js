@@ -12,6 +12,7 @@ var dashboard = require('./routes/dashboard');
 var authRoutes = require('./routes/auth');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
+var unirest = require('unirest');
 
 var app = express();
 
@@ -34,12 +35,19 @@ app.use(session({
  }))
 app.use(passport.initialize());
 app.use(passport.session());
+
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
     callbackURL: process.env.HOST + "/auth/facebook/callback"
   },
   function(token, tokenSecret, profile, done) {
+    unirest.get('https://graph.facebook.com/v2.7/me?access_token=EAACEdEose0cBAFzT5hGIZADg39PVhnV1qxZCp8KWgdyjXpKcANFxfon7H6brnKT1tYEib2e7NQwh8mCFcHNzp1Kwlt3aZB1QnwJTcxwJkBINtURDZBmWGzpcx8Al6AfhEEDKYAtuowBUDTyJLQ2BmzZBbGEr6RnMqZCbUbhhlmlwZDZD')
+  .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
+  .send({ "parameter": 23, "foo": "bar" })
+  .end(function (response) {
+    console.log(response.body);
+  });
     // To keep the example simple, the user's LinkedIn profile is returned to
     // represent the logged-in user. In a typical application, you would want
     // to associate the LinkedIn account with a user record in your database,

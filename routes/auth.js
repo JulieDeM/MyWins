@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var unirest = require('unirest');
 
 router.get('/auth/facebook', passport.authenticate('facebook', {
     scope: 'public_profile'
 }));
+
 
 router.get('/auth/profile', isLoggedIn, function(req, res) {
     res.render('profile', {
@@ -12,7 +14,7 @@ router.get('/auth/profile', isLoggedIn, function(req, res) {
     });
 });
 router.get('/auth/facebook/callback',
-    passport.authenticate('facebook', {
+    passport.authenticate('facebook',{
         successRedirect: '/auth/profile',
         failureRedirect: '/'
     }));
