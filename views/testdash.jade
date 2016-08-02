@@ -1,0 +1,10 @@
+html
+  head
+    title Dashboard
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='UTF-8')
+  body
+    h3 #{userInfo.userName}
+    h5 #{userInfo.firstName} #{userInfo.lastName}
+    for game in games
+      p #{game.game_id}
