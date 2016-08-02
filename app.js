@@ -12,11 +12,9 @@ var dashboard = require('./routes/dashboard');
 var authRoutes = require('./routes/auth');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
-var unirest = require('unirest');
 
 var app = express();
 
-// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -39,23 +37,14 @@ app.use(passport.session());
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: process.env.HOST + "/auth/facebook/callback"
+    callbackURL: process.env.HOST + "/auth/facebook/callback",
+    redirect: false,
+    profileFields: ['id', 'name', 'picture.type(large)']
   },
   function(token, tokenSecret, profile, done) {
-    unirest.get('https://graph.facebook.com/v2.7/me?access_token=EAACEdEose0cBAFzT5hGIZADg39PVhnV1qxZCp8KWgdyjXpKcANFxfon7H6brnKT1tYEib2e7NQwh8mCFcHNzp1Kwlt3aZB1QnwJTcxwJkBINtURDZBmWGzpcx8Al6AfhEEDKYAtuowBUDTyJLQ2BmzZBbGEr6RnMqZCbUbhhlmlwZDZD')
-  .headers({'Accept': 'application/json', 'Content-Type': 'application/json'})
-  .send({ "parameter": 23, "foo": "bar" })
-  .end(function (response) {
-    console.log(response.body);
-  });
-    // To keep the example simple, the user's LinkedIn profile is returned to
-    // represent the logged-in user. In a typical application, you would want
-    // to associate the LinkedIn account with a user record in your database,
-    // and return that user instead (so perform a knex query here later.)
     done(null, profile)
   }
 ));
-// above app.use('/', routes);...
 passport.serializeUser(function(user, done) {
  // later this will be where you selectively send to the browser an identifier for your user, like their primary key from the database, or their ID from linkedin
   done(null, user);
@@ -78,8 +67,6 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-// error handlers
-
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
@@ -91,7 +78,6 @@ if (app.get('env') === 'development') {
     });
   });
 }
-
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
@@ -101,6 +87,5 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
-
 
 module.exports = app;
