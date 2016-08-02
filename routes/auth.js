@@ -2,22 +2,22 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-router.get('/auth/facebook', passport.authenticate('facebook', {
+router.get('/facebook', passport.authenticate('facebook', {
     scope: 'public_profile'
 }));
 
-router.get('/auth/profile', isLoggedIn, function(req, res) {
+router.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile', {
         user: req.user
     });
 });
-router.get('/auth/facebook/callback',
+router.get('/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/' }),
   function(req, res) {
   res.redirect('/auth/profile');
   });
 
-router.get('/auth/logout', function(req, res) {
+router.get('/logout', function(req, res) {
     req.logout();
     req.session.destroy(function(err) {
         res.redirect('/');

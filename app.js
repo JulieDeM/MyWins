@@ -56,7 +56,7 @@ passport.deserializeUser(function(user, done) {
 });
 
 app.use('/', routes);
-app.use('/', authRoutes);
+app.use('/auth', authRoutes);
 app.use('/signup', signup);
 app.use('/dashboard', dashboard);
 
