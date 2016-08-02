@@ -12,9 +12,9 @@ router.get('/', function(req, res, next) {
 
 router.get('/:username', function(req, res, next){
   Dash.readUser(req.params.username).then(function(user){
-    console.log(user.rows[0].id);
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
-    //   console.log(gametypes);
+      console.log("************GAME TYPES**********");
+      console.log(gametypes.rows);
     //   res.render('testdash', {
     //     userInfo: user.rows[0],
     //     games: gametypes.rows
@@ -23,10 +23,27 @@ router.get('/:username', function(req, res, next){
     // 1) Player data
     // 2) Game Records
     // 3) Standings
-    for(var i=0; i<gametypes.rows.length; i++){
-      Dash.readGameStats(gametypes.rows[i].id)
-
-    }
+      Dash.readGameStats(user.rows[0].id).then(function(all){
+        console.log("************GAME STATS**********");
+        console.log(all.rows);
+        Dash.readGameRecords(user.rows[0].id).then(function(records){
+          console.log("************GAME RECORDS**********");
+          console.log(records.rows);
+            res.render('testdash', {
+              userInfo: user.rows[0],
+              gameTypes: gametypes.rows,
+              gameStats: all.rows,
+              gameRecords: records.rows
+          })
+        })
+      })
+    // for(var i=0; i<gametypes.rows.length+1; i++){
+    //   Dash.readGameStats(gametypes.rows[i].id).then(function(stats){
+    //     console.log("********"+i+"*******");
+    //     console.log(stats);
+    //   })
+    //
+    // }
 });
 })});
 
