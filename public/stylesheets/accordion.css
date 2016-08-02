@@ -1,5 +1,8 @@
+*{
+  font-family: 'Varela Round', sans-serif;
+}
 .tab-group {
-  margin: 1em auto;
+  margin: 0em auto;
   max-width: 40em;
   width: 100%;
 }
@@ -7,14 +10,15 @@
   position: relative;
   width: 100%;
 }
-.tab input {
+.tab input[type=radio] {
   margin-left: 1%;
   margin-top: 1%;
   position: absolute;
   z-index: -999;
 }
 .tab label {
-  background: navy;
+  /* will need to set some kind of identifier so that each tab will be the color corresponding with the sport */
+  background: #FF2D55;
   color: white;
   cursor: pointer;
   display: block;
@@ -23,10 +27,23 @@
   padding-left: 0.5em;
   transition: letter-spacing 0.55s ;
 }
+label[for=tab1]{
+  background-color: #FF2D55;
+}
+label[for=tab2]{
+  background-color: #4CD964;
+}
+label[for=tab3]{
+  background-color: #FFCC00;
+}
+label[for=tab4]{
+  background-color: #34AADC;
+}
 .tab input:focus + label,
 .tab label:hover{
-  background: #85D8CE ;
-  letter-spacing: 1px;
+  /* darken or lighten the color on hover */
+  /*background: #85D8CE ;*/
+  /*letter-spacing: 5px;*/
 }
 .tab-content {
   max-height: 0;
@@ -37,7 +54,7 @@
   margin: 1em 0;
 }
 .tab input:checked ~ .tab-content {
-  max-height: 6.25em;
+  max-height: 100.25em;
 }
 /*.tab > input:not(:focus) ~ .tab-content {
     max-height: 0;

@@ -1,8 +1,9 @@
 *{
   margin: 0;
+  font-family: 'Varela Round', sans-serif;
 }
 body{
-  background-color: lavenderblush;
+  background-color: #e8e8e8;
 }
 header{
   background-color: white;
@@ -18,14 +19,13 @@ header{
 }
 .userData{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  background-color: lavender;
+  background-color: white;
   margin-left: auto;
   margin-right: auto;
-  width: 85%;
+  width: 100%;
   height: 10em;
-  padding: 1%;
 }
 .userData img{
   border-radius: 65px;
@@ -44,7 +44,14 @@ header{
 }
 .gameRecords{
   background-color: white;
+  border-radius: 3px;
+  padding: 5px;
 }
 .currentStandings{
   background-color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 3px;
+  padding: 5px;
 }
