@@ -11,6 +11,9 @@ router.post('/', function(req, res, next){
       Dashboard.findUser(req.body.name).then(function(result){
         if (result.rows.length == 0) {
           Dashboard.addUserInfo(req.body.name, req.body.sport).then(function(newUser){
+            Dashboard.findUserId(req.body.name).then(function(id){
+              console.log(id)
+            })
             console.log("check database");
             res.redirect('/')
           })
