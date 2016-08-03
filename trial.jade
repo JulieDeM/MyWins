@@ -1,0 +1,15 @@
+for game in gameTypes
+  .tab
+    input#tabi(type='radio', name='tabs')
+    label(for='tabi') sportName
+      .tab-content
+        .recordsAndStandings
+          .gameRecords
+            button#somethingUnique(type='button', name='button') + Add Game Record
+            form#anotherUniqueThing(action='#', method='post')
+            for thing in things
+              //- makes table with game date, opponent, and win/loss
+          .currentStandings
+            | current standings:
+            for other_thing in other_things
+              //- makes table with ranking, username, points
