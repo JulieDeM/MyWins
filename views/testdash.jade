@@ -8,7 +8,7 @@ html
     h5 #{userInfo.firstName} #{userInfo.lastName}
     br
     for game in gameTypes
-      p Game Type: #{game.game_id}
+      h3 #{game.type}
       for stats in gameStats
         if stats.user_game_id === game.id
           p Rating: #{stats.rating}

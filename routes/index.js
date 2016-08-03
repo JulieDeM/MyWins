@@ -21,8 +21,8 @@ router.get('/', function(req, res, next) {
 router.get('/:username', function(req, res, next){
   Dash.readUser(req.params.username).then(function(user){
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
-      // console.log("************GAME TYPES**********");
-      // console.log(gametypes.rows);
+      console.log("************GAME TYPES**********");
+      console.log(gametypes.rows);
     //   res.render('testdash', {
     //     userInfo: user.rows[0],
     //     games: gametypes.rows
@@ -35,8 +35,8 @@ router.get('/:username', function(req, res, next){
         // console.log("************GAME STATS**********");
         // console.log(all.rows);
         Dash.readGameRecords(user.rows[0].id).then(function(records){
-          console.log("************GAME RECORDS**********");
-          console.log(records.rows);
+          // console.log("************GAME RECORDS**********");
+          // console.log(records.rows);
             res.render('testdash', {
               userInfo: user.rows[0],
               gameTypes: gametypes.rows,
