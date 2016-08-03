@@ -13,6 +13,11 @@ router.get('/', function(req, res, next) {
 //Julie's code starts here
 //this route needs to
 //for now redirect to / because we will need cookies set through the facebook oauth first
+
+router.get('/splashpage', function(req, res, next){
+  res.render('../views/splashpage')
+})
+//
 router.post('/addgametype',function(req,res,next){
   Dash.createGameType().then(function(){
     res.redirect('/')

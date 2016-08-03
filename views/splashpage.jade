@@ -4,7 +4,7 @@ html
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
-    link(rel='stylesheet', href='mainpage.css', media='screen', title='no title', charset='utf-8')
+    link(rel='stylesheet', href='/stylesheets/mainpage.css', media='screen', title='no title', charset='utf-8')
     title
   script.
     (function(d, s, id) {
@@ -17,7 +17,8 @@ html
   body
     #banner
       header
-        img#logo(href='#', src='mywinslogo@1x.png', alt='mywins')
+        img#logo(href='#', src='/images/mywinslogo@1x.png', alt='mywins')
+        a#signin(href='#') sign-in
     #main-image
       .bothlandf
         #left
@@ -28,10 +29,10 @@ html
           #right
             #yellow
               #gameon
-              | Game on!
-           #question  Don't have an account yet? 
-           #loginfb
-             img#fbook(src='f.png', hspace='20')
-             #log
-               | Login with Facebook
-           .fb-login-button(data-max-rows='1', data-size='xlarge', data-show-faces='false', data-auto-logout-link='false')
+                p Game on!
+            #question  Don't have an account yet? 
+            #loginfb
+              img#fbook(src='/images/f.png', hspace='20')
+              #log
+                p Login with Facebook
+                  

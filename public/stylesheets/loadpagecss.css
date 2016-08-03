@@ -1,0 +1,224 @@
+* {
+    box-sizing: border-box;
+}
+body{
+  margin: 0px;
+  padding: 0px;
+  max-width: 1800px;
+}
+#main-image{
+  background-image: url(add_username_bg.png);
+  width:100%;
+  height: 755px;
+  max-height: 755px;
+  max-width: 1800px;
+  background-size: contain;
+}
+#banner{
+  width: 100%;
+  height: 15%;
+  max-width: 1800px;
+}
+#logo{
+  margin: 20px auto 20px 70px;
+}
+.bothlandf{
+  display: flex;
+}
+#whitebox{
+  background-color: white;
+  width: 55em;
+  height: 35em;
+  float: right;
+  margin-left: 18em;
+  margin-top: 6em;
+  border-radius: 8px;
+  border-color: purple;
+}
+#username{
+  color: #9B9B9B;
+  font-size: 15px;
+}
+#userpic{
+  background-color: blue;
+  float: left;
+  border-radius: 50%;
+  height: 6em;
+  width: 6em;
+}
+#submit{
+  color: #4CD964;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 30px;
+}
+.bottom{
+  margin-top: 10em;
+}
+#moveme{
+  margin-left: 8em;
+}
+#greencircle{
+  background-color: #4CD964;
+  height: 10em;
+  width: 10em;
+  border-radius: 50%;
+  float: right;
+  margin-right: 5em;
+  margin-top: -2em;
+  color: white;
+}
+#onehundred{
+  font-weight: bold;
+  margin: 10px 0 5px 4px;
+  font-size: 70px;
+}
+.top{
+
+}
+p{
+  font-family: 'Varela Round', sans-serif;
+  margin-left: 2em;
+}
+#submit5{
+  font-family: 'Varela Round', sans-serif;
+  font-size: 30px;
+  color: #9B9B9B;
+}
+.largeprint{
+  font-size: 20px;
+  font-weight: bold;
+  color: #4A4A4A;
+  letter-spacing: -0.09px;
+
+}
+p.largeprint{
+    line-height: 20%;
+    margin-top: 2em;
+
+}
+#smallprint{
+  color: #9B9B9B;
+  letter-spacing: -0.9px;
+  margin-left:5.5em;
+  padding: 0;
+  margin-top: -1em;
+  font-size: 12px;
+}
+#one{
+  border-radius: 50%;
+  padding: 5px;
+  background: #fff;
+  border: 3px solid #4CD964;
+  color: #4CD964;
+  text-align: center;
+  font: 20px 'Varela Round', sans-serif;
+  line-height: 13px;
+  letter-spacing: 6px;
+}
+#two{
+  border-radius: 50%;
+  padding: 5px;
+  background: #fff;
+  border: 3px solid #4CD964;
+  color: #4CD964;
+  text-align: center;
+  font: 20px 'Varela Round', sans-serif;
+  line-height: 13px;
+  letter-spacing: 6px;
+}
+.container {
+  height: 100vh;
+  width: 100vw;
+  font-family: Varela Round;
+}
+
+.loader {
+  height: 20px;
+  width: 250px;
+  position: absolute;
+  top: 25em;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.loader--dot {
+  animation-name: loader;
+  animation-timing-function: ease-in-out;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  height: 20px;
+  width: 20px;
+  border-radius: 100%;
+  background-color: black;
+  position: absolute;
+  border: 2px solid white;
+}
+.loader--dot:first-child {
+  background-color: #FF2D55;
+  animation-delay: 0.5s;
+}
+.loader--dot:nth-child(2) {
+  background-color: #FF9500;
+  animation-delay: 0.4s;
+}
+.loader--dot:nth-child(3) {
+  background-color: #C86EDF;
+  animation-delay: 0.3s;
+}
+.loader--dot:nth-child(4) {
+  background-color: #FFCC00;
+  animation-delay: 0.2s;
+}
+.loader--dot:nth-child(5) {
+  background-color: #34AADC;
+  animation-delay: 0.1s;
+}
+.loader--dot:nth-child(6) {
+  background-color: #4CD964;
+  animation-delay: 0s;
+}
+.loader--text {
+  position: absolute;
+  top: 200%;
+  left: 0;
+  right: 0;
+  width: 4rem;
+  margin: auto;
+}
+.loader--text:after {
+  content: "Loading";
+  font-weight: bold;
+  animation-name: loading-text;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes loader {
+  15% {
+    transform: translateX(0);
+  }
+  45% {
+    transform: translateX(230px);
+  }
+  65% {
+    transform: translateX(230px);
+  }
+  95% {
+    transform: translateX(0);
+  }
+}
+@keyframes loading-text {
+  0% {
+    content: "Loading";
+  }
+  25% {
+    content: "Loading.";
+  }
+  50% {
+    content: "Loading..";
+  }
+  75% {
+    content: "Loading...";
+  }
+}

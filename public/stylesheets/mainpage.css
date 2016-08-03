@@ -9,7 +9,7 @@ body{
   max-width: 1800px;
 }
 #main-image{
-  background-image: url(players_BG@3x.png);
+  background-image: url(/images/players_BG@3x.png);
   width:100%;
   height: 600px;
   max-height: 600px;
