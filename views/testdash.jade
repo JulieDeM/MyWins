@@ -1,0 +1,27 @@
+html
+  head
+    title Dashboard
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='UTF-8')
+  body
+    h3 #{userInfo.userName}
+    h5 #{userInfo.firstName} #{userInfo.lastName}
+    br
+    for game in gameTypes
+      p Game Type: #{game.game_id}
+      for stats in gameStats
+        if stats.user_game_id === game.id
+          p Rating: #{stats.rating}
+      p(style={color: 'blue'}) Add a Game Record
+      form(action="/addrecord", method="post")
+        input(type="text", name="game_id", style={display: 'none'}, value= "#{game.game_id}")
+        input(type="text", name="user1_id", style={display: 'none'}, value= "#{userInfo.id}")
+        input(type="text", name="user2_id", placeholder="opponent")
+        input(type="number", name="user1_score", placeholder="your score")
+        input(type="number", name="user2_score", placeholder="opponent's score")
+        input(type="submit")
+      for records in gameRecords
+        if records.game_id === game.game_id
+          p opponent = #{records.user2_id}, score = #{records.user1_score} #{records.user2_score}
+      br
+      br
