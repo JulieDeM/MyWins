@@ -24,8 +24,8 @@ router.get('/:username', function(req, res, next){
     // 2) Game Records
     // 3) Standings
       Dash.readGameStats(user.rows[0].id).then(function(all){
-        console.log("************GAME STATS**********");
-        console.log(all.rows);
+        // console.log("************GAME STATS**********");
+        // console.log(all.rows);
         Dash.readGameRecords(user.rows[0].id).then(function(records){
           console.log("************GAME RECORDS**********");
           console.log(records.rows);
@@ -37,14 +37,17 @@ router.get('/:username', function(req, res, next){
           })
         })
       })
-    // for(var i=0; i<gametypes.rows.length+1; i++){
-    //   Dash.readGameStats(gametypes.rows[i].id).then(function(stats){
-    //     console.log("********"+i+"*******");
-    //     console.log(stats);
-    //   })
-    //
-    // }
 });
 })});
+
+router.post('/addrecord', function(req, res, next){
+  console.log(">>>>>>>>>>>> req body <<<<<<<<<<<<");
+  console.log(req.body);
+  Dash.createGameRecord(
+    req.body.game_id, req.body.user1_id, req.body.user2_id, req.body.user1_score, req.body.user2_score
+  ).then(function(){
+    res.redirect('/')
+  })
+})
 
 module.exports = router;
