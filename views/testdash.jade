@@ -10,7 +10,7 @@ html
     for game in gameTypes
       h3 #{game.type}
       for stats in gameStats
-        if stats.user_game_id === game.id
+        if stats.user_game_id === game.usergamesid
           p Rating: #{stats.rating}
       p(style={color: 'blue'}) Add a Game Record
       form(action="/addrecord", method="post")

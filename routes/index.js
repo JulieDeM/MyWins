@@ -32,8 +32,8 @@ router.get('/:username', function(req, res, next){
     // 2) Game Records
     // 3) Standings
       Dash.readGameStats(user.rows[0].id).then(function(all){
-        // console.log("************GAME STATS**********");
-        // console.log(all.rows);
+        console.log("************GAME STATS**********");
+        console.log(all.rows);
         Dash.readGameRecords(user.rows[0].id).then(function(records){
           // console.log("************GAME RECORDS**********");
           // console.log(records.rows);
