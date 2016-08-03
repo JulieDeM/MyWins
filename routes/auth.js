@@ -1,24 +1,33 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
+var Signup = require('../lib/signup')
 
 router.get('/facebook', passport.authenticate('facebook', {
     scope: 'public_profile'
 }));
 
 router.get('/profile', isLoggedIn, function(req, res) {
-  console.log('*******USER*******');
-  console.log(req.user);
-  // res.cookie('user', )
-    res.render('profile', {
-        user: req.user
+    res.cookie('user', req.user.id)
+    Signup.findUser(req.user).then(function(user) {
+        if (user.rows[0].username === undefined) {
+            res.render('testSignup', {
+                user: user.rows[0]
+            })
+        } else {
+            res.render('profile', {
+                user: req.user
+            })
+          }
     });
 });
 router.get('/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/' }),
-  function(req, res) {
-  res.redirect('/auth/profile');
-  });
+    passport.authenticate('facebook', {
+        failureRedirect: '/'
+    }),
+    function(req, res) {
+        res.redirect('/auth/profile');
+    });
 
 router.get('/logout', function(req, res) {
     req.logout();

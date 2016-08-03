@@ -43,19 +43,23 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'name', 'picture.type(large)']
   },
   function(token, tokenSecret, profile, done) {
-    Signup.addUser(profile).then(function(user){
-      done(null, profile)
+    Signup.findUser(profile).then(function(user){
+     if (user !== null) {
+        done(null, profile);
+      } else {
+       Signup.addUser(profile).then(function(){
+         done(null, profile);
+       })
+     }
     })
   }
 ));
 passport.serializeUser(function(user, done) {
- // later this will be where you selectively send to the browser an identifier for your user, like their primary key from the database, or their ID from linkedin
-  done(null, user);
+    done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
-  //here is where you will go to the database and get the user each time from it's id, after you set up your db
-  done(null, user)
+    done(null, user)
 });
 
 app.use('/', routes);
