@@ -35,8 +35,8 @@ router.get('/:username', function(req, res, next){
         // console.log("************GAME STATS**********");
         // console.log(all.rows);
         Dash.readGameRecords(user.rows[0].id).then(function(records){
-          // console.log("************GAME RECORDS**********");
-          // console.log(records.rows);
+          console.log("************GAME RECORDS**********");
+          console.log(records.rows);
             res.render('testdash', {
               userInfo: user.rows[0],
               gameTypes: gametypes.rows,
@@ -57,10 +57,10 @@ router.post('/addrecord', function(req, res, next){
     //update players here
     Dash.readMoreGameStats(req.body.user1_id, req.body.game_id).then(function(results1){
       Dash.readMoreGameStats(req.body.user2_id, req.body.game_id).then(function(results2){
-        console.log("-------------ONE---------");
-        console.log(results1.rows);
-        console.log("-------------TWO---------");
-        console.log(results2.rows);
+        // console.log("-------------ONE---------");
+        // console.log(results1.rows);
+        // console.log("-------------TWO---------");
+        // console.log(results2.rows);
         // results not getting me the game type, just user_game_id
         var user1 = results1.rows[0];
         var user2 = results2.rows[0];
