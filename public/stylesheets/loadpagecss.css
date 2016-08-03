@@ -7,7 +7,7 @@ body{
   max-width: 1800px;
 }
 #main-image{
-  background-image: url(add_username_bg.png);
+  background-image: url(/images/add_username_bg.png);
   width:100%;
   height: 755px;
   max-height: 755px;
@@ -43,13 +43,17 @@ body{
   background-color: blue;
   float: left;
   border-radius: 50%;
-  height: 6em;
-  width: 6em;
+  height: 7em;
+  width: 7em;
+  margin: 4em 0 5em 4em;
 }
 #submit{
   color: #4CD964;
   font-family: 'Varela Round', sans-serif;
   font-size: 30px;
+}
+#fbname, #username{
+  font-family: 'Varela Round', sans-serif;
 }
 .bottom{
   margin-top: 10em;
@@ -72,9 +76,6 @@ body{
   margin: 10px 0 5px 4px;
   font-size: 70px;
 }
-.top{
-
-}
 p{
   font-family: 'Varela Round', sans-serif;
   margin-left: 2em;
@@ -89,12 +90,10 @@ p{
   font-weight: bold;
   color: #4A4A4A;
   letter-spacing: -0.09px;
-
 }
 p.largeprint{
     line-height: 20%;
     margin-top: 2em;
-
 }
 #smallprint{
   color: #9B9B9B;
@@ -126,6 +125,7 @@ p.largeprint{
   line-height: 13px;
   letter-spacing: 6px;
 }
+
 .container {
   height: 100vh;
   width: 100vw;

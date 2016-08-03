@@ -13,9 +13,13 @@ router.get('/', function(req, res, next) {
 //Julie's code starts here
 //this route needs to
 //for now redirect to / because we will need cookies set through the facebook oauth first
-
+//this is a created route for the main, home page
 router.get('/splashpage', function(req, res, next){
   res.render('../views/splashpage')
+})
+//this is a created route for the loadpage
+router.get('/loadpage', function(req, res, next){
+  res.render('../views/loadpage')
 })
 //
 router.post('/addgametype',function(req,res,next){
