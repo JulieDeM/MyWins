@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <style>
+  .btn{
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:row;
+    border: solid 2px;
+    border-radius: 8px;
+    width: 200px;
+    padding: 10px 10px 7px 10px;
+    font-family: GothamRounded-Medium;
+    font-size: 18px;
+    cursor: pointer
+  }
+  form img{
+    max-height: 20px;
+    max-width: 30px;
+    margin-right: 10px
+  }
+  .white{
+    display: none;
+  }
+  input[name=sport]{
+    display:none
+  }
+
+  /* BOCCE BUTTON */
+  #btnBoc{
+    background: #FFFFFF;
+    color: #34AADC
+  }
+  #bocRadio:checked + label > .color {
+    display:none;
+  }
+  #bocRadio:checked + label > .white {
+    display:inline;
+  }
+  #bocRadio:checked + label {
+    background-color: #34AADC;
+    color: #FFFFFF;
+  }
+
+  /* PING BUTTON */
+  #pingBoc{
+    background: #FFFFFF;
+    color: #FF2D55
+  }
+  #pingRadio:checked + label > .color {
+    display:none;
+  }
+  #pingRadio:checked + label > .white {
+    display:inline;
+  }
+  #pingRadio:checked + label {
+    background-color: #FF2D55;
+    color: #FFFFFF;
+  }
+
+  /* FOOS BUTTON */
+  #foosBoc{
+    background: #FFFFFF;
+    color: #4CD964
+  }
+  #foosRadio:checked + label > .color {
+    display:none;
+  }
+  #foosRadio:checked + label > .white {
+    display:inline;
+  }
+  #foosRadio:checked + label {
+    background-color: #4CD964;
+    color: #FFFFFF;
+  }
+
+  /* AIR HOCKEY BUTTON */
+  #airBoc{
+    background: #FFFFFF;
+    color: #C86EDF
+  }
+  #airRadio:checked + label > .color {
+    display:none;
+  }
+  #airRadio:checked + label > .white {
+    display:inline;
+  }
+  #airRadio:checked + label {
+    background-color: #C86EDF;
+    color: #FFFFFF;
+  }
+
+  /* CORN HOLE BUTTON */
+  #cornBoc{
+    background: #FFFFFF;
+    color: #FFCC00
+  }
+  #cornRadio:checked + label > .color {
+    display:none;
+  }
+  #cornRadio:checked + label > .white {
+    display:inline;
+  }
+  #cornRadio:checked + label {
+    background-color: #FFCC00;
+    color: #FFFFFF;
+  }
+
+  /* POOL BUTTON */
+  #poolBoc{
+    background: #FFFFFF;
+    color: #FF9500
+  }
+  #poolRadio:checked + label > .color {
+    display:none;
+  }
+  #poolRadio:checked + label > .white {
+    display:inline;
+  }
+  #poolRadio:checked + label {
+    background-color: #FF9500;
+    color: #FFFFFF;
+  }
+
+  /* SPIKEBALL BUTTON */
+  #spikeBoc{
+    background: #FFFFFF;
+    color: #4A4A4A
+  }
+  #spikeRadio:checked + label > .color {
+    display:none;
+  }
+  #spikeRadio:checked + label > .white {
+    display:inline;
+  }
+  #spikeRadio:checked + label {
+    background-color: #4A4A4A;
+    color: #FFFFFF;
+  }
+
+  /* KANJAM BUTTON */
+  #kanBoc{
+    background: #FFFFFF;
+    color: #EF4DB6
+  }
+  #kanRadio:checked + label > .color {
+    display:none;
+  }
+  #kanRadio:checked + label > .white {
+    display:inline;
+  }
+  #kanRadio:checked + label {
+    background-color: #EF4DB6;
+    color: #FFFFFF;
+  }
+
+  /* CARDS BUTTON */
+  #cardsBoc{
+    background: #FFFFFF;
+    color: #4CD3B4
+  }
+  #cardsRadio:checked + label > .color {
+    display:none;
+  }
+  #cardsRadio:checked + label > .white {
+    display:inline;
+  }
+  #cardsRadio:checked + label {
+    background-color: #4CD3B4;
+    color: #FFFFFF;
+  }
+  /* Dropdown Button */
+  .dropbtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+  }
+
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+      position: relative;
+      display: inline-block;
+  }
+
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+
+  /* Links inside the dropdown */
+  .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+  }
+
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f1f1f1}
+
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+      display: block;
+  }
+
+  /* Change the background color of the dropdown button when the dropdown content is shown */
+  .dropdown:hover .dropbtn {
+      background-color: #3e8e41;
+  }
+  </style>
+
+  <form action="#">
+
+  <input type="radio" name="sport" id="pingRadio"/>
+  <label class="btn" for="pingRadio" id="pingBoc">
+    <img class="color" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/ping-pong-color.png?alt=media&token=6939542f-b9b0-4bb7-9fa0-5c864b964d0c" >
+    <img class="white" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/ping-pong-white.png?alt=media&token=0968e77a-c8e1-42f8-85d2-8f924d1dc56f" >
+    Ping Pong
+  </label>
+
+  <br>
+
+  <input type="radio" name="sport" id="foosRadio"/>
+  <label class="btn" for="foosRadio" id="foosBoc">
+    <img class="color" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/foosball-color.png?alt=media&token=b2f16121-b03f-4291-86c5-88e8cb4cb3cb" >
+    <img class="white" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/foosball-white.png?alt=media&token=1820e267-0f43-414e-a18a-d206feaa4a8d" >
+    Foosball
+  </label>
+
+  <br>
+
+  <input type="radio" name="sport" id="airRadio"/>
+  <label class="btn" for="airRadio" id="airBoc">
+    <img class="color" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/air-color.png?alt=media&token=f7e6c604-8ad2-490a-b7ae-1c38579fb88f" >
+    <img class="white" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/air-white.png?alt=media&token=976b7c9f-9506-4e39-b9d4-95e1c477ca22" >
+    Air Hockey
+  </label>
+
+  <br>
+
+  <input type="radio" name="sport" id="cornRadio"/>
+  <label class="btn" for="cornRadio" id="cornBoc">
+    <img class="color" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/cornhole-color.png?alt=media&token=d3c7c305-0e78-48ca-8b9e-013be8f71c27" >
+    <img class="white" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/cornhole-white.png?alt=media&token=fdbf69ec-2635-4838-92ab-c9351c93f793" >
+    Corn Hole
+  </label>
+
+  <br>
+
+  <input type="radio" name="sport" id="bocRadio"/>
+  <label class="btn" for="bocRadio" id="btnBoc">
+    <img class="color" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/icon-bocceball.png?alt=media&token=2a46bdac-86b8-4c2e-adb0-b85755033605" >
+    <img class="white" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/boccee%20white.png?alt=media&token=ac45db39-ad37-4975-bef2-aa351fe1679b" >
+    Bocce Ball
+  </label>
+
+  <br>
+
+  <input type="radio" name="sport" id="poolRadio"/>
+  <label class="btn" for="poolRadio" id="poolBoc">
+    <img class="color" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/pool-color.png?alt=media&token=635f9ee5-337d-47ce-bf86-9eecc8a36cdb" >
+    <img class="white" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/pool-white.png?alt=media&token=bdbd1abe-a455-4496-9f53-cbb3f22c3500" >
+    Pool
+  </label>
+
+  <br>
+
+  <input type="radio" name="sport" id="spikeRadio"/>
+  <label class="btn" for="spikeRadio" id="spikeBoc">
+    <img class="color" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/spike-color.png?alt=media&token=8d63f110-2198-4bf5-8fc0-dc5f52d9c5e7" >
+    <img class="white" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/spike-white.png?alt=media&token=fc9247c3-26e8-4b6a-bf7a-e0db512fa4e1" >
+    Spikeball
+  </label>
+
+  <br>
+
+  <input type="radio" name="sport" id="kanRadio"/>
+  <label class="btn" for="kanRadio" id="kanBoc">
+    <img class="color" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/kan-color.png?alt=media&token=c7f757e5-2303-4e61-a121-2467967a9078" >
+    <img class="white" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/kan-white.png?alt=media&token=cdba6a49-ac18-4773-944c-631c8df7a955" >
+    Kan Jam
+  </label>
+
+  <br>
+
+  <input type="radio" name="sport" id="cardsRadio"/>
+  <label class="btn" for="cardsRadio" id="cardsBoc">
+    <img class="color" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/cards-color.png?alt=media&token=1df43d3a-b007-498f-96ec-7b013bf69c29" >
+    <img class="white" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/cards-white.png?alt=media&token=4ad90906-8ef8-4b5a-b343-8a43b3b78347" >
+    Cards
+  </label>
+
+  select a teammate
+  <form type="dropdown" action="dropdown"class="dropdownteammate" action="index.html" method="post">
+    <div class="dropdown">
+      <button class="dropbtn">Dropdown</button>
+      <div class="dropdown-content">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+      </div>
+    </div>
+  </form>
+  <input type="text" name="name" value="" placeholder="create team name">
+  <input type="submit" name="name" value="sendmetospace" id="sendmetospace">
+  </form>
+  </body>
+</html>
