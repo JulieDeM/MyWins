@@ -10,6 +10,13 @@ router.get('/', function(req, res, next) {
 
 // probably place all routes above /:username route, no other route files
 
+//Julie's code starts here
+
+
+//Julie's code ends here
+
+
+// Ricky's work below
 router.get('/:username', function(req, res, next){
   Dash.readUser(req.params.username).then(function(user){
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
