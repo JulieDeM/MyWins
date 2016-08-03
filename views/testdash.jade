@@ -22,9 +22,15 @@ html
         input(type="submit")
       for records in gameRecords
         if records.game_id === game.game_id
-          p
-            b #{records.user1_id}
-            |  #{records.user1_score} - #{records.user2_score} 
-            b #{records.user2_id}
+          if records.user1_id === userInfo.id && userInfo.userName !== records.userName
+            p
+              b #{userInfo.userName}
+              |  #{records.user1_score} - #{records.user2_score}
+              b #{records.userName}
+          else if userInfo.userName !== records.userName
+            p
+              b #{records.userName}
+              |  #{records.user1_score} - #{records.user2_score}
+              b #{userInfo.userName}
       br
       br
