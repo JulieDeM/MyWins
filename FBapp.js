@@ -57,11 +57,11 @@ passport.deserializeUser(function(user, done) {
 });
 
 app.use('/', routes);
-<<<<<<< HEAD:app.js
 
-=======
+
+
 app.use('/auth', authRoutes);
->>>>>>> 6c5e9cc81ad4c7c9307d9f4677aec83e00432ab8:FBapp.js
+
 app.use('/signup', signup);
 app.use('/dashboard', dashboard);
 
