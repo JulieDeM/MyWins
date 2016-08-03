@@ -12,6 +12,7 @@ var dashboard = require('./routes/dashboard');
 var authRoutes = require('./routes/auth');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
+var Signup = require('./lib/signup');
 
 var app = express();
 
@@ -42,7 +43,9 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'name', 'picture.type(large)']
   },
   function(token, tokenSecret, profile, done) {
-    done(null, profile)
+    Signup.addUser(profile).then(function(user){
+      done(null, profile)
+    })
   }
 ));
 passport.serializeUser(function(user, done) {

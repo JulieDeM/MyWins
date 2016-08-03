@@ -7,6 +7,9 @@ router.get('/facebook', passport.authenticate('facebook', {
 }));
 
 router.get('/profile', isLoggedIn, function(req, res) {
+  console.log('*******USER*******');
+  console.log(req.user);
+  // res.cookie('user', )
     res.render('profile', {
         user: req.user
     });

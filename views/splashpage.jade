@@ -1,37 +1,23 @@
-doctype html
-html
-  head
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
-    link(rel='stylesheet', href='mainpage.css', media='screen', title='no title', charset='utf-8')
-    title
-  script.
-    (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7";
-    fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  body
-    #banner
-      header
-        img#logo(href='#', src='mywinslogo@1x.png', alt='mywins')
-    #main-image
-      .bothlandf
-        #left
-          p.kick-butt Kick butt.
-          p.kick-butt Take names.
-          p.kick-butt And keep track of it all.
-        div
-          #right
-            #yellow
-              #gameon
-              | Game on!
-           #question  Don't have an account yet? 
-           #loginfb
-             img#fbook(src='f.png', hspace='20')
-             #log
-               | Login with Facebook
-           .fb-login-button(data-max-rows='1', data-size='xlarge', data-show-faces='false', data-auto-logout-link='false')
+extends FBlayout
+
+block content
+	#banner
+		header
+			img#logo(href='#', src='mywinslogo@1x.png', alt='mywins')
+	#main-image
+		.bothlandf
+			#left
+				p.kick-butt Kick butt.
+				p.kick-butt Take names.
+				p.kick-butt And keep track of it all.
+			div
+				#right
+					#yellow
+						#gameon
+						| Game on!
+						#question  Don't have an account yet? 
+						.container
+							.jumbotron.text-center      
+								p Login or Register with: 
+								a.btn.btn-primary(href='/auth/facebook')
+									span.fa.fa-facebook Facebook
