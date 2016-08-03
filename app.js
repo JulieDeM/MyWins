@@ -5,18 +5,15 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('express-session');
+
 var routes = require('./routes/index');
 
 var signup = require('./routes/signup');
 var dashboard = require('./routes/dashboard');
-var authRoutes = require('./routes/auth');
-var FacebookStrategy = require('passport-facebook').Strategy;
-var passport = require('passport');
-var Signup = require('./lib/signup');
 
 var app = express();
 
+// view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
@@ -27,47 +24,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({
-  keys: [process.env.SESSION_KEY1, process.env.SESSION_KEY2],
-  secret: 'asdfkjl',
-  resave: false,
-  saveUninitialized: true
- }))
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.use(new FacebookStrategy({
-    clientID: process.env.FACEBOOK_CLIENT_ID,
-    clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: process.env.HOST + "/auth/facebook/callback",
-    redirect: false,
-    profileFields: ['id', 'name', 'picture.type(large)']
-  },
-  function(token, tokenSecret, profile, done) {
-    Signup.findUser(profile).then(function(user){
-     if (user !== null) {
-        done(null, profile);
-      } else {
-       Signup.addUser(profile).then(function(){
-         done(null, profile);
-       })
-     }
-    })
-  }
-));
-passport.serializeUser(function(user, done) {
-    done(null, user);
-});
-
-passport.deserializeUser(function(user, done) {
-    done(null, user)
-});
 
 app.use('/', routes);
-
-
-
-app.use('/auth', authRoutes);
 
 app.use('/signup', signup);
 app.use('/dashboard', dashboard);
@@ -78,6 +36,8 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+// error handlers
 
 // development error handler
 // will print stacktrace
@@ -90,6 +50,7 @@ if (app.get('env') === 'development') {
     });
   });
 }
+
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
@@ -99,5 +60,6 @@ app.use(function(err, req, res, next) {
     error: {}
   });
 });
+
 
 module.exports = app;
