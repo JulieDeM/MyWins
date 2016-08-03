@@ -21,19 +21,16 @@ router.get('/', function(req, res, next) {
 router.get('/:username', function(req, res, next){
   Dash.readUser(req.params.username).then(function(user){
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
-      console.log("************GAME TYPES**********");
-      console.log(gametypes.rows);
-    //   res.render('testdash', {
-    //     userInfo: user.rows[0],
-    //     games: gametypes.rows
-    // })
+      // console.log("************GAME TYPES**********");
+      // console.log(gametypes.rows);
+
     // for each game type, we need to get:
     // 1) Player data
     // 2) Game Records
     // 3) Standings
       Dash.readGameStats(user.rows[0].id).then(function(all){
-        console.log("************GAME STATS**********");
-        console.log(all.rows);
+        // console.log("************GAME STATS**********");
+        // console.log(all.rows);
         Dash.readGameRecords(user.rows[0].id).then(function(records){
           // console.log("************GAME RECORDS**********");
           // console.log(records.rows);
@@ -61,7 +58,6 @@ router.post('/addrecord', function(req, res, next){
         // console.log(results1.rows);
         // console.log("-------------TWO---------");
         // console.log(results2.rows);
-        // results not getting me the game type, just user_game_id
         var user1 = results1.rows[0];
         var user2 = results2.rows[0];
         var u1ExScore = One.expectedScore(user1.rating, user2.rating);
