@@ -1,0 +1,158 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='../public/stylesheets/dashboard.css', media='screen', title='no title', charset='utf-8')
+    link(rel='stylesheet', href='../public/stylesheets/accordion.css', media='screen', title='no title', charset='utf-8')
+    link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet')
+    title
+  body
+    header
+      a.mywins(href='#') mywins
+      a.signout(href='#') sign out
+    .userData
+      .userImg
+        img(src='http://static.boredpanda.com/blog/wp-content/uploads/2016/04/beautiful-fluffy-cat-british-longhair-13.jpg', alt='', height='130', width='130')
+      .userNames
+        | username
+        br
+        |         user name
+      .score
+        | score
+        br
+        |         ranking
+    .tab-group
+      .tab
+        input#tab1(type='radio', name='tabs')
+        label(for='tab1') label 1
+        .tab-content
+          .recordsAndStandings
+            .gameRecords
+              | game records are going to live here
+              button#add_new(type='button', name='button') + Add Game Record
+              form#addNewGame(action='#', method='post')
+            .currentStandings
+              | current standings:
+              table
+                tbody
+                  tr
+                    td 1.
+                    td mscoulter
+                    td 221
+                  tr
+                    td 2.
+                    td sarameyer
+                    td 204
+                  tr
+                    td 3.
+                    td rickycpadilla
+                    td 109
+                  tr
+                    td 4.
+                    td demjules
+                    td 90
+                  tr
+                    td 5.
+                    td annfran
+                    td 86
+      .tab
+        input#tab2(type='radio', name='tabs')
+        label(for='tab2') label 2
+        .tab-content
+          .recordsAndStandings
+            .gameRecords
+              | game records are going to live here
+              button#add_new2(type='button', name='button') + Add Game Record
+              form#addNewGame2(action='#', method='post')
+            .currentStandings
+              | current standings:
+              table
+                tbody
+                  tr
+                    td 1.
+                    td mscoulter
+                    td 221
+                  tr
+                    td 2.
+                    td sarameyer
+                    td 204
+                  tr
+                    td 3.
+                    td rickycpadilla
+                    td 109
+                  tr
+                    td 4.
+                    td demjules
+                    td 90
+                  tr
+                    td 5.
+                    td annfran
+                    td 86
+      .tab
+        input#tab3(type='radio', name='tabs')
+        label(for='tab3') label 3
+        .tab-content
+          .recordsAndStandings
+            .gameRecords
+              | game records are going to live here
+              button#add_new(type='button', name='button') + Add Game Record
+              form#addNewGame(action='#', method='post')
+            .currentStandings
+              | current standings:
+              table
+                tbody
+                  tr
+                    td 1.
+                    td mscoulter
+                    td 221
+                  tr
+                    td 2.
+                    td sarameyer
+                    td 204
+                  tr
+                    td 3.
+                    td rickycpadilla
+                    td 109
+                  tr
+                    td 4.
+                    td demjules
+                    td 90
+                  tr
+                    td 5.
+                    td annfran
+                    td 86
+      .tab
+        input#tab4(type='radio', name='tabs')
+        label(for='tab4') label 4
+        .tab-content
+          .recordsAndStandings
+            .gameRecords
+              | game records are going to live here
+              button#add_new(type='button', name='button') + Add Game Record
+              form#addNewGame(action='#', method='post')
+            .currentStandings
+              | current standings:
+              table
+                tbody
+                  tr
+                    td 1.
+                    td mscoulter
+                    td 221
+                  tr
+                    td 2.
+                    td sarameyer
+                    td 204
+                  tr
+                    td 3.
+                    td rickycpadilla
+                    td 109
+                  tr
+                    td 4.
+                    td demjules
+                    td 90
+                  tr
+                    td 5.
+                    td annfran
+                    td 86
+    div
+    script(src='../anna.js', charset='utf-8')
