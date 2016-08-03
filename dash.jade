@@ -2,8 +2,8 @@ doctype html
 html
   head
     meta(charset='utf-8')
-    link(rel='stylesheet', href='../public/stylesheets/dashboard.css', media='screen', title='no title', charset='utf-8')
-    link(rel='stylesheet', href='../public/stylesheets/accordion.css', media='screen', title='no title', charset='utf-8')
+    link(href='/stylesheets/dashboard.css', rel='stylesheet', media='screen', title='no title', charset='utf-8')
+    link(href='/stylesheets/accordion.css', rel='stylesheet', media='screen', title='no title', charset='utf-8')
     link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet')
     title
   body
@@ -29,11 +29,34 @@ html
           .recordsAndStandings
             .gameRecords
               | game records are going to live here
-              button#add_new(type='button', name='button') + Add Game Record
+              script.
+                var makeForm = function(){
+                  var addNewGame = document.getElementById("addNewGame")
+                  var opponentName = document.createElement("input")
+                  opponentName.setAttribute("type", "text")
+                  opponentName.setAttribute("name", "opponent")
+                  opponentName.setAttribute("placeholder", "opponent name")
+                  var userScore = document.createElement("input")
+                  userScore.setAttribute("type", "number")
+                  userScore.setAttribute("name", "userScore")
+                  userScore.setAttribute("placeholder", "your score")
+                  var opponentScore =  document.createElement("input")
+                  opponentScore.setAttribute("type", "number")
+                  opponentScore.setAttribute("name", "opponentScore")
+                  opponentScore.setAttribute("placeholder", "their score")
+                  var submit = document.createElement("input")
+                  submit.setAttribute("type", "submit")
+                  addNewGame.appendChild(opponentName)
+                  addNewGame.appendChild(userScore)
+                  addNewGame.appendChild(opponentScore)
+                  addNewGame.appendChild(submit)
+                }
+              button#add_new(type='button', name='button', onclick='makeForm()') + Add Game Record
               form#addNewGame(action='#', method='post')
             .currentStandings
-              | current standings:
               table
+                //- table, thead, and tbody always exist in the tab, however, tr and td must be created based upon the current standings returned from the database query
+                thead current standings:
                 tbody
                   tr
                     td 1.
@@ -155,4 +178,4 @@ html
                     td annfran
                     td 86
     div
-    script(src='../anna.js', charset='utf-8')
+    //- script(src='/js/anna.js')

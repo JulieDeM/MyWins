@@ -4,7 +4,7 @@ var bookshelf = require('../db/bookshelf')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('FBindex');
 });
 
 module.exports = router;
