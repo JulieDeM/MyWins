@@ -11,7 +11,7 @@ router.get('/profile', isLoggedIn, function(req, res) {
     res.cookie('user', req.user.id)
     Signup.findUser(req.user).then(function(user) {
         if (user.rows[0].username === undefined) {
-            res.render('testSignup', {
+            res.render('dashboard', {
                 user: user.rows[0]
             })
         } else {

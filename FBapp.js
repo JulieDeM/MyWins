@@ -7,7 +7,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var routes = require('./routes/index');
-
 var signup = require('./routes/signup');
 var dashboard = require('./routes/dashboard');
 var authRoutes = require('./routes/auth');
@@ -45,7 +44,7 @@ passport.use(new FacebookStrategy({
   },
   function(token, tokenSecret, profile, done) {
     Signup.findUser(profile).then(function(user){
-     if (user !== null) {
+     if (user.rows.length !== 0) {
         done(null, profile);
       } else {
        Signup.addUser(profile).then(function(){
@@ -64,11 +63,7 @@ passport.deserializeUser(function(user, done) {
 });
 
 app.use('/', routes);
-
-
-
 app.use('/auth', authRoutes);
-
 app.use('/signup', signup);
 app.use('/dashboard', dashboard);
 
