@@ -21,8 +21,8 @@ router.get('/', function(req, res, next) {
 router.get('/:username', function(req, res, next){
   Dash.readUser(req.params.username).then(function(user){
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
-      console.log("************GAME TYPES**********");
-      console.log(gametypes.rows);
+      // console.log("************GAME TYPES**********");
+      // console.log(gametypes.rows);
     //   res.render('testdash', {
     //     userInfo: user.rows[0],
     //     games: gametypes.rows
@@ -35,8 +35,8 @@ router.get('/:username', function(req, res, next){
         // console.log("************GAME STATS**********");
         // console.log(all.rows);
         Dash.readGameRecords(user.rows[0].id).then(function(records){
-          console.log("************GAME RECORDS**********");
-          console.log(records.rows);
+          // console.log("************GAME RECORDS**********");
+          // console.log(records.rows);
             res.render('testdash', {
               userInfo: user.rows[0],
               gameTypes: gametypes.rows,
@@ -62,10 +62,45 @@ router.post('/addrecord', function(req, res, next){
         console.log("-------------TWO---------");
         console.log(results2.rows);
         // results not getting me the game type, just user_game_id
+        var user1 = results1.rows[0];
+        var user2 = results2.rows[0];
+        var u1ExScore = One.expectedScore(user1.rating, user2.rating);
+        var u2ExScore = 1 - u1ExScore;
+        if (req.body.user1_score > req.body.user2_score){
+          var u1AcScore = 1;
+          var u2AcScore = 0;
+        } else if (req.body.user1_score < req.body.user2_score){
+          var u1AcScore = 0;
+          var u2AcScore = 1;
+        } else {
+          var u1AcScore = 0.5;
+          var u2AcScore = 0.5;
+        }
+        var u1newRating = One.newRating(user1.rating, user1.constant, u1ExScore, u1AcScore);
+        var u2newRating = One.newRating(user2.rating, user2.constant, u2ExScore, u2AcScore);
+        var updateU1 = {
+          gamesPlayed: user1.gamesPlayed + 1,
+          rating: u1newRating,
+          constant: One.checkConstant(user1.constant, u1newRating, (user1.gamesPlayed + 1))
+        };
+        var updateU2 = {
+          gamesPlayed: user2.gamesPlayed + 1,
+          rating: u2newRating,
+          constant: One.checkConstant(user2.constant, u2newRating, (user2.gamesPlayed + 1))
+        };
+        // console.log("-------------ONE---------");
+        // console.log(updateU1);
+        // console.log("-------------TWO---------");
+        // console.log(updateU2);
+        Dash.updatePlayer(updateU1, user1.user_game_id).then(function(){
+          Dash.updatePlayer(updateU2, user2.user_game_id).then(function(){
+            res.redirect('/')
+
+          })
+        })
 
 
 
-        res.redirect('/')
       })
     })
   })
