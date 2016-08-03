@@ -6,7 +6,7 @@ var One = require('../lib/one_v_one');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('FBindex');
 });
 
 // probably place all routes above /:username route, no other route files
