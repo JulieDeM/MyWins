@@ -25,7 +25,7 @@ router.post('/', function(req, res, next){
                 })
               })
             })
-            res.redirect('/')
+            res.redirect('/auth/profile')
           })
         }else{
           console.log("That username has been taken!");

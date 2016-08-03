@@ -5,6 +5,7 @@ exports.up = function(knex, Promise) {
     t.string('image_url');
     t.string('firstName');
     t.string('lastName');
+    t.string('fb_uid');
     t.integer('favorite_game_id').references('id').inTable('games');
     t.timestamps();
   })
