@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bookshelf = require('../db/bookshelf');
 var Dash = require('../lib/dashlogic');
+var One = require('../lib/one_v_one');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -48,12 +49,25 @@ router.get('/:username', function(req, res, next){
 })});
 
 router.post('/addrecord', function(req, res, next){
-  console.log(">>>>>>>>>>>> req body <<<<<<<<<<<<");
-  console.log(req.body);
+  // console.log(">>>>>>>>>>>> req body <<<<<<<<<<<<");
+  // console.log(req.body);
   Dash.createGameRecord(
     req.body.game_id, req.body.user1_id, req.body.user2_id, req.body.user1_score, req.body.user2_score
   ).then(function(){
-    res.redirect('/')
+    //update players here
+    Dash.readMoreGameStats(req.body.user1_id, req.body.game_id).then(function(results1){
+      Dash.readMoreGameStats(req.body.user2_id, req.body.game_id).then(function(results2){
+        console.log("-------------ONE---------");
+        console.log(results1.rows);
+        console.log("-------------TWO---------");
+        console.log(results2.rows);
+        // results not getting me the game type, just user_game_id
+
+
+
+        res.redirect('/')
+      })
+    })
   })
 })
 
