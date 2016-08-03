@@ -32,6 +32,16 @@ html
               script.
                 var makeForm = function(){
                   var addNewGame = document.getElementById("addNewGame")
+                  //- var gameId = document.createElement("input")
+                  //- gameId.setAttribute("type", "text")
+                  //- gameId.setAttribute("name", "game_id")
+                  //- gameId.style.display = "none"
+                  //- gameId.setAttribute("value", "#{game.game_id}")
+                  //- var user1Id = document.createElement("input")
+                  //- user1Id.setAttribute("type", "text")
+                  //- user1Id.setAttribute("name", "user1_id")
+                  //- user1Id.style.display = "none"
+                  //- user1Id.setAttribute("value", "#{userInfo.id}")
                   var opponentName = document.createElement("input")
                   opponentName.setAttribute("type", "text")
                   opponentName.setAttribute("name", "opponent")
@@ -46,6 +56,8 @@ html
                   opponentScore.setAttribute("placeholder", "their score")
                   var submit = document.createElement("input")
                   submit.setAttribute("type", "submit")
+                  //- addNewGame.appendChild(gameId)
+                  //- addNewGame.appendChild(user1Id)
                   addNewGame.appendChild(opponentName)
                   addNewGame.appendChild(userScore)
                   addNewGame.appendChild(opponentScore)
