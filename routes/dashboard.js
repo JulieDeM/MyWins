@@ -8,13 +8,23 @@ router.get('/', function(req, res, next){
 })
 
 router.post('/', function(req, res, next){
+  //check if user exists in database
       Dashboard.findUser(req.body.name).then(function(result){
         if (result.rows.length == 0) {
-          Dashboard.addUserInfo(req.body.name, req.body.sport).then(function(newUser){
-            Dashboard.findUserId(req.body.name).then(function(id){
-              console.log(id)
+          //if not, add to users table in database
+          Dashboard.addUserInfo(req.body.name, req.body.sport).then(function(){
+            //then find Id of record just added to users
+            Dashboard.findUserId(req.body.name).then(function(userId){
+              //then use that Id and the game id from req.body to add user game record
+              Dashboard.addUserGame(userId.rows[0].id, req.body.sport).then(function(){
+                //then find userGameId of record just added
+                Dashboard.findUserGameId(userId.rows[0].id).then(function(userGameId){
+                  //then add a userGameStats record
+                  Dashboard.addUserGameStats(userId.rows[0].id, userGameId.rows[0].id, 0, 100, 40).then(function(){
+                  })
+                })
+              })
             })
-            console.log("check database");
             res.redirect('/')
           })
         }else{
