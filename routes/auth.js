@@ -8,7 +8,7 @@ router.get('/facebook', passport.authenticate('facebook', {
 
 router.get('/profile', isLoggedIn, function(req, res) {
   console.log(req.user);
-    res.render('profile', {
+    res.render('../views/loadpage', {
         user: req.user
     });
 });

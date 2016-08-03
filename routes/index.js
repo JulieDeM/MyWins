@@ -18,6 +18,12 @@ router.get('/splashpage', function(req, res, next){
   res.render('../views/splashpage')
 })
 //this is a created route for the loadpage
+router.get('/profile', isLoggedIn, function(req, res) {
+  console.log(req.user);
+    res.render('profile', {
+        user: req.user
+    });
+});
 router.get('/loadpage', function(req, res, next){
   res.render('../views/loadpage')
 })

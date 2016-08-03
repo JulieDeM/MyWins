@@ -9,19 +9,20 @@ html
   body
     #banner
       header
-        img#logo(href='#', src='/images/mywinslogo@1x.png', alt='mywins')
+      a(href='/splashpage')
+        img#logo(src='/images/mywinslogo@1x.png', alt='mywins')
     #main-image
       .bothlandf
         #whitebox
           .top
             #userpic
-              p#userpic2
+              span#userpic2
                 | userpic here
             #fbname
-              p#fbname2
-                | fb name here
+              span#fbname2
+                h1 #{user.name.givenName}
             #username
-              p#username2
+              span#username2
                 | username here
             span#greencircle
               p#onehundred  100 

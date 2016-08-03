@@ -45,18 +45,23 @@ body{
   border-radius: 50%;
   height: 7em;
   width: 7em;
-  margin: 4em 0 5em 4em;
+  margin: 0.5em 0 5em 4.5em;
 }
 #submit{
   color: #4CD964;
   font-family: 'Varela Round', sans-serif;
   font-size: 30px;
+  margin-left: 4em;
 }
-#fbname, #username{
+#fbname{
   font-family: 'Varela Round', sans-serif;
+  margin-top: 3em;
+}
+#fbname2{
+  margin-top: 7em;
 }
 .bottom{
-  margin-top: 10em;
+  margin-top: 11em;
 }
 #moveme{
   margin-left: 8em;
@@ -73,27 +78,29 @@ body{
 }
 #onehundred{
   font-weight: bold;
-  margin: 10px 0 5px 4px;
+  margin: 0.6em 0 5px 11px;
   font-size: 70px;
+  text-shadow: 2px 2px 4px #000000;
 }
 p{
   font-family: 'Varela Round', sans-serif;
-  margin-left: 2em;
 }
 #submit5{
   font-family: 'Varela Round', sans-serif;
   font-size: 30px;
   color: #9B9B9B;
+  margin-left: -2em;
+}
+#yourrating{
+  margin-left: 6em;
+  font-size: 16px;
+  color: #4A4A4A;
 }
 .largeprint{
   font-size: 20px;
   font-weight: bold;
   color: #4A4A4A;
   letter-spacing: -0.09px;
-}
-p.largeprint{
-    line-height: 20%;
-    margin-top: 2em;
 }
 #smallprint{
   color: #9B9B9B;
@@ -103,35 +110,11 @@ p.largeprint{
   margin-top: -1em;
   font-size: 12px;
 }
-#one{
-  border-radius: 50%;
-  padding: 5px;
-  background: #fff;
-  border: 3px solid #4CD964;
-  color: #4CD964;
-  text-align: center;
-  font: 20px 'Varela Round', sans-serif;
-  line-height: 13px;
-  letter-spacing: 6px;
-}
-#two{
-  border-radius: 50%;
-  padding: 5px;
-  background: #fff;
-  border: 3px solid #4CD964;
-  color: #4CD964;
-  text-align: center;
-  font: 20px 'Varela Round', sans-serif;
-  line-height: 13px;
-  letter-spacing: 6px;
-}
-
 .container {
   height: 100vh;
   width: 100vw;
   font-family: Varela Round;
 }
-
 .loader {
   height: 20px;
   width: 250px;
@@ -193,7 +176,6 @@ p.largeprint{
   animation-duration: 3s;
   animation-iteration-count: infinite;
 }
-
 @keyframes loader {
   15% {
     transform: translateX(0);
