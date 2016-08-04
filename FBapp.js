@@ -7,12 +7,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var routes = require('./routes/index');
-
 var signup = require('./routes/signup');
 var dashboard = require('./routes/dashboard');
 var authRoutes = require('./routes/auth');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
+var Signup = require('./lib/signup');
 
 var app = express();
 
@@ -43,25 +43,27 @@ passport.use(new FacebookStrategy({
     profileFields: ['id', 'name', 'picture.type(large)']
   },
   function(token, tokenSecret, profile, done) {
-    done(null, profile)
+    Signup.findUser(profile).then(function(user){
+     if (user.rows.length !== 0) {
+        done(null, profile);
+      } else {
+       Signup.addUser(profile).then(function(){
+         done(null, profile);
+       })
+     }
+    })
   }
 ));
 passport.serializeUser(function(user, done) {
- // later this will be where you selectively send to the browser an identifier for your user, like their primary key from the database, or their ID from linkedin
-  done(null, user);
+    done(null, user);
 });
 
 passport.deserializeUser(function(user, done) {
-  //here is where you will go to the database and get the user each time from it's id, after you set up your db
-  done(null, user)
+    done(null, user)
 });
 
 app.use('/', routes);
-
-
-
 app.use('/auth', authRoutes);
-
 app.use('/signup', signup);
 app.use('/dashboard', dashboard);
 
