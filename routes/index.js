@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 //Sarah's work below
 //user1 requests to edit a game record
-router.get('/gameRecordId/:gameRecordId/edit', function(req, res, next){
+router.get('/gameRecord/:gameRecordId/edit', function(req, res, next){
   Edit.getRecordByID(req.params.gameRecordId).then(function(record){
     res.render('testedit', {
       record: record.rows[0]
@@ -20,10 +20,10 @@ router.get('/gameRecordId/:gameRecordId/edit', function(req, res, next){
   });
 });
 //user1 submits edited record - alert set to true
-router.post('/gameRecordId/:gameRecordId', function(req, res, next){
+router.post('/gameRecord/:gameRecordId', function(req, res, next){
   Edit.editRecordAlert(req.params.gameRecordId, true).then(function(){
     Edit.getUserName(req.cookies.user).then(function(user){
-      res.redirect(`/${user.rows[0].userName}`)
+      res.redirect(`/dash/${user.rows[0].userName}`)
     })
   });
 });
@@ -39,17 +39,16 @@ router.get('/request/:gameRecordId/edit', function(req, res, next){
 router.post('/request/:gameRecordId', function(req, res, next){
   Edit.editRecord(req.params.gameRecordId, req.body.user1_score, req.body.user2_score, false).then(function(){
     Edit.getUserName(req.cookies.user).then(function(user){
-      res.redirect(`/${user.rows[0].userName}`)
+      res.redirect(`/dash/${user.rows[0].userName}`)
     })
   })
 })
 //End Sarah's work
 
 // Ricky's work below
-router.get('/:username', function(req, res, next){
+router.get('/dash/:username', function(req, res, next){
+  var currUserID = req.cookies.user;
   Dash.readUser(req.params.username).then(function(user){
-    console.log('*************USER**********');
-    console.log(user.rows[0].id);
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
       // console.log("************GAME TYPES**********");
       // console.log(gametypes.rows);
@@ -65,6 +64,7 @@ router.get('/:username', function(req, res, next){
           // console.log("************GAME RECORDS**********");
           // console.log(records.rows);
           res.render('testdash', {
+            currUserID: currUserID,
             userInfo: user.rows[0],
             gameTypes: gametypes.rows,
             gameStats: all.rows,
@@ -121,7 +121,7 @@ router.post('/addrecord', function(req, res, next){
         Dash.updatePlayer(updateU1, user1.user_game_id).then(function(){
           Dash.updatePlayer(updateU2, user2.user_game_id).then(function(){
             Dash.PlayerName(req.body.user1_id).then(function(player){
-              res.redirect(`/${player.rows[0].userName}`)
+              res.redirect(`/dash/${player.rows[0].userName}`)
             })
           })
         })
