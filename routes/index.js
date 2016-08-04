@@ -34,11 +34,21 @@ router.get('/:username', function(req, res, next){
         Dash.readGameRecords(user.rows[0].id).then(function(records){
           // console.log("************GAME RECORDS**********");
           // console.log(records.rows);
+
+          // ALL TEAM functionality below
+          Dash.readTeams(user.rows[0].id).then(function(teams){
+            console.log(teams.rows);
+            
+            // RENDER happens in last call
             res.render('testdash', {
               userInfo: user.rows[0],
               gameTypes: gametypes.rows,
               gameStats: all.rows,
               gameRecords: records.rows
+
+          })
+
+
           })
         })
       })
