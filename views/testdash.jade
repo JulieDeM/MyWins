@@ -9,7 +9,11 @@ html
 		h5 #{userInfo.firstName} #{userInfo.lastName}
 		br
 		for game in gameTypes
-			h3 #{game.type}
+			h3 #{game.type} 
+				if game.game_id === faveGame
+					a: img(src='../public/images/filledheart.png')
+				else if game.game_id !== faveGame
+					a: img(src='../public/images/emptyheart.png')
 			for stats in gameStats
 				if stats.user_game_id === game.usergamesid
 					p Rating: #{stats.rating}
@@ -43,3 +47,4 @@ html
 									a.btn.btn-primary(href='/request/#{records.record_id}/edit') !!!
 			br
 			br
+	small Heart by Kid A from the Noun Project

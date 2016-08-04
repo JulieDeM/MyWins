@@ -50,9 +50,11 @@ router.get('/dash/:username', function(req, res, next){
   // res.cookie('user', 2);
   var currUserID = req.cookies.user;
   Dash.readUser(req.params.username).then(function(user){
+    console.log('**********FAVEGAMEID**********');
+    console.log(user.rows[0].favorite_game_id);
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
-      // console.log("************GAME TYPES**********");
-      // console.log(gametypes.rows);
+      console.log("************GAME TYPES**********");
+      console.log(gametypes.rows[0].game_id);
 
       // for each game type, we need to get:
       // 1) Player data
@@ -66,6 +68,7 @@ router.get('/dash/:username', function(req, res, next){
           // console.log(records.rows);
           res.render('testdash', {
             currUserID: currUserID,
+            faveGame: user.rows[0].favorite_game_id,
             userInfo: user.rows[0],
             gameTypes: gametypes.rows,
             gameStats: all.rows,
