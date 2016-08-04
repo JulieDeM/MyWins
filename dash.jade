@@ -22,15 +22,13 @@ html
         br
         |         ranking
     .tab-group
-      each val, index in [1, 2, 3, 4, 5]
+      each val, index in [1, 2, 3, 4, 5]        
         .tab
           input(id="tab" + (index+1))(type='radio', name='tabs')
           label(for='tab' + (index+1)) label #{index+1}
           .tab-content
             .recordsAndStandings
-              .gameRecords
-                | game records are going to live here
-                
+              .gameRecords                
                 script.
                   'use strict'
                   var name = "firstFunction" + (#{index}+1)
@@ -70,10 +68,12 @@ html
                         td #{user.score}
                         td #{user.wL}
               .currentStandings
+                p.current current standings:
                 table
-                  thead current standings:
                   tbody
                     each user, index in [{"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}]
+                      if(index == 10)
+                        -break
                       tr
                         td #{index+1}.
                         td #{user.username}
