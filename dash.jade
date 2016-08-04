@@ -30,11 +30,12 @@ html
             .recordsAndStandings
               .gameRecords
                 | game records are going to live here
+                
                 script.
-                  var makeForm = function(){
-                    console.log("*%*%*%%**%*%*%*%*%");
-                    console.log("#{index}");
-                    var addNewGame = document.getElementById("addNewGame")
+                  'use strict'
+                  var name = "firstFunction" + (#{index}+1)
+                  var innerLogic = function(){
+                    var addNewGame = document.getElementById("addNewGame" + (#{index}+1))
                     //- lines 37-46 from notes will go here
                     var opponentName = document.createElement("input")
                     opponentName.setAttribute("type", "text")
@@ -56,8 +57,9 @@ html
                     addNewGame.appendChild(opponentScore)
                     addNewGame.appendChild(submit)
                   }
-                button(id = "add_new" + (index+1))(type='button', name='button', onclick='makeForm()') + Add Game Record
-                form#addNewGame(action='#', method='post')
+                  var func#{index} = new Function("action", "return function " + name + "(){action()}")(innerLogic)
+                button(id = "add_new" + (index+1))(type='button', name='button', onclick='func#{index}()') + Add Game Record
+                form(id = "addNewGame" + (index+1))(action='#', method='post')
                 table
                   tbody
                     each user in [{date: 'July 31', p1: 'annfran', p2: 'sarameyer', score: '3-1', wL: 'W'}, {date: 'July 30', p1: 'demjules', p2: 'sarameyer', score: '0-1', wL: 'W'}, {date: 'July 19', p1: 'rightricky', p2: 'sarameyer', score: '3-7', wL: 'W'}, {date: 'July 10', p1: 'dumb', p2: 'okay', score: '3-7', wL: 'L'}, {date: 'July 7', p1: 'hate', p2: 'lotsOfHate', score: '3-7', wL: 'W'}]
