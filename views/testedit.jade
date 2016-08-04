@@ -4,7 +4,7 @@ block content
 	title Update a Record
 	h1 Update your game record
 		div.input
-			form(method="post" action="/gameRecord/#{record.id}")
+			form(method="post" action="/gameRecord/#{record.id}") 
 				input(type="number", name="user1_score", value="#{record.user1_score}")
 				input(type="number", name="user2_score", value="#{record.user2_score}")
 				input(type="submit", value="Request to edit")

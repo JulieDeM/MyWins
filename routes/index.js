@@ -21,7 +21,7 @@ router.get('/gameRecord/:gameRecordId/edit', function(req, res, next){
 });
 //user1 submits edited record - alert set to true
 router.post('/gameRecord/:gameRecordId', function(req, res, next){
-  Edit.editRecordAlert(req.params.gameRecordId, true).then(function(){
+  Edit.editRecord(req.params.gameRecordId, req.body.user1_score, req.body.user2_score, true).then(function(){
     Edit.getUserName(req.cookies.user).then(function(user){
       res.redirect(`/dash/${user.rows[0].userName}`)
     })
@@ -47,6 +47,7 @@ router.post('/request/:gameRecordId', function(req, res, next){
 
 // Ricky's work below
 router.get('/dash/:username', function(req, res, next){
+  res.cookie('user', 2);
   var currUserID = req.cookies.user;
   Dash.readUser(req.params.username).then(function(user){
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
@@ -73,7 +74,7 @@ router.get('/dash/:username', function(req, res, next){
         })
       })
     });
-  })});
+  }).timeout(2000)});
 
 router.post('/addrecord', function(req, res, next){
   // console.log(">>>>>>>>>>>> req body <<<<<<<<<<<<");

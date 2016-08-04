@@ -6,7 +6,8 @@ exports.up = function(knex, Promise) {
     t.integer('team2_id').references('id').inTable('teams');
     t.integer('team1_score');
     t.integer('team2_score');
-    t.boolean('alert');
+    t.boolean('user1_alert');
+    t.boolean('user2_alert');
     t.timestamps();
   })
 };
