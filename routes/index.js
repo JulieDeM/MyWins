@@ -25,11 +25,11 @@ router.get('/:gameRecordId/edit', function(req, res, next){
     })
   });
 });
-router.post('/:gameRecordId/edit', function(req, res, next){
+router.post('/:gameRecordId', function(req, res, next){
+  console.log('***************GAMES RECORD EDIT*********');
+  console.log(req.params.gameRecordId);
   Dash.editRecord(req.params.gameRecordId, false).then(function(){
-    Dash.
-    res.redirect('/${req.params.gameRecordId}')
-    res.send('Your opponent will be notified of the request to update this record')
+    res.redirect('/')
   });
 });
 router.get('/:username', function(req, res, next){

@@ -3,9 +3,8 @@ extends FBlayout
 block content
 	title Update a Record
 	h1 Update your game record
-		form(method="/#{record.id}/edit" action="post")
-			div.input
+		div.input
+			form(method="post" action="/#{record.id}")
 				input(type="number", name="user1_score", value="#{record.user1_score}")
 				input(type="number", name="user2_score", value="#{record.user2_score}")
-			div.actions
-				button.btn.btn-success(type="submit") Request to update!
+				input(type="submit", value="Request to edit")
