@@ -22,172 +22,61 @@ html
         br
         |         ranking
     .tab-group
-      .tab
-        input#tab1(type='radio', name='tabs')
-        label(for='tab1') label 1
-        .tab-content
-          .recordsAndStandings
-            .gameRecords
-              | game records are going to live here
-              script.
-                var makeForm = function(){
-                  var addNewGame = document.getElementById("addNewGame")
-                  //- var gameId = document.createElement("input")
-                  //- gameId.setAttribute("type", "text")
-                  //- gameId.setAttribute("name", "game_id")
-                  //- gameId.style.display = "none"
-                  //- gameId.setAttribute("value", "#{game.game_id}")
-                  //- var user1Id = document.createElement("input")
-                  //- user1Id.setAttribute("type", "text")
-                  //- user1Id.setAttribute("name", "user1_id")
-                  //- user1Id.style.display = "none"
-                  //- user1Id.setAttribute("value", "#{userInfo.id}")
-                  var opponentName = document.createElement("input")
-                  opponentName.setAttribute("type", "text")
-                  opponentName.setAttribute("name", "opponent")
-                  opponentName.setAttribute("placeholder", "opponent name")
-                  var userScore = document.createElement("input")
-                  userScore.setAttribute("type", "number")
-                  userScore.setAttribute("name", "userScore")
-                  userScore.setAttribute("placeholder", "your score")
-                  var opponentScore =  document.createElement("input")
-                  opponentScore.setAttribute("type", "number")
-                  opponentScore.setAttribute("name", "opponentScore")
-                  opponentScore.setAttribute("placeholder", "their score")
-                  var submit = document.createElement("input")
-                  submit.setAttribute("type", "submit")
-                  //- addNewGame.appendChild(gameId)
-                  //- addNewGame.appendChild(user1Id)
-                  addNewGame.appendChild(opponentName)
-                  addNewGame.appendChild(userScore)
-                  addNewGame.appendChild(opponentScore)
-                  addNewGame.appendChild(submit)
-                }
-              button#add_new(type='button', name='button', onclick='makeForm()') + Add Game Record
-              form#addNewGame(action='#', method='post')
-            .currentStandings
-              table
-                //- table, thead, and tbody always exist in the tab, however, tr and td must be created based upon the current standings returned from the database query
-                thead current standings:
-                tbody
-                  tr
-                    td 1.
-                    td mscoulter
-                    td 221
-                  tr
-                    td 2.
-                    td sarameyer
-                    td 204
-                  tr
-                    td 3.
-                    td rickycpadilla
-                    td 109
-                  tr
-                    td 4.
-                    td demjules
-                    td 90
-                  tr
-                    td 5.
-                    td annfran
-                    td 86
-      .tab
-        input#tab2(type='radio', name='tabs')
-        label(for='tab2') label 2
-        .tab-content
-          .recordsAndStandings
-            .gameRecords
-              | game records are going to live here
-              button#add_new2(type='button', name='button') + Add Game Record
-              form#addNewGame2(action='#', method='post')
-            .currentStandings
-              | current standings:
-              table
-                tbody
-                  tr
-                    td 1.
-                    td mscoulter
-                    td 221
-                  tr
-                    td 2.
-                    td sarameyer
-                    td 204
-                  tr
-                    td 3.
-                    td rickycpadilla
-                    td 109
-                  tr
-                    td 4.
-                    td demjules
-                    td 90
-                  tr
-                    td 5.
-                    td annfran
-                    td 86
-      .tab
-        input#tab3(type='radio', name='tabs')
-        label(for='tab3') label 3
-        .tab-content
-          .recordsAndStandings
-            .gameRecords
-              | game records are going to live here
-              button#add_new(type='button', name='button') + Add Game Record
-              form#addNewGame(action='#', method='post')
-            .currentStandings
-              | current standings:
-              table
-                tbody
-                  tr
-                    td 1.
-                    td mscoulter
-                    td 221
-                  tr
-                    td 2.
-                    td sarameyer
-                    td 204
-                  tr
-                    td 3.
-                    td rickycpadilla
-                    td 109
-                  tr
-                    td 4.
-                    td demjules
-                    td 90
-                  tr
-                    td 5.
-                    td annfran
-                    td 86
-      .tab
-        input#tab4(type='radio', name='tabs')
-        label(for='tab4') label 4
-        .tab-content
-          .recordsAndStandings
-            .gameRecords
-              | game records are going to live here
-              button#add_new(type='button', name='button') + Add Game Record
-              form#addNewGame(action='#', method='post')
-            .currentStandings
-              | current standings:
-              table
-                tbody
-                  tr
-                    td 1.
-                    td mscoulter
-                    td 221
-                  tr
-                    td 2.
-                    td sarameyer
-                    td 204
-                  tr
-                    td 3.
-                    td rickycpadilla
-                    td 109
-                  tr
-                    td 4.
-                    td demjules
-                    td 90
-                  tr
-                    td 5.
-                    td annfran
-                    td 86
+      each val, index in [1, 2, 3, 4, 5]
+        .tab
+          input(id="tab" + (index+1))(type='radio', name='tabs')
+          label(for='tab' + (index+1)) label #{index+1}
+          .tab-content
+            .recordsAndStandings
+              .gameRecords
+                | game records are going to live here
+                script.
+                  var makeForm = function(){
+                    console.log("*%*%*%%**%*%*%*%*%");
+                    console.log("#{index}");
+                    var addNewGame = document.getElementById("addNewGame")
+                    //- lines 37-46 from notes will go here
+                    var opponentName = document.createElement("input")
+                    opponentName.setAttribute("type", "text")
+                    opponentName.setAttribute("name", "opponent")
+                    opponentName.setAttribute("placeholder", "opponent name")
+                    var userScore = document.createElement("input")
+                    userScore.setAttribute("type", "number")
+                    userScore.setAttribute("name", "userScore")
+                    userScore.setAttribute("placeholder", "your score")
+                    var opponentScore =  document.createElement("input")
+                    opponentScore.setAttribute("type", "number")
+                    opponentScore.setAttribute("name", "opponentScore")
+                    opponentScore.setAttribute("placeholder", "their score")
+                    var submit = document.createElement("input")
+                    submit.setAttribute("type", "submit")
+                    //- lines 50 and 51 from notes will go here
+                    addNewGame.appendChild(opponentName)
+                    addNewGame.appendChild(userScore)
+                    addNewGame.appendChild(opponentScore)
+                    addNewGame.appendChild(submit)
+                  }
+                button(id = "add_new" + (index+1))(type='button', name='button', onclick='makeForm()') + Add Game Record
+                form#addNewGame(action='#', method='post')
+                table
+                  tbody
+                    each user in [{date: 'July 31', p1: 'annfran', p2: 'sarameyer', score: '3-1', wL: 'W'}, {date: 'July 30', p1: 'demjules', p2: 'sarameyer', score: '0-1', wL: 'W'}, {date: 'July 19', p1: 'rightricky', p2: 'sarameyer', score: '3-7', wL: 'W'}, {date: 'July 10', p1: 'dumb', p2: 'okay', score: '3-7', wL: 'L'}, {date: 'July 7', p1: 'hate', p2: 'lotsOfHate', score: '3-7', wL: 'W'}]
+                      tr
+                        td #{user.date}
+                        td #{user.p1}
+                        td #{user.p2}
+                        td #{user.score}
+                        td #{user.wL}
+              .currentStandings
+                table
+                  thead current standings:
+                  tbody
+                    each user, index in [{"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}]
+                      tr
+                        td #{index+1}.
+                        td #{user.username}
+                        td #{user.rating}
+
+
     div
     //- script(src='/js/anna.js')
