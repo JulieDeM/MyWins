@@ -3,37 +3,52 @@ var router = express.Router();
 var bookshelf = require('../db/bookshelf');
 var Dash = require('../lib/dashlogic');
 var One = require('../lib/one_v_one');
+var Edit = require('../lib/editlogic');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('splashpage');
 });
 
-// probably place all routes above /:username route, no other route files
-
-//Julie's code starts here
-
-
-//Julie's code ends here
-
-
-// Ricky's work below
-router.get('/:gameRecordId/edit', function(req, res, next){
-  Dash.getRecordByID(req.params.gameRecordId).then(function(record){
+//Sarah's work below
+//user1 requests to edit a game record
+router.get('/gameRecordId/:gameRecordId/edit', function(req, res, next){
+  Edit.getRecordByID(req.params.gameRecordId).then(function(record){
     res.render('testedit', {
       record: record.rows[0]
     })
   });
 });
-router.post('/:gameRecordId', function(req, res, next){
-  console.log('***************GAMES RECORD EDIT*********');
-  console.log(req.params.gameRecordId);
-  Dash.editRecord(req.params.gameRecordId, false).then(function(){
-    res.redirect('/')
+//user1 submits edited record - alert set to true
+router.post('/gameRecordId/:gameRecordId', function(req, res, next){
+  Edit.editRecordAlert(req.params.gameRecordId, true).then(function(){
+    Edit.getUserName(req.cookies.user).then(function(user){
+      res.redirect(`/${user.rows[0].userName}`)
+    })
   });
 });
+//user2 clicked alert button next to game record
+router.get('/request/:gameRecordId/edit', function(req, res, next){
+  Edit.getRecordByID(req.params.gameRecordId).then(function(record){
+    res.render('requestedit', {
+      record: record.rows[0]
+    })
+  });
+});
+//user2 accepts edited game record - alert set to false
+router.post('/request/:gameRecordId', function(req, res, next){
+  Edit.editRecord(req.params.gameRecordId, req.body.user1_score, req.body.user2_score, false).then(function(){
+    Edit.getUserName(req.cookies.user).then(function(user){
+      res.redirect(`/${user.rows[0].userName}`)
+    })
+  })
+})
+//End Sarah's work
+
+// Ricky's work below
 router.get('/:username', function(req, res, next){
   Dash.readUser(req.params.username).then(function(user){
+    console.log('*************USER**********');
     console.log(user.rows[0].id);
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
       // console.log("************GAME TYPES**********");

@@ -28,16 +28,16 @@ html
 							b #{userInfo.userName}
 							|  #{records.user1_score} - #{records.user2_score} 
 							b #{records.userName} 
-								a.btn.btn-danger(href='/#{records.record_id}/edit') Update Record  
-							if records.alert === false
-								a.btn.btn-primary(href='/#{records.record_id}') !!!
+								a.btn.btn-danger(href='/gameRecordId/#{records.record_id}/edit') Update Record  
+							if records.alert === true
+								a.btn.btn-primary(href='/request/#{records.record_id}/edit') !!!
 					else if userInfo.userName !== records.userName
 						p
 							b #{records.userName}
 							|  #{records.user1_score} - #{records.user2_score} 
 							b #{userInfo.userName} 
-								a.btn.btn-danger(href='/#{userInfo.record_id}/edit') Update Record 
-							if records.alert === false
-								a.btn.btn-primary(href='/#{records.record_id}') !!!
+								a.btn.btn-danger(href='/gameRecordId/#{userInfo.record_id}/edit') Update Record 
+							if records.alert === true
+								a.btn.btn-primary(href='/request/#{records.record_id}/edit') !!!
 			br
 			br

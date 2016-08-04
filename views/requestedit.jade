@@ -1,0 +1,11 @@
+extends FBlayout
+
+block content
+	title Update a Record
+	h1 Your opponent has requested to update your game record
+		div.input
+			form(method="post" action="/request/#{record.id}")
+				input(type="number", name="user1_score", value="#{record.user1_score}")
+				input(type="number", name="user2_score", value="#{record.user2_score}")
+				input(type="submit", name="accept", value="Accept")
+				input(type="submit", name="deny", value="Deny")
