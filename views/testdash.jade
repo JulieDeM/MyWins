@@ -1,17 +1,17 @@
 html
-<<<<<<< HEAD
 	head
 		title Dashboard
 		link(rel='stylesheet', href='/stylesheets/style.css')
+		link(rel='stylesheet', href='//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css')
 		meta(charset='UTF-8')
 	body
 		h3 #{userInfo.userName}
 		h5 #{userInfo.firstName} #{userInfo.lastName}
 		br
 		for game in gameTypes
-			p Game Type: #{game.game_id}
+			h3 #{game.type}
 			for stats in gameStats
-				if stats.user_game_id === game.id
+				if stats.user_game_id === game.usergamesid
 					p Rating: #{stats.rating}
 			p(style={color: 'blue'}) Add a Game Record
 			form(action="/addrecord", method="post")
@@ -23,43 +23,17 @@ html
 				input(type="submit")
 			for records in gameRecords
 				if records.game_id === game.game_id
-					p opponent = #{records.user2_id}, score = #{records.user1_score} #{records.user2_score}
+					if records.user1_id === userInfo.id && userInfo.userName !== records.userName
+						p
+							b #{userInfo.userName}
+							|  #{records.user1_score} - #{records.user2_score} 
+							b #{records.userName} 
+								a.btn.btn-danger(href='/#{records.record_id}/edit') Update Record
+					else if userInfo.userName !== records.userName
+						p
+							b #{records.userName}
+							|  #{records.user1_score} - #{records.user2_score} 
+							b #{userInfo.userName} 
+								a.btn.btn-danger(href='/#{userInfo.record_id}/edit') Update Record
 			br
 			br
-=======
-  head
-    title Dashboard
-    link(rel='stylesheet', href='/stylesheets/style.css')
-    meta(charset='UTF-8')
-  body
-    h3 #{userInfo.userName}
-    h5 #{userInfo.firstName} #{userInfo.lastName}
-    br
-    for game in gameTypes
-      h3 #{game.type}
-      for stats in gameStats
-        if stats.user_game_id === game.usergamesid
-          p Rating: #{stats.rating}
-      p(style={color: 'blue'}) Add a Game Record
-      form(action="/addrecord", method="post")
-        input(type="text", name="game_id", style={display: 'none'}, value= "#{game.game_id}")
-        input(type="text", name="user1_id", style={display: 'none'}, value= "#{userInfo.id}")
-        input(type="text", name="user2_id", placeholder="opponent")
-        input(type="number", name="user1_score", placeholder="your score")
-        input(type="number", name="user2_score", placeholder="opponent's score")
-        input(type="submit")
-      for records in gameRecords
-        if records.game_id === game.game_id
-          if records.user1_id === userInfo.id && userInfo.userName !== records.userName
-            p
-              b #{userInfo.userName}
-              |  #{records.user1_score} - #{records.user2_score}
-              b #{records.userName}
-          else if userInfo.userName !== records.userName
-            p
-              b #{records.userName}
-              |  #{records.user1_score} - #{records.user2_score}
-              b #{userInfo.userName}
-      br
-      br
->>>>>>> a8128ea8e5d042bd475bff9a174305dfee67d9c4

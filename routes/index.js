@@ -18,32 +18,47 @@ router.get('/', function(req, res, next) {
 
 
 // Ricky's work below
+router.get('/:gameRecordId/edit', function(req, res, next){
+  Dash.getRecordByID(req.params.gameRecordId).then(function(record){
+    res.render('testedit', {
+      record: record.rows[0]
+    })
+  });
+});
+router.post('/:gameRecordId/edit', function(req, res, next){
+  Dash.editRecord(req.params.gameRecordId, false).then(function(){
+    Dash.
+    res.redirect('/${req.params.gameRecordId}')
+    res.send('Your opponent will be notified of the request to update this record')
+  });
+});
 router.get('/:username', function(req, res, next){
   Dash.readUser(req.params.username).then(function(user){
+    console.log(user.rows[0].id);
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
       // console.log("************GAME TYPES**********");
       // console.log(gametypes.rows);
 
-    // for each game type, we need to get:
-    // 1) Player data
-    // 2) Game Records
-    // 3) Standings
+      // for each game type, we need to get:
+      // 1) Player data
+      // 2) Game Records
+      // 3) Standings
       Dash.readGameStats(user.rows[0].id).then(function(all){
         // console.log("************GAME STATS**********");
         // console.log(all.rows);
         Dash.readGameRecords(user.rows[0].id).then(function(records){
           // console.log("************GAME RECORDS**********");
           // console.log(records.rows);
-            res.render('testdash', {
-              userInfo: user.rows[0],
-              gameTypes: gametypes.rows,
-              gameStats: all.rows,
-              gameRecords: records.rows
+          res.render('testdash', {
+            userInfo: user.rows[0],
+            gameTypes: gametypes.rows,
+            gameStats: all.rows,
+            gameRecords: records.rows
           })
         })
       })
-});
-})});
+    });
+  })});
 
 router.post('/addrecord', function(req, res, next){
   // console.log(">>>>>>>>>>>> req body <<<<<<<<<<<<");
@@ -90,16 +105,13 @@ router.post('/addrecord', function(req, res, next){
         // console.log(updateU2);
         Dash.updatePlayer(updateU1, user1.user_game_id).then(function(){
           Dash.updatePlayer(updateU2, user2.user_game_id).then(function(){
-            res.redirect('/')
-
+            Dash.PlayerName(req.body.user1_id).then(function(player){
+              res.redirect(`/${player.rows[0].userName}`)
+            })
           })
         })
-
-
-
       })
     })
   })
 })
-
 module.exports = router;
