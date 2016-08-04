@@ -47,7 +47,7 @@ router.post('/request/:gameRecordId', function(req, res, next){
 
 // Ricky's work below
 router.get('/dash/:username', function(req, res, next){
-  res.cookie('user', 2);
+  // res.cookie('user', 2);
   var currUserID = req.cookies.user;
   Dash.readUser(req.params.username).then(function(user){
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
