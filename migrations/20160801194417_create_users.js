@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
   return knex.schema.createTable('users', function(t){
     t.increments().primary();
     t.string('userName');
-    t.string('image_url');
+    t.text('image_url');
     t.string('firstName');
     t.string('lastName');
     t.string('fb_uid');

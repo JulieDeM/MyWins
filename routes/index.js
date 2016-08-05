@@ -43,19 +43,23 @@ router.post('/request/:gameRecordId', function(req, res, next){
     })
   })
 })
+//change favorite game
+router.post('/:id/:gameid', function(req, res, next){
+  Edit.changeFavorite(req.params.id, req.params.gameid).then(function(){
+    Edit.getUserName(req.cookies.user).then(function(user){
+      res.redirect(`/dash/${user.rows[0].userName}`)
+    })
+  })
+})
 //End Sarah's work
 
 // Ricky's work below
 router.get('/dash/:username', function(req, res, next){
-  // res.cookie('user', 2);
+  res.cookie('user', 1);
   var currUserID = req.cookies.user;
   Dash.readUser(req.params.username).then(function(user){
-    console.log('**********FAVEGAMEID**********');
-    console.log(user.rows[0].favorite_game_id);
+    console.log('********USER********');
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
-      console.log("************GAME TYPES**********");
-      console.log(gametypes.rows[0].game_id);
-
       // for each game type, we need to get:
       // 1) Player data
       // 2) Game Records

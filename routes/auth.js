@@ -11,8 +11,11 @@ router.get('/profile', isLoggedIn, function(req, res) {
     res.cookie('user', req.user.id)
     Signup.findUser(req.user).then(function(user) {
         if (user.rows[0].username === undefined) {
+          var input = user.rows[0].image_url;
+          var photo = input.replace('$1', '?');
             res.render('dashboard', {
-                user: user.rows[0]
+                user: user.rows[0],
+                photo: photo
             })
         } else {
             res.render('profile', {
