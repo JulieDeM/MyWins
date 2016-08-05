@@ -15,10 +15,13 @@ html
         img(src='http://static.boredpanda.com/blog/wp-content/uploads/2016/04/beautiful-fluffy-cat-british-longhair-13.jpg', alt='', height='130', width='130')
       .userNames
         p(style="margin-left:-275%; margin-top:-10%;") username
+        //- p(style="margin-left:-275%; margin-top:-10%;") #{user.username}
         br
         p(style="margin-left:-275%; margin-top: -25%;") user name
+        //- p(style="margin-left:-275%; margin-top: -25%;") #{user.firstName} #{user.lastName}
       .score
         p(style="font-size: 5em; margin-top:-25%;") 108
+        //- p(style="font-size: 5em; margin-top:-25%;") #{user.ranking} ???
         br
         p(style="margin-top: -15%; margin-left:28%;") 3rd place
     .tab-group
@@ -34,6 +37,7 @@ html
                   var name = "firstFunction" + (#{index}+1)
                   var innerLogic = function(){
                     var addNewGame = document.getElementById("addNewGame" + (#{index}+1))
+                    addNewGame.innerHTML = " "
                     //- lines 37-46 from notes will go here
                     var opponentName = document.createElement("input")
                     opponentName.setAttribute("type", "text")
@@ -71,7 +75,7 @@ html
                 p.current current standings:
                 table
                   tbody
-                    each user, index in [{"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}]
+                    each user, index in [{"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}, {"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}, {"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}]
                       if(index == 10)
                         -break
                       tr
@@ -79,6 +83,15 @@ html
                         td #{user.username}
                         td #{user.rating}
 
-
-    div
+    .tab-group
+      .tab
+        input#newSoloGame(type='radio', name='tabs')
+        label(for='newSoloGame') + Add New Single Player Game
+        .tab-content
+          p THIS IS WHERE THE BUTTONS WILL LIVE
+      .tab
+        input#newTeamGame(type='radio', name='tabs')
+        label(for='newTeamGame') + Add New Team Game
+        .tab-content
+          p THIS IS WHERE THE OTHER BUTTONS WILL LIVE
     //- script(src='/js/anna.js')

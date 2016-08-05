@@ -18,7 +18,7 @@
 }
 .tab label {
   /* will need to set some kind of identifier so that each tab will be the color corresponding with the sport */
-  background: #FF2D55;
+  /*background: #FF2D55;*/
   color: white;
   cursor: pointer;
   display: block;
@@ -38,6 +38,9 @@ label[for=tab3]{
 }
 label[for=tab4]{
   background: #34AADC;
+}
+label[for=tab5]{
+  background: #FF9500;
 }
 .tab input:focus + label,
 .tab label:hover{
