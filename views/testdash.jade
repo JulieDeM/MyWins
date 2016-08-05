@@ -7,15 +7,14 @@ html
 	body.dash
 		h3 #{userInfo.userName}
 		h5 #{userInfo.firstName} #{userInfo.lastName}
-		img(src='../public/images/filledheart.png')
 		br
 		for game in gameTypes
 			h3 #{game.type} 
 				if game.game_id === faveGame
-					img(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/heart_white_full.png?alt=media&token=6ea51204-b6ea-4323-844e-45c980af1af5')
+					img.heart(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/heart_white_full.png?alt=media&token=6ea51204-b6ea-4323-844e-45c980af1af5')
 				else if game.game_id !== faveGame && currUserID === userInfo.fb_uid
 					form(action='/#{userInfo.id}/#{game.game_id}', method='post')
-						input(type="image" name="favorite" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/heart_white_outline.png?alt=media&token=61ae60e3-279c-40ae-b357-6a6975bf02a6")
+						input.heart(type="image" name="favorite" src="https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/heart_white_outline.png?alt=media&token=61ae60e3-279c-40ae-b357-6a6975bf02a6")
 			for stats in gameStats
 				if stats.user_game_id === game.usergamesid
 					p Rating: #{stats.rating}
