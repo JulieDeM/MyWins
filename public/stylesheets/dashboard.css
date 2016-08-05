@@ -107,4 +107,10 @@ td{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-content: space-around;
+}
+.newGames{
+  height: 15em;
+  background: white;
+  border-radius: 0px 0px 5px 5px;
 }
