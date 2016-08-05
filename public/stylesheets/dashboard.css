@@ -101,6 +101,10 @@ table{
   width: 25em;
 }
 td{
-  /*border: 1px solid black;*/
   padding: 5px 12px;
+}
+.tab-content form{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }

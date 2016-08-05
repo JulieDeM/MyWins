@@ -42,6 +42,25 @@ label[for=tab4]{
 label[for=tab5]{
   background: #FF9500;
 }
+label[for=newSoloGame]{
+  display: flex;
+  justify-content: center;
+  background: white;
+  color: #34aadc
+}
+label[for=newTeamGame]{
+  display: flex;
+  justify-content: center;
+  background: white;
+  color: #34aadc
+}
+.second{
+  display: flex;
+  justify-content: center;
+}
+.newGame{
+  width: 50%;
+}
 .tab input:focus + label,
 .tab label:hover{
   /* darken or lighten the color on hover */
