@@ -8,20 +8,37 @@ router.get('/facebook', passport.authenticate('facebook', {
 }));
 
 router.get('/profile', isLoggedIn, function(req, res) {
-  console.log("*******HEY********");
     res.cookie('user', req.user.id)
     Signup.findUser(req.user).then(function(user) {
         if (user.rows[0].username === undefined) {
-            res.render('pageafterfb', {
-                user: user.rows[0]
+          var input = user.rows[0].image_url;
+          var photo = input.replace('$1', '?');
+            res.render('loadpage', {
+                user: user.rows[0],
+                photo: photo
             })
         } else {
-            res.render('loadpage', {
+            res.render('profile', {
                 user: req.user
             })
           }
     });
 });
+// router.get('/profile', isLoggedIn, function(req, res) {
+//     res.cookie('user', req.user.id)
+//     Signup.findUser(req.user).then(function(user) {
+//       console.log(user.rows[0]);
+//         if (user.rows[0].username === undefined) {
+//             res.render('loadpage', {
+//                 user: user.rows[0]
+//             })
+//         } else {
+//             res.render('profile', {
+//                 user: req.user
+//             })
+//           }
+//     });
+// });
 router.get('/facebook/callback',
     passport.authenticate('facebook', {
         failureRedirect: '/'

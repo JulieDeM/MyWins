@@ -90,7 +90,11 @@ body{
   background-color: #34AADC;
   border-radius: 8px;
   margin: 30px 5px 0px 80px;
+  opacity: 1;
 }
+#loginfb:hover{
+    opacity:0.8;
+  }
 #fbook{
   width: 35px;
   height: 60px;

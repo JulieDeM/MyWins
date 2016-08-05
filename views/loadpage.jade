@@ -17,13 +17,14 @@ html
           .top
             #userpic
               span#userpic2
-                img(src='#{user.image_url}', alt='')
+                img#userpics(src='#{photo}', alt='userpic')
             #fbname
               span#fbname2
                 h1 #{user.firstName} #{user.lastName}
             #username
               span#username2
-                //- | #{userInfo.username}
+                //- p "#{users.userName}"
+                //- SELECT "userName" from users;
             span#greencircle
               p#onehundred  100 
           .bottom
