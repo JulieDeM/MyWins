@@ -28,16 +28,16 @@
   transition: letter-spacing 0.55s ;
 }
 label[for=tab1]{
-  background-color: #FF2D55;
+  background: #FF2D55;
 }
 label[for=tab2]{
-  background-color: #4CD964;
+  background: #4CD964;
 }
 label[for=tab3]{
-  background-color: #FFCC00;
+  background: #FFCC00;
 }
 label[for=tab4]{
-  background-color: #34AADC;
+  background: #34AADC;
 }
 .tab input:focus + label,
 .tab label:hover{

@@ -61,25 +61,33 @@ form{
   display: flex;
   justify-content: space-around;
 }
+input{
+  padding: 2%;
+  border: none;
+  border-radius: 3px;
+  background-color: #e8e8e8;
+}
 input[type=number]{
   max-width: 17%;
 }
+input[type=submit]{
+  background-color: #34AADC;
+  color: white;
+  border: none;
+}
 .gameRecords table{
   margin-left: 3%;
+  margin-top: 1%;
 }
 .currentStandings{
   background-color: white;
-  display: flex;
-  justify-content: center;
-  align-content: flex-start;
-  flex-direction: column;
   border-radius: 3px;
   padding: 5px;
   width: 40%;
   margin-left: 5%;
 }
 .current{
-  margin: auto;
+  margin-left: 35%;
 }
 .currentStandings table{
   margin: 2% 0% 2% 3%;
