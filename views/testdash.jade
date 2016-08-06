@@ -36,7 +36,7 @@ html
       br
 
     for teams in teamStuff
-      
+
         h2 #{teams.type}
         h4 #{teams.name}
         p Rating: #{teams.teamRating}
@@ -48,3 +48,9 @@ html
           input(type="number", name="team1_score", placeholder="your team's score")
           input(type="number", name="team2_score", placeholder="opponents' score")
           input(type="submit")
+        for records in teamRecords
+          if records.game_id === teams.game_id && (teams.name === records.name)
+            p
+              b team
+              |  #{records.team1_score} - #{records.team2_score}
+              b team

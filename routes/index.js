@@ -37,15 +37,20 @@ router.get('/:username', function(req, res, next){
 
           // ALL TEAM functionality below
           Dash.readTeams(user.rows[0].id).then(function(teams){
+            console.log(">>>>>>>>>>>teams<<<<<<<<<<<<");
             console.log(teams.rows);
-
-            // RENDER happens in last call
-            res.render('testdash', {
-              userInfo: user.rows[0],
-              gameTypes: gametypes.rows,
-              gameStats: all.rows,
-              gameRecords: records.rows,
-              teamStuff: teams.rows
+            Dash.readTeamRecords(user.rows[0].id).then(function(teamrecords){
+              console.log("***************RECORDS************");
+              console.log(teamrecords.rows);
+              // RENDER happens in last call
+              res.render('testdash', {
+                userInfo: user.rows[0],
+                gameTypes: gametypes.rows,
+                gameStats: all.rows,
+                gameRecords: records.rows,
+                teamStuff: teams.rows,
+                teamRecords: teamrecords.rows
+              })
 
           })
 
