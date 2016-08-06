@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 
 var signup = require('./routes/signup');
 var dashboard = require('./routes/dashboard');
+var newgametypes = require('./routes/newgametypes')
 
 var app = express();
 
@@ -29,6 +30,7 @@ app.use('/', routes);
 
 app.use('/signup', signup);
 app.use('/dashboard', dashboard);
+app.use('/newgametypes', newgametypes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

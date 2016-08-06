@@ -10,6 +10,7 @@ var routes = require('./routes/index');
 var signup = require('./routes/signup');
 var dashboard = require('./routes/dashboard');
 var authRoutes = require('./routes/auth');
+var newgametypes = require('./routes/newgametypes')
 var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
 var Signup = require('./lib/signup');
@@ -66,6 +67,8 @@ app.use('/', routes);
 app.use('/auth', authRoutes);
 app.use('/signup', signup);
 app.use('/dashboard', dashboard);
+app.use('/:username', newgametypes);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

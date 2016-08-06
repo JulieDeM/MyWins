@@ -13,27 +13,72 @@ router.get('/', function(req, res, next) {
 // probably place all routes above /:username route, no other route files
 
 //Julie's code starts here
-
-router.get('/splashpage', function(req, res, next){
-  res.render('../views/splashpage')
-})
 //this is a created route for the loadpage
 router.get('/loadpage', function(req, res, next){
-  res.render('../views/loadpage')
+  res.render('loadpage')
 })
+//-------------------------
 //the below route will post a game with the user id and the game id to the usertable in the database (this should WORK)
 router.post('/:username', function(req, res, next){
   Dash.createGameType(req.body.userid, req.body.sport).then(function(){
+    //we need to redirect back to the same username which i tried to do with the /:username but it wouldn't redirect to the actual username
       res.redirect('/:username')
 })
 })
-
+//----------
+//test route
 router.get('/testaddgameteam', function(req, res, next){
   res.render('teamplayersaddgametodashboard')
 })
-
+//--------------
+//below is to add a game to a team
+//sudo code
+//post request to addgame
+router.post('/addgame', function(req, res, next){
+  Dash.createGameTypeTeam(
+    req.body.game_id, req.body.user1_id, req.body.user2_id
+  ).then(function(){
+    //update players here
+    Dash.readMoreGameStats(req.body.user1_id, req.body.game_id).then(function(results1){
+      Dash.readMoreGameStats(req.body.user2_id, req.body.game_id).then(function(results2){
+        // results not getting me the game type, just user_game_id
+        var user1 = results1.rows[0];
+        var user2 = results2.rows[0];
+        var u1ExScore = One.expectedScore(user1.rating, user2.rating);
+        var u2ExScore = 1 - u1ExScore;
+        if (req.body.user1_score > req.body.user2_score){
+          var u1AcScore = 1;
+          var u2AcScore = 0;
+        } else if (req.body.user1_score < req.body.user2_score){
+          var u1AcScore = 0;
+          var u2AcScore = 1;
+        } else {
+          var u1AcScore = 0.5;
+          var u2AcScore = 0.5;
+        }
+        var u1newRating = One.newRating(user1.rating, user1.constant, u1ExScore, u1AcScore);
+        var u2newRating = One.newRating(user2.rating, user2.constant, u2ExScore, u2AcScore);
+        var updateU1 = {
+          gamesPlayed: user1.gamesPlayed + 1,
+          rating: u1newRating,
+          constant: One.checkConstant(user1.constant, u1newRating, (user1.gamesPlayed + 1))
+        };
+        var updateU2 = {
+          gamesPlayed: user2.gamesPlayed + 1,
+          rating: u2newRating,
+          constant: One.checkConstant(user2.constant, u2newRating, (user2.gamesPlayed + 1))
+        };
+        Dash.updatePlayer(updateU1, user1.user_game_id).then(function(){
+          Dash.updatePlayer(updateU2, user2.user_game_id).then(function(){
+            res.redirect('/')
+          })
+        })
+      })
+    })
+  })
+})
 //Julie's code ends here
-
+//==========code ends here============
 
 // Ricky's work below
 router.get('/:username', function(req, res, next){
@@ -55,8 +100,9 @@ router.get('/:username', function(req, res, next){
         Dash.readGameRecords(user.rows[0].id).then(function(records){
           // console.log("************GAME RECORDS**********");
           // console.log(records.rows);
-          //this needs to be changed back to testdash i changed it to test to the long ass one
-            res.render('testingtheaddagametodashboard', {
+          //this needs to be changed back to testdash i changed it to test to the long one
+            // res.render('teamplayersaddgametodashboard', {
+            res.render('testdash', {
               userInfo: user.rows[0],
               gameTypes: gametypes.rows,
               gameStats: all.rows,

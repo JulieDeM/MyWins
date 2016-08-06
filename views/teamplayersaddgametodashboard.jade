@@ -203,7 +203,7 @@ html
       .dropdown:hover .dropbtn {
       background-color: #3e8e41;
       }
-    form(action='#')
+    form(action='/addgametypeteam')
       input#pingRadio(type='radio', name='sport')
       label#pingBoc.btn(for='pingRadio')
         img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/ping-pong-color.png?alt=media&token=6939542f-b9b0-4bb7-9fa0-5c864b964d0c')
@@ -258,12 +258,12 @@ html
         img.white(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/cards-white.png?alt=media&token=4ad90906-8ef8-4b5a-b343-8a43b3b78347')
         |     Cards
       |   select a teammate
-      form.dropdownteammate(type='dropdown', action='dropdown', method='post')
-        .dropdown
-          button.dropbtn Pick A Team Member
+      form.dropdownteammate(type='dropdown', action='dropdown', method='post', name='dropdownteam')
           .dropdown-content
-            a(href='google.com') Bob
-            a(href='#') Billy
-            a(href='#') Mark
-      input(type='text', name='name', value='', placeholder='create team name')
+          select(name='cars')
+            option(value='MrCat') MrCat
+            option(value='camelCase') camelCase
+      input(type='text', name='teamname', value='#{userInfo.teamname}', placeholder='team name')
+      input(type='text', name='userid1', value='#{userInfo.id}')
+      input(type='text', name='userid2', value='#{userInfo.id}')
       input#sendmetospace(type='submit', name='name', value='sendmetospace')
