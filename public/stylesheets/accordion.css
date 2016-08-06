@@ -76,7 +76,7 @@ label[for=newTeamGame]{
   margin: 1em 0;
 }
 .tab input:checked ~ .tab-content {
-  max-height: 100.25em;
+  max-height: 1000.25em;
 }
 /*.tab > input:not(:focus) ~ .tab-content {
     max-height: 0;
