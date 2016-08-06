@@ -5,6 +5,7 @@ html
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
 		link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
 		link(rel='stylesheet', href='usernameform.css', media='screen', title='no title', charset='utf-8')
+		
 		title
 	body
 		#banner
@@ -14,10 +15,11 @@ html
 			.bothlandf
 				#whitebox
 					#form
-						form(action='/dashboard', method='POST')
+						form(type='string', action='/dashboard', onsubmit='return validateUsername()' method='POST')
 							| Create your username 
 							br
-							input(type='text', name='name', value='', placeholder='username')
+							input(type='text', name='name', value='', placeholder='username') 
+							p #{message}
 							input#pingRadio(type='radio', name='sport', value="1")
 							label#pingBoc.btn(for='pingRadio')
 								img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/ping-pong-color.png?alt=media&token=6939542f-b9b0-4bb7-9fa0-5c864b964d0c')
