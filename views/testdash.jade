@@ -34,3 +34,17 @@ html
               b #{userInfo.userName}
       br
       br
+
+    for teams in teamStuff
+      
+        h2 #{teams.type}
+        h4 #{teams.name}
+        p Rating: #{teams.teamRating}
+        p(style={color: 'blue'}) Add a Game Record
+        form(action="/addteamrecord", method="post")
+          input(type="text", name="game_id", style={display: 'none'}, value= "#{teams.team_game_id}")
+          input(type="text", name="team1_id", style={display: 'none'}, value= "#{userInfo.id}")
+          input(type="text", name="team2_id", placeholder="opponent")
+          input(type="number", name="team1_score", placeholder="your team's score")
+          input(type="number", name="team2_score", placeholder="opponents' score")
+          input(type="submit")
