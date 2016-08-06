@@ -33,6 +33,7 @@ html
         .tab
           input(id="tab" + (index+1))(type='radio', name='tabs')
           label(for='tab' + (index+1)) label #{index+1}
+          //- label(for='tab' + (index+1), style='background:#{games.color};') #{games.type}
           .tab-content
             .recordsAndStandings
               .gameRecords                
