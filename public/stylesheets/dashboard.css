@@ -1,12 +1,13 @@
 *{
   margin: 0;
   font-family: 'Varela Round', sans-serif;
+  color: #4A4A4A ;
 }
 body{
-  background-color: #e8e8e8;
+  background: #e8e8e8;
 }
 header{
-  background-color: white;
+  background: white;
   min-height: 3em;
   line-height: 3em;
 }
@@ -22,7 +23,6 @@ header{
   float: right;
   text-decoration: none;
   font-size: 18px;
-  color: #4A4A4A ;
   letter-spacing: -0.05px;
   margin: 23px 80px 20px auto;
 }
@@ -133,7 +133,7 @@ td{
   margin-bottom: 2.5em;
 }
 .newTeam{
-  height: 27.25em;
+  height: 27.5em;
 }
 .createTeam{
   display: flex;
