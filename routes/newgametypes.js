@@ -14,17 +14,20 @@ router.post('/', function(req, res, next){
 //posting team game form to database
 // router.post('/', function(req,res,next){
 // })
-//route to add a new game
-router.get('/newgame', function(req, res, next){
+//route was added to read the game standings by desc
+router.get('/:username', function(req, res, next){
   Dash.readUser(req.params.username).then(function(user){
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
       Dash.readGameStats(user.rows[0].id).then(function(all){
         Dash.readGameRecords(user.rows[0].id).then(function(records){
-            res.render('testaddgame', {
+          Dash.readGameStandings(user.rows[0].id).then(function(standing){
+            res.render('gamestandings', {
               userInfo: user.rows[0],
               gameTypes: gametypes.rows,
               gameStats: all.rows,
-              gameRecords: records.rows
+              gameRecords: records.rows,
+              standing: standing.rows
+            })
           })
           console.log(userInfo);
           console.log(gameTypes);

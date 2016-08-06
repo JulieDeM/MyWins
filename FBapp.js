@@ -67,7 +67,7 @@ app.use('/', routes);
 app.use('/auth', authRoutes);
 app.use('/signup', signup);
 app.use('/dashboard', dashboard);
-app.use('/:username', newgametypes);
+app.use('/newgame', newgametypes);
 
 
 // catch 404 and forward to error handler
