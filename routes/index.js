@@ -83,6 +83,7 @@ router.post('/addgame', function(req, res, next){
 // Ricky's work below
 router.get('/:username', function(req, res, next){
   Dash.readUser(req.params.username).then(function(user){
+    console.log(req.params.username);
     Dash.readGameTypes(user.rows[0].id).then(function(gametypes){
       // console.log("************GAME TYPES**********");
       // console.log(gametypes.rows);

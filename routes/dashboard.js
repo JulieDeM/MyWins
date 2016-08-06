@@ -9,6 +9,8 @@ router.get('/', function(req, res, next){
 })
 
 router.post('/', function(req, res, next){
+  console.log("R^&$%R&FJ&%R&CRTRT&KRTUKRURTUKRRFY&&&^^^^%%%%%%%%%%%%");
+
   console.log(req.cookies.user);
   var validate = Val.validateUsername(req.body)
   switch(validate){
@@ -19,7 +21,7 @@ router.post('/', function(req, res, next){
       res.render('dashboard', {message: "Username can only contain lowercase letters, numbers, and underscores."})
       break;
     case "nosport":
-      res.render('dashboard', {message: "Please choose a sport!"})
+      res.render('dashboard', {message2: "Please choose a sport!"})
     case "no error":
       Dashboard.findUser(req.body.name).then(function(result){
         if (result.rows.length == 0) {

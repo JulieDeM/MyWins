@@ -13,7 +13,7 @@ router.get('/profile', isLoggedIn, function(req, res) {
         if (user.rows[0].username === undefined) {
           var input = user.rows[0].image_url;
           var photo = input.replace('$1', '?');
-            res.render('loadpage', {
+            res.render('pageafterfb', {
                 user: user.rows[0],
                 photo: photo
             })

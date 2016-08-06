@@ -7,7 +7,7 @@ var queries = require('../lib/queries');
 
 //posting individual game form to database
 router.post('/:username', function(req, res, next){
-  Dash.createGameType(req.body.userid, req.body.sport).then(function(){
+  Dash.createGameType(req.params.username, req.body.userid, req.body.sport).then(function(){
       res.redirect('/:username')
     })
 })
