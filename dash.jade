@@ -9,9 +9,13 @@ html
     script(src='https://use.fontawesome.com/07b120bce6.js')
     title
   body
+    //- header
+    //-   a.mywins(href='#') mywins
+    //-   a.signout(href='#') sign out
     header
-      a.mywins(href='#') mywins
-      a.signout(href='#') sign out
+       a(href='/splashpage')
+         img#logo(src='/images/mywinslogo@1x.png', alt='mywins')
+       a#signin(href='/dash') sign-in
     .userData
       .userImg
         img(src='http://static.boredpanda.com/blog/wp-content/uploads/2016/04/beautiful-fluffy-cat-british-longhair-13.jpg', alt='', height='130', width='130')
@@ -79,15 +83,16 @@ html
                         td #{user.wL}
               .currentStandings
                 p.current current standings:
-                table
-                  tbody
-                    each user, index in [{"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}, {"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}, {"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}]
-                      if(index == 10)
-                        -break
-                      tr
-                        td #{index+1}.
-                        td #{user.username}
-                        td #{user.rating}
+                .currentTable
+                  table
+                    tbody
+                      each user, index in [{"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}, {"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}, {"username": 'annfran', "rating": '200'}, {"username": 'demjules', "rating": '189'}, {"username": 'rightricky', "rating": '187'}, {"username": 'mscoulter', "rating": '180'}, {"username": 'sarameyer', "rating": '179'}]
+                        if(index == 10)
+                          -break
+                        tr
+                          td #{index+1}.
+                          td #{user.username}
+                          td #{user.rating}
 
     .tab-group.second
       .tab.newGame
@@ -193,7 +198,9 @@ html
               |     Cards
             //-each team in teams make an option
             .createTeam
+              br
               p select a teammate:
+              br
               .styleSelect
                 select
                   option(value='anna') anna
@@ -202,5 +209,6 @@ html
                   option(value='anna') anna
                   option(value='anna') anna
               input(type='text', name='teamName', placeholder='create team name', required='')
+              br
               input(type='submit')
     footer ©2016 mywins, inc
