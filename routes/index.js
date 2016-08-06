@@ -21,6 +21,7 @@ router.get('/loadpage', function(req, res, next){
 //the below route will post a game with the user id and the game id to the usertable in the database (this should WORK)
 router.post('/:username', function(req, res, next){
   Dash.createGameType(req.body.userid, req.body.sport).then(function(){
+    console.log(req.body.userid);
     //we need to redirect back to the same username which i tried to do with the /:username but it wouldn't redirect to the actual username
       res.redirect('/:username')
 })
