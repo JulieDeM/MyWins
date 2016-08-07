@@ -16,10 +16,10 @@ html
         #whitebox
           #yellow
             #gameon
-              p#mywinsname Welcome to mywins, #{user.firstName}!
+              p Welcome to mywins!
           #moveme
             #form
-              form(type='string', action='/#{user.userName}', onsubmit='return validateUsername()' method='POST')
+              form(type='string', action='/validate', onsubmit='return validateUsername()' method='POST')
                 p.largeprint
                   span#one  1
                   |                       Create your Username       #{message}

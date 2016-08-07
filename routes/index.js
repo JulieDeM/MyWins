@@ -12,22 +12,25 @@ router.get('/', function(req, res, next) {
   res.render('splashpage');
 });
 
-router.get('/', function(req, res, next){
-      res.render('splashpage');
-})
-
-router.post('/:username', function(req, res, next){
+router.post('/validate', function(req, res, next){
   var validate = Val.validateUsername(req.body)
+  console.log(validate);
   switch(validate){
     case "blank":
-      res.render('dash', {message: "Please enter a username!"})
+      res.redirect('/noUserName');
+      console.log("no username");
+      // console.log(message);
       break;
     case "illegal":
-      res.render('dash', {message: "Username can only contain lowercase letters, numbers, and underscores."})
+      res.redirect('/invalidUserName');
+      console.log("illegalasdkugajsdjhasbd");
+      // console.log(message);
       break;
     case "nosport":
-      res.render('dash', {message2: "Please choose a sport!"})
+      console.log("add sport");
+      res.redirect('/noSport')
     case "no error":
+    console.log("no error");
       Dashboard.findUser(req.body.name).then(function(result){
         if (result.rows.length == 0) {
           //find user ID based on FB id in cookies
@@ -44,7 +47,7 @@ router.post('/:username', function(req, res, next){
                   })
                 })
             })
-            res.redirect('/auth/profile')
+            res.redirect('/:username')
           })
         }else{
           console.log("That username has been taken!");
@@ -55,6 +58,15 @@ router.post('/:username', function(req, res, next){
     }
   });
 
+router.get('/noUserName', function(req,res,next){
+  res.render('pageafterfb', {message: "Please enter a username!"})
+})
+router.get('/invalidUserName', function(req,res,next){
+  res.render('pageafterfb', {message: "Username can only contain lowercase letters, numbers, and underscores."})
+})
+router.get('/noSport', function(req,res,next){
+  res.render('pageafterfb', {message: "Please choose a sport!"})
+})
 // probably place all routes above /:username route, no other route files
 
 //Julie's code ends here
