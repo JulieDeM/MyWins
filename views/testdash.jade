@@ -14,9 +14,13 @@ html
           p Rating: #{stats.rating}
       p(style={color: 'blue'}) Add a Game Record
       form(action="/addrecord", method="post")
+        select(name="user2_id")
+          for opponent in allUsers
+            if userInfo.id !== opponent.id
+              option(value="#{opponent.id}") #{opponent.userName}
         input(type="text", name="game_id", style={display: 'none'}, value= "#{game.game_id}")
         input(type="text", name="user1_id", style={display: 'none'}, value= "#{userInfo.id}")
-        input(type="text", name="user2_id", placeholder="opponent")
+        // input(type="text", name="user2_id", placeholder="opponent")
         input(type="number", name="user1_score", placeholder="your score")
         input(type="number", name="user2_score", placeholder="opponent's score")
         input(type="submit")

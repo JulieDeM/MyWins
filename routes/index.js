@@ -37,25 +37,30 @@ router.get('/:username', function(req, res, next){
 
           // ALL TEAM functionality below
           Dash.readTeams(user.rows[0].id).then(function(teams){
-            console.log(">>>>>>>>>>>teams<<<<<<<<<<<<");
-            console.log(teams.rows);
+            // console.log(">>>>>>>>>>>teams<<<<<<<<<<<<");
+            // console.log(teams.rows);
             Dash.readTeamRecords(user.rows[0].id).then(function(teamrecords){
-              console.log("***************RECORDS************");
-              console.log(teamrecords.rows);
+              // console.log("***************RECORDS************");
+              // console.log(teamrecords.rows);
               Dash.readAllTeamNames().then(function(allTeams){
                 // console.log("------------- ALL TEAMS --------------");
                 // console.log(allTeams.rows);
+                Dash.readAllUsers().then(function(allUsers){
+                  // RENDER happens in last call
+                  console.log(allUsers.rows);
+                  res.render('testdash', {
+                    userInfo: user.rows[0],
+                    gameTypes: gametypes.rows,
+                    gameStats: all.rows,
+                    gameRecords: records.rows,
+                    allUsers: allUsers.rows,
+                    teamStuff: teams.rows,
+                    teamRecords: teamrecords.rows,
+                    allTeams: allTeams.rows
+                  })
 
-                // RENDER happens in last call
-                res.render('testdash', {
-                  userInfo: user.rows[0],
-                  gameTypes: gametypes.rows,
-                  gameStats: all.rows,
-                  gameRecords: records.rows,
-                  teamStuff: teams.rows,
-                  teamRecords: teamrecords.rows,
-                  allTeams: allTeams.rows
                 })
+
               })
 
           })
@@ -125,8 +130,8 @@ router.post('/addrecord', function(req, res, next){
 })
 
 router.post('/addteamrecord', function(req, res, next){
-  console.log(">>>>>>>>>>>> req body <<<<<<<<<<<<");
-  console.log(req.body);
+  // console.log(">>>>>>>>>>>> req body <<<<<<<<<<<<");
+  // console.log(req.body);
   Dash.createGameRecordTeam(
     req.body.game_id, req.body.team1_id, req.body.team2_id, req.body.team1_score, req.body.team2_score
   ). then(function(){
