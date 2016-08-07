@@ -1,18 +1,42 @@
+*{
+  font-family: 'Varela Round', sans-serif;
+}
 @media (max-width: 600px) {
   .facet_sidebar {
     display: none;
   }
 }
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
 body{
   margin: 0px;
   padding: 0px;
   max-width: 1800px;
+  width: 100%;
 }
 #main-image{
   background-image: url(/images/players_BG@3x.png);
   width:100%;
   height: 600px;
-  max-height: 600px;
+  max-height: 100%;
   max-width: 1800px;
   background-size: contain;
 }
@@ -27,7 +51,6 @@ body{
 #signin{
   float: right;
   text-decoration: none;
-  font-family: 'Varela Round', sans-serif;
   font-size: 18px;
   color: #4A4A4A;
   letter-spacing: -0.05px;
@@ -35,6 +58,7 @@ body{
 }
 .bothlandf{
   display: flex;
+  background-size: contain;
 }
 #left{
   margin-left: 10em;
@@ -64,14 +88,12 @@ body{
 }
 #gameon{
   color: #FFFFFF;
-  font-family: 'Varela Round', sans-serif;
   margin-left: 12em;
   padding-top: 0.3em;
   font-size: 20px;
 }
 /* Kick butt: */
 .kick-butt{
-  font-family: 'Varela Round', sans-serif;
   font-size: 36px;
   color: #FFFFFF;
   letter-spacing: -0.09px;
@@ -79,7 +101,6 @@ body{
   padding: 0;
 }
 #question{
-  font-family: 'Varela Round', sans-serif;
   font-size: 30px;
   letter-spacing: -0.09px;
   padding: 10px;
@@ -89,13 +110,13 @@ body{
 #loginfb{
   width: 20em;
   height: 5em;
-  font-family: 'Varela Round', sans-serif;
   font-size: 20px;
   color: #FFFFFF;
   background-color: #34AADC;
   border-radius: 8px;
   margin: 30px 5px 0px 80px;
   opacity: 1;
+  text-decoration: none;
 }
 #loginfb:hover{
     opacity:0.8;
@@ -116,13 +137,28 @@ body{
 #containquotes{
   display: flex;
   width: 2em;
+  background-color: #E8E8E8;
+  align-content: center;
 }
 #quotes{
+  margin-top: 1em;
   columns: 3;
+  column-width: 3em;
   flex-wrap: wrap;
-  font-family: 'Varela Round', sans-serif;
+  color: #4A4A4A;
   font-size: 20px;
-  padding: 3em;
+  padding-left: 3.5em;
+  font-family: 'Varela Round', sans-serif;
+}
+p{
+  font-family: 'Varela Round', sans-serif;
+}
+i{
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 60px;
+  margin-left: 4em;
+
 }
 footer{
   background: #9b9b9b;
@@ -136,5 +172,4 @@ footer{
   text-align: center;
   line-height: 3em;
   margin-top: 10%;
-  font-family: 'Varela Round', sans-serif;
 }

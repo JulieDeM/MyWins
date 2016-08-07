@@ -3,15 +3,16 @@ html
   head
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    script(src='https://use.fontawesome.com/e6e5153879.js')
     link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/stylesheets/mainpage.css', media='screen', title='no title', charset='utf-8')
     title
   body
     #banner
       header
-        a(href='/splashpage')
+        a(href='/')
         img#logo(src='/images/mywinslogo@1x.png', alt='mywins')
-        //- a#signin(href='/#{user.userName}') sign in
+        //- a#signin(href='/:#{user.userName}') sign in
         a#signin(href='/:userName') sign in
     #main-image
       .bothlandf
@@ -33,7 +34,12 @@ html
                   p Login with Facebook
     #containquotes
     #quotes
-      p  "We love this site!" - Bob and Bette
-      p "I now know how great I am" -Tim
+      i.fa.fa-bar-chart
+      p  Know your best games
+      br
+      i.fa.fa-bar-chart
+      p Keep track of your wins/losses
+      br
+      i.fa.fa-bar-chart
       p "5 stars for this site" -Ricky
     footer ©2016 mywins, inc
