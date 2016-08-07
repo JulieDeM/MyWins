@@ -40,11 +40,11 @@ router.get('/:username', function(req, res, next){
             console.log(">>>>>>>>>>>teams<<<<<<<<<<<<");
             console.log(teams.rows);
             Dash.readTeamRecords(user.rows[0].id).then(function(teamrecords){
-              console.log("***************RECORDS************");
-              console.log(teamrecords.rows);
+              // console.log("***************RECORDS************");
+              // console.log(teamrecords.rows);
               Dash.readAllTeamNames().then(function(allTeams){
-                console.log("------------- ALL TEAMS --------------");
-                console.log(allTeams.rows);
+                // console.log("------------- ALL TEAMS --------------");
+                // console.log(allTeams.rows);
 
                 // RENDER happens in last call
                 res.render('testdash', {
@@ -127,6 +127,11 @@ router.post('/addrecord', function(req, res, next){
 router.post('/addteamrecord', function(req, res, next){
   console.log(">>>>>>>>>>>> req body <<<<<<<<<<<<");
   console.log(req.body);
+  Dash.createGameRecordTeam(
+    req.body.game_id, req.body.team1_id, req.body.team2_id, req.body.team1_score, req.body.team2_score
+  ). then(function(){
+    res.redirect('/')
+  })
   // Dash.createGameRecord(
   //   req.body.game_id, req.body.user1_id, req.body.user2_id, req.body.user1_score, req.body.user2_score
   // ).then(function(){
