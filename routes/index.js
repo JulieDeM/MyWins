@@ -3,6 +3,7 @@ var router = express.Router();
 var bookshelf = require('../db/bookshelf');
 var Dash = require('../lib/dashlogic');
 var One = require('../lib/one_v_one');
+var Two = require('../lib/two_v_two');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -47,133 +48,41 @@ router.get('/:username', function(req, res, next){
 })});
 
 router.post('/addrecord', function(req, res, next){
-  // console.log(">>>>>>>>>>>> req body <<<<<<<<<<<<");
-  // console.log(req.body);
   Dash.createGameRecord(
     req.body.game_id, req.body.user1_id, req.body.user2_id, req.body.user1_score, req.body.user2_score
   ).then(function(){
-    //update players here
     Dash.readMoreGameStats(req.body.user1_id, req.body.game_id).then(function(results1){
       Dash.readMoreGameStats(req.body.user2_id, req.body.game_id).then(function(results2){
-        console.log("-------------ONE---------");
-        console.log(results1.rows);
-        console.log("-------------TWO---------");
-        console.log(results2.rows);
         var user1 = results1.rows[0];
         var user2 = results2.rows[0];
-        var u1ExScore = One.expectedScore(user1.rating, user2.rating);
-        var u2ExScore = 1 - u1ExScore;
-        console.log(u1ExScore);
-        console.log(u2ExScore);
-        console.log("============= scores ============");
-        console.log(req.body.user1_score);
-        console.log(req.body.user2_score);
-        if (Number(req.body.user1_score) > Number(req.body.user2_score)){
-          var u1AcScore = 1;
-          var u2AcScore = 0;
-        } else if (Number(req.body.user1_score) < Number(req.body.user2_score)){
-          var u1AcScore = 0;
-          var u2AcScore = 1;
-        } else {
-          var u1AcScore = 0.5;
-          var u2AcScore = 0.5;
-        }
-        console.log("+++++++++++ AcScores ++++++++++");
-        console.log(u1AcScore);
-        console.log(u2AcScore);
-        var u1newRating = One.newRating(user1.rating, user1.constant, u1ExScore, u1AcScore);
-        var u2newRating = One.newRating(user2.rating, user2.constant, u2ExScore, u2AcScore);
-        console.log("********* new ratings **********");
-        console.log(u1newRating);
-        console.log(u2newRating);
-        var updateU1 = {
-          gamesPlayed: user1.gamesPlayed + 1,
-          rating: u1newRating,
-          constant: One.checkConstant(user1.constant, u1newRating, (user1.gamesPlayed + 1))
-        };
-        var updateU2 = {
-          gamesPlayed: user2.gamesPlayed + 1,
-          rating: u2newRating,
-          constant: One.checkConstant(user2.constant, u2newRating, (user2.gamesPlayed + 1))
-        };
-        console.log("-------------UPDATED ONE---------");
-        console.log(updateU1);
-        console.log("-------------UPDATED TWO---------");
-        console.log(updateU2);
-        Dash.updatePlayer(updateU1, user1.user_game_id).then(function(){
-          Dash.updatePlayer(updateU2, user2.user_game_id).then(function(){
-            res.redirect('/bestplayer')
-
+        var updatedPlayers = One.runMath(user1, user2, req.body.user1_score, req.body.user2_score)
+        Dash.updatePlayer(updatedPlayers[0], user1.user_game_id).then(function(){
+          Dash.updatePlayer(updatedPlayers[1], user2.user_game_id).then(function(){
+            res.redirect('/')
           })
         })
-
-
-
       })
     })
   })
-})
+});
 
 router.post('/addteamrecord', function(req, res, next){
-  // console.log(">>>>>>>>>>>> req body <<<<<<<<<<<<");
-  // console.log(req.body);
   Dash.createGameRecordTeam(
     req.body.game_id, req.body.team1_id, req.body.team2_id, req.body.team1_score, req.body.team2_score
   ). then(function(){
-    res.redirect('/')
+    Dash.readTeamStats(req.body.team1_id, req.body.game_id).then(function(results1){
+      Dash.readTeamStats(req.body.team2_id, req.body.game_id).then(function(results2){
+        var team1 = results1.rows[0];
+        var team2 = results2.rows[0];
+        var updatedTeams = Two.runMath(team1, team2, req.body.team1_score, req.body.team2_score);
+        Dash.updateTeam(updatedTeams[0], team1.team_game_id).then(function(){
+          Dash.updateTeam(updatedTeams[1], team2.team_game_id).then(function(){
+            res.redirect('/bestplayer')
+          })
+        })
+      })
+    });
   })
-  // Dash.createGameRecord(
-  //   req.body.game_id, req.body.user1_id, req.body.user2_id, req.body.user1_score, req.body.user2_score
-  // ).then(function(){
-  //   //update players here
-  //   Dash.readMoreGameStats(req.body.user1_id, req.body.game_id).then(function(results1){
-  //     Dash.readMoreGameStats(req.body.user2_id, req.body.game_id).then(function(results2){
-  //       // console.log("-------------ONE---------");
-  //       // console.log(results1.rows);
-  //       // console.log("-------------TWO---------");
-  //       // console.log(results2.rows);
-  //       var user1 = results1.rows[0];
-  //       var user2 = results2.rows[0];
-  //       var u1ExScore = One.expectedScore(user1.rating, user2.rating);
-  //       var u2ExScore = 1 - u1ExScore;
-  //       if (req.body.user1_score > req.body.user2_score){
-  //         var u1AcScore = 1;
-  //         var u2AcScore = 0;
-  //       } else if (req.body.user1_score < req.body.user2_score){
-  //         var u1AcScore = 0;
-  //         var u2AcScore = 1;
-  //       } else {
-  //         var u1AcScore = 0.5;
-  //         var u2AcScore = 0.5;
-  //       }
-  //       var u1newRating = One.newRating(user1.rating, user1.constant, u1ExScore, u1AcScore);
-  //       var u2newRating = One.newRating(user2.rating, user2.constant, u2ExScore, u2AcScore);
-  //       var updateU1 = {
-  //         gamesPlayed: user1.gamesPlayed + 1,
-  //         rating: u1newRating,
-  //         constant: One.checkConstant(user1.constant, u1newRating, (user1.gamesPlayed + 1))
-  //       };
-  //       var updateU2 = {
-  //         gamesPlayed: user2.gamesPlayed + 1,
-  //         rating: u2newRating,
-  //         constant: One.checkConstant(user2.constant, u2newRating, (user2.gamesPlayed + 1))
-  //       };
-  //       // console.log("-------------ONE---------");
-  //       // console.log(updateU1);
-  //       // console.log("-------------TWO---------");
-  //       // console.log(updateU2);
-  //       Dash.updatePlayer(updateU1, user1.user_game_id).then(function(){
-  //         Dash.updatePlayer(updateU2, user2.user_game_id).then(function(){
-  //           res.redirect('/')
-  //
-  //         })
-  //       })
-  //
-  //
-  //
-  //     })
-  //   })
-  // })
-})
+});
 
 module.exports = router;
