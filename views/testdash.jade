@@ -50,7 +50,15 @@ html
           input(type="submit")
         for records in teamRecords
           if records.game_id === teams.game_id && (teams.name === records.name)
-            p
-              b team
-              |  #{records.team1_score} - #{records.team2_score}
-              b team
+            if records.team1_id === teams.id
+              p
+                b #{teams.name}
+                |  #{records.team1_score} - #{records.team2_score}
+                b #{allTeams[records.team2_id].name}
+            else
+              p
+                b #{allTeams[records.team2_id].name}
+                |  #{records.team1_score} - #{records.team2_score}
+                b #{teams.name}
+        br
+        br
