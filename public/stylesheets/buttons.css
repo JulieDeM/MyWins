@@ -1,11 +1,9 @@
 .btn{
   display: flex;
   justify-content: space-around;
-  /*align-content:center;*/
   flex-direction:row;
   border: solid 2px;
   border-radius: 8px;
-  /*width: 200px;*/
   width: 27%;
   height: 18%
   padding: 10px 10px 7px 10px;
