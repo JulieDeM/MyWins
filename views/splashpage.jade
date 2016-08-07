@@ -1,0 +1,23 @@
+extends FBlayout
+
+block content
+	#banner
+		header
+			img#logo(href='#', src='mywinslogo@1x.png', alt='mywins')
+	#main-image
+		.bothlandf
+			#left
+				p.kick-butt Kick butt.
+				p.kick-butt Take names.
+				p.kick-butt And keep track of it all.
+			div
+				#right
+					#yellow
+						#gameon
+						| Game on!
+						#question  Don't have an account yet? 
+						.container
+							.jumbotron.text-center      
+								p Login or Register with: 
+								a.btn.btn-primary(href='/auth/facebook')
+									span.fa.fa-facebook Facebook
