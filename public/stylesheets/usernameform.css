@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif;
 }
 body{
   margin: 0px;
@@ -44,7 +45,7 @@ body{
 #gameon{
   color: #FFFFFF;
   font-family: 'Varela Round', sans-serif;
-  margin-left: 17em;
+  margin-left: 15em;
   padding-top: 1em;
   font-size: 20px;
 }
@@ -63,7 +64,6 @@ body{
 }
 p{
   font-family: 'Varela Round', sans-serif;
-  margin-left: 2em;
 }
 .largeprint{
   font-size: 20px;
@@ -101,7 +101,11 @@ p.largeprint{
   padding: 1em 6em 1em 6em;
   border-radius: 8px;
   margin-left: 8em;
+  opacity: 1;
 }
+#gettingstarted:hover{
+    opacity:0.8;
+  }
 #one{
   border-radius: 50%;
   padding: 5px;

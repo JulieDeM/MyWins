@@ -16,7 +16,7 @@ html
         #whitebox
           #yellow
             #gameon
-              p Welcome to mywins, #{user.firstName}!
+              p#mywinsname Welcome to mywins, #{user.firstName}!
           #moveme
             #form
               form(type='string', action='/#{user.userName}', onsubmit='return validateUsername()' method='POST')
