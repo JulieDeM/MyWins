@@ -10,8 +10,9 @@ html
     #banner
       header
         a(href='/splashpage')
-          img#logo(src='/images/mywinslogo@1x.png', alt='mywins')
-        a#signin(href='/dash') sign-in
+        img#logo(src='/images/mywinslogo@1x.png', alt='mywins')
+        //- a#signin(href='/#{user.userName}') sign in
+        a#signin(href='/:userName') sign in
     #main-image
       .bothlandf
         #left
@@ -35,3 +36,4 @@ html
       p  "We love this site!" - Bob and Bette
       p "I now know how great I am" -Tim
       p "5 stars for this site" -Ricky
+    footer ©2016 mywins, inc

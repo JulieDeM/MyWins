@@ -5,7 +5,7 @@ var Dashboard = require('../lib/queries')
 var Val = require('../lib/formValidation')
 
 router.get('/', function(req, res, next){
-      res.render('dashboard');
+      res.render('splashpage');
 })
 
 router.post('/', function(req, res, next){
@@ -15,13 +15,13 @@ router.post('/', function(req, res, next){
   var validate = Val.validateUsername(req.body)
   switch(validate){
     case "blank":
-      res.render('dashboard', {message: "Please enter a username!"})
+      res.render('dash', {message: "Please enter a username!"})
       break;
     case "illegal":
-      res.render('dashboard', {message: "Username can only contain lowercase letters, numbers, and underscores."})
+      res.render('dash', {message: "Username can only contain lowercase letters, numbers, and underscores."})
       break;
     case "nosport":
-      res.render('dashboard', {message2: "Please choose a sport!"})
+      res.render('dash', {message2: "Please choose a sport!"})
     case "no error":
       Dashboard.findUser(req.body.name).then(function(result){
         if (result.rows.length == 0) {
@@ -43,7 +43,7 @@ router.post('/', function(req, res, next){
           })
         }else{
           console.log("That username has been taken!");
-          res.render('dashboard', {message: "Sorry, this username has been taken!"})
+          res.render('dash', {message: "Sorry, this username has been taken!"})
         }
       })
         break;

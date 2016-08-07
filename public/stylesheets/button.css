@@ -1,139 +1,15 @@
-* {
-    box-sizing: border-box;
-}
-body{
-  margin: 0px;
-  padding: 0px;
-  max-width: 1800px;
-}
-#main-image{
-  background-image: url(/images/add_username_bg.png);
-  width:100%;
-  height: 755px;
-  max-height: 755px;
-  max-width: 1800px;
-  background-size: contain;
-}
-#banner{
-  width: 100%;
-  height: 15%;
-  max-width: 1800px;
-}
-#logo{
-  margin: 20px auto 20px 70px;
-}
-.bothlandf{
-  display: flex;
-}
-#whitebox{
-  background-color: white;
-  width: 55em;
-  height: 35em;
-  float: right;
-  margin-left: 18em;
-  margin-top: 6em;
-  border-radius: 8px;
-  border-color: purple;
-}
-#yellow{
-  background-color: #4CD964;
-  border-radius: 8px 8px 0px 0px;
-  width: 100%;
-  height: 4em;
-}
-#gameon{
-  color: #FFFFFF;
-  font-family: 'Varela Round', sans-serif;
-  margin-left: 17em;
-  padding-top: 1em;
-  font-size: 20px;
-}
-#username{
-  background-color: #E8E8E8;
-  color: #9B9B9B;
-  padding-right: 30em;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-  border-radius: 5px;
-  font-size: 15px;
-  padding-left: 1.5em;
-}
-#moveme{
-  margin-left: 8em;
-}
-p{
-  font-family: 'Varela Round', sans-serif;
-  margin-left: 2sem;
-}
-.largeprint{
-  font-size: 20px;
-  font-weight: bold;
-  color: #4A4A4A;
-  letter-spacing: -0.09px;
-
-}
-p.largeprint{
-    line-height: 20%;
-    margin-top: 2em;
-
-}
-#smallprint{
-  color: #9B9B9B;
-  letter-spacing: -0.9px;
-  margin-left:5.5em;
-  padding: 0;
-  margin-top: -1em;
-  font-size: 12px;
-}
-#form{
-  display: flex;
-  align: center;
-}
-#columning{
-  margin-top: 1em;
-  columns: 3;
-}
-#gettingstarted{
-  background-color: #4CD964;
-  color: #FFFFFF;
-  font-family: 'Varela Round', sans-serif;
-  font-size: 18px;
-  padding: 1em 6em 1em 6em;
-  border-radius: 8px;
-  margin-left: 8em;
-}
-#one{
-  border-radius: 50%;
-  padding: 5px;
-  background: #fff;
-  border: 3px solid #4CD964;
-  color: #4CD964;
-  text-align: center;
-  font: 20px 'Varela Round', sans-serif;
-  line-height: 13px;
-  letter-spacing: 6px;
-}
-#two{
-  border-radius: 50%;
-  padding: 5px;
-  background: #fff;
-  border: 3px solid #4CD964;
-  color: #4CD964;
-  text-align: center;
-  font: 20px 'Varela Round', sans-serif;
-  line-height: 13px;
-  letter-spacing: 6px;
-}
 .btn{
   display: flex;
-  justify-content:center;
-  align-content:center;
+  justify-content: space-around;
+  /*align-content:center;*/
   flex-direction:row;
   border: solid 2px;
   border-radius: 8px;
-  width: 200px;
+  /*width: 200px;*/
+  width: 27%;
+  height: 18%
   padding: 10px 10px 7px 10px;
-  font-family: GothamRounded-Medium;
+  font-family: 'Varela Round', sans-serif;
   font-size: 18px;
   cursor: pointer
 }
@@ -150,7 +26,7 @@ input[name=sport]{
 }
 
 /* BOCCE BUTTON */
-#btnBoc{
+#btnBoc, #btnBocTeam{
   background: #FFFFFF;
   color: #34AADC
 }
@@ -164,9 +40,19 @@ input[name=sport]{
   background-color: #34AADC;
   color: #FFFFFF;
 }
+#bocRadioTeam:checked + label > .color {
+  display:none;
+}
+#bocRadioTeam:checked + label > .white {
+  display:inline;
+}
+#bocRadioTeam:checked + label {
+  background-color: #34AADC;
+  color: #FFFFFF;
+}
 
 /* PING BUTTON */
-#pingBoc{
+#pingBoc, #pingBocTeam{
   background: #FFFFFF;
   color: #FF2D55
 }
@@ -180,9 +66,19 @@ input[name=sport]{
   background-color: #FF2D55;
   color: #FFFFFF;
 }
+#pingRadioTeam:checked + label > .color {
+  display:none;
+}
+#pingRadioTeam:checked + label > .white {
+  display:inline;
+}
+#pingRadioTeam:checked + label {
+  background-color: #FF2D55;
+  color: #FFFFFF;
+}
 
 /* FOOS BUTTON */
-#foosBoc{
+#foosBoc, #foosBocTeam{
   background: #FFFFFF;
   color: #4CD964
 }
@@ -196,9 +92,19 @@ input[name=sport]{
   background-color: #4CD964;
   color: #FFFFFF;
 }
+#foosRadioTeam:checked + label > .color {
+  display:none;
+}
+#foosRadioTeam:checked + label > .white {
+  display:inline;
+}
+#foosRadioTeam:checked + label {
+  background-color: #4CD964;
+  color: #FFFFFF;
+}
 
 /* AIR HOCKEY BUTTON */
-#airBoc{
+#airBoc, #airBocTeam{
   background: #FFFFFF;
   color: #C86EDF
 }
@@ -212,9 +118,19 @@ input[name=sport]{
   background-color: #C86EDF;
   color: #FFFFFF;
 }
+#airRadioTeam:checked + label > .color {
+  display:none;
+}
+#airRadioTeam:checked + label > .white {
+  display:inline;
+}
+#airRadioTeam:checked + label {
+  background-color: #C86EDF;
+  color: #FFFFFF;
+}
 
 /* CORN HOLE BUTTON */
-#cornBoc{
+#cornBoc, #cornBocTeam{
   background: #FFFFFF;
   color: #FFCC00
 }
@@ -228,9 +144,19 @@ input[name=sport]{
   background-color: #FFCC00;
   color: #FFFFFF;
 }
+#cornRadioTeam:checked + label > .color {
+  display:none;
+}
+#cornRadioTeam:checked + label > .white {
+  display:inline;
+}
+#cornRadioTeam:checked + label {
+  background-color: #FFCC00;
+  color: #FFFFFF;
+}
 
 /* POOL BUTTON */
-#poolBoc{
+#poolBoc, #poolBocTeam{
   background: #FFFFFF;
   color: #FF9500
 }
@@ -244,9 +170,19 @@ input[name=sport]{
   background-color: #FF9500;
   color: #FFFFFF;
 }
+#poolRadioTeam:checked + label > .color {
+  display:none;
+}
+#poolRadioTeam:checked + label > .white {
+  display:inline;
+}
+#poolRadioTeam:checked + label {
+  background-color: #FF9500;
+  color: #FFFFFF;
+}
 
 /* SPIKEBALL BUTTON */
-#spikeBoc{
+#spikeBoc, #spikeBocTeam{
   background: #FFFFFF;
   color: #4A4A4A
 }
@@ -260,11 +196,21 @@ input[name=sport]{
   background-color: #4A4A4A;
   color: #FFFFFF;
 }
+#spikeRadioTeam:checked + label > .color {
+  display:none;
+}
+#spikeRadioTeam:checked + label > .white {
+  display:inline;
+}
+#spikeRadioTeam:checked + label {
+  background-color: #4A4A4A;
+  color: #FFFFFF;
+}
 
 /* KANJAM BUTTON */
-#kanBoc{
+#kanBoc, #kanBocTeam{
   background: #FFFFFF;
-  color: #EF4DB6
+  color: #EF4DB6;
 }
 #kanRadio:checked + label > .color {
   display:none;
@@ -276,9 +222,19 @@ input[name=sport]{
   background-color: #EF4DB6;
   color: #FFFFFF;
 }
+#kanRadioTeam:checked + label > .color {
+  display:none;
+}
+#kanRadioTeam:checked + label > .white {
+  display:inline;
+}
+#kanRadioTeam:checked + label {
+  background-color: #EF4DB6;
+  color: #FFFFFF;
+}
 
 /* CARDS BUTTON */
-#cardsBoc{
+#cardsBoc, #cardsBocTeam{
   background: #FFFFFF;
   color: #4CD3B4
 }
@@ -292,16 +248,13 @@ input[name=sport]{
   background-color: #4CD3B4;
   color: #FFFFFF;
 }
-footer{
-  background: #9b9b9b;
-  color: white;
-  font-size: .75em;
-  position: fixed;
-  height: 3em;
-  width: 100%;
-  bottom: 0px;
-  left:0px;
-  text-align: center;
-  line-height: 3em;
-  margin-top: 10%;
+#cardsRadioTeam:checked + label > .color {
+  display:none;
+}
+#cardsRadioTeam:checked + label > .white {
+  display:inline;
+}
+#cardsRadioTeam:checked + label {
+  background-color: #4CD3B4;
+  color: #FFFFFF;
 }

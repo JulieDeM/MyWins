@@ -11,6 +11,7 @@ var routes = require('./routes/index');
 var signup = require('./routes/signup');
 var dashboard = require('./routes/dashboard');
 var newgametypes = require('./routes/newgametypes')
+// var index = require('./routes/index')
 
 var app = express();
 
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 
+// app.use('/index', index);
 app.use('/signup', signup);
 app.use('/dashboard', dashboard);
 app.use('/newgametypes', newgametypes);

@@ -124,3 +124,17 @@ body{
   font-size: 20px;
   padding: 3em;
 }
+footer{
+  background: #9b9b9b;
+  color: white;
+  font-size: .75em;
+  position: fixed;
+  height: 3em;
+  width: 100%;
+  bottom: 0px;
+  left:0px;
+  text-align: center;
+  line-height: 3em;
+  margin-top: 10%;
+  font-family: 'Varela Round', sans-serif;
+}
