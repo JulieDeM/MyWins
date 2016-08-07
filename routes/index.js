@@ -40,8 +40,8 @@ router.get('/:username', function(req, res, next){
             console.log(">>>>>>>>>>>teams<<<<<<<<<<<<");
             console.log(teams.rows);
             Dash.readTeamRecords(user.rows[0].id).then(function(teamrecords){
-              // console.log("***************RECORDS************");
-              // console.log(teamrecords.rows);
+              console.log("***************RECORDS************");
+              console.log(teamrecords.rows);
               Dash.readAllTeamNames().then(function(allTeams){
                 // console.log("------------- ALL TEAMS --------------");
                 // console.log(allTeams.rows);
