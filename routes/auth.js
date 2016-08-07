@@ -17,6 +17,7 @@ router.get('/profile', isLoggedIn, function(req, res) {
                 user: user.rows[0],
                 photo: photo
             })
+            res.render
         } else {
             res.render('dash', {
                 user: user.rows[0],

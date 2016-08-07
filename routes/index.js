@@ -3,7 +3,6 @@ var router = express.Router();
 var bookshelf = require('../db/bookshelf');
 var Dash = require('../lib/dashlogic');
 var One = require('../lib/one_v_one');
-var queries = require('../lib/queries')
 var Dashboard = require('../lib/queries')
 var Val = require('../lib/formValidation')
 
@@ -13,7 +12,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/validate', function(req, res, next){
+  console.log(req.body);
   var validate = Val.validateUsername(req.body)
+  console.log("***VALIDATE***");
   console.log(validate);
   switch(validate){
     case "blank":
@@ -47,11 +48,11 @@ router.post('/validate', function(req, res, next){
                   })
                 })
             })
-            res.redirect('/:username')
+            res.redirect('/loading')
           })
         }else{
           console.log("That username has been taken!");
-          res.render('dash', {message: "Sorry, this username has been taken!"})
+          res.redirect('/takenUserName')
         }
       })
         break;
@@ -61,12 +62,26 @@ router.post('/validate', function(req, res, next){
 router.get('/noUserName', function(req,res,next){
   res.render('pageafterfb', {message: "Please enter a username!"})
 })
+router.get('/takenUserName', function(req,res,next){
+  res.render('pageafterfb', {message: "Sorry, this username has been taken!"})
+})
+
 router.get('/invalidUserName', function(req,res,next){
   res.render('pageafterfb', {message: "Username can only contain lowercase letters, numbers, and underscores."})
 })
 router.get('/noSport', function(req,res,next){
   res.render('pageafterfb', {message: "Please choose a sport!"})
 })
+
+router.get('/loading', function(req,res,next){
+  Dashboard.readUser(req.cookies.user).then(function(output){
+    var info = output.rows[0]
+    var photo = info.image_url.replace('$1', '?');
+    console.log(output);
+    res.render('loadpage', {photo : photo, firstName : info.firstName, lastName : info.lastName, userName : info.userName})
+  })
+});
+
 // probably place all routes above /:username route, no other route files
 
 //Julie's code ends here

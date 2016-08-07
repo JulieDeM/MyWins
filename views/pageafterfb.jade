@@ -22,66 +22,68 @@ html
               form(type='string', action='/validate', onsubmit='return validateUsername()' method='POST')
                 p.largeprint
                   span#one  1
-                  |                       Create your Username       #{message}
+                  |                       Create your Username      
+                  p#smallprintalert
+                    | #{message}
                 br
-                input#username(type='text', name='name', value='', placeholder='username')
+                input#username(type='text', name='name', value='', placeholder='Enter username')
                 p.largeprint
                   span#two  2
                   |     Select a Game
                 p#smallprint You can select more later.
                 #columning
-                  input#pingRadio(type='radio', name='sport')
+                  input#pingRadio(type='radio', name='sport', value='1')
                   label#pingBoc.btn(for='pingRadio')
                     img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/ping-pong-color.png?alt=media&token=6939542f-b9b0-4bb7-9fa0-5c864b964d0c')
                     img.white(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/ping-pong-white.png?alt=media&token=0968e77a-c8e1-42f8-85d2-8f924d1dc56f')
                     |                 Ping Pong
                   br
-                  input#foosRadio(type='radio', name='sport')
+                  input#foosRadio(type='radio', name='sport', value='2')
                   label#foosBoc.btn(for='foosRadio')
                     img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/foosball-color.png?alt=media&token=b2f16121-b03f-4291-86c5-88e8cb4cb3cb')
                     img.white(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/foosball-white.png?alt=media&token=1820e267-0f43-414e-a18a-d206feaa4a8d')
                     |                 Foosball
                   br
-                  input#airRadio(type='radio', name='sport')
+                  input#airRadio(type='radio', name='sport', value='3')
                   label#airBoc.btn(for='airRadio')
                     img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/air-color.png?alt=media&token=f7e6c604-8ad2-490a-b7ae-1c38579fb88f')
                     img.white(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/air-white.png?alt=media&token=976b7c9f-9506-4e39-b9d4-95e1c477ca22')
                     |                 Air Hockey
                   br
-                  input#cornRadio(type='radio', name='sport')
+                  input#cornRadio(type='radio', name='sport', value='4')
                   label#cornBoc.btn(for='cornRadio')
                     img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/cornhole-color.png?alt=media&token=d3c7c305-0e78-48ca-8b9e-013be8f71c27')
                     img.white(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/cornhole-white.png?alt=media&token=fdbf69ec-2635-4838-92ab-c9351c93f793')
                     |                 Corn Hole
                   br
-                  input#bocRadio(type='radio', name='sport')
+                  input#bocRadio(type='radio', name='sport', value='5')
                   label#btnBoc.btn(for='bocRadio')
                     img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/icon-bocceball.png?alt=media&token=2a46bdac-86b8-4c2e-adb0-b85755033605')
                     img.white(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/boccee%20white.png?alt=media&token=ac45db39-ad37-4975-bef2-aa351fe1679b')
                     |                 Bocce Ball
                   br
-                  input#poolRadio(type='radio', name='sport')
+                  input#poolRadio(type='radio', name='sport', value='6')
                   label#poolBoc.btn(for='poolRadio')
                     img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/pool-color.png?alt=media&token=635f9ee5-337d-47ce-bf86-9eecc8a36cdb')
                     img.white(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/pool-white.png?alt=media&token=bdbd1abe-a455-4496-9f53-cbb3f22c3500')
                     |                 Pool
                   br
-                  input#spikeRadio(type='radio', name='sport')
+                  input#spikeRadio(type='radio', name='sport', value='7')
                   label#spikeBoc.btn(for='spikeRadio')
                     img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/spike-color.png?alt=media&token=8d63f110-2198-4bf5-8fc0-dc5f52d9c5e7')
                     img.white(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/spike-white.png?alt=media&token=fc9247c3-26e8-4b6a-bf7a-e0db512fa4e1')
                     |                 Spikeball
                   br
-                  input#kanRadio(type='radio', name='sport')
+                  input#kanRadio(type='radio', name='sport', value='8')
                   label#kanBoc.btn(for='kanRadio')
                     img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/kan-color.png?alt=media&token=c7f757e5-2303-4e61-a121-2467967a9078')
                     img.white(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/kan-white.png?alt=media&token=cdba6a49-ac18-4773-944c-631c8df7a955')
                     |                 Kan Jam
                   br
-                  input#cardsRadio(type='radio', name='sport')
+                  input#cardsRadio(type='radio', name='sport', value='9')
                   label#cardsBoc.btn(for='cardsRadio')
                     img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/cards-color.png?alt=media&token=1df43d3a-b007-498f-96ec-7b013bf69c29')
                     img.white(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/cards-white.png?alt=media&token=4ad90906-8ef8-4b5a-b343-8a43b3b78347')
                     |                 Cards
-                input#gettingstarted(type='submit', name='name', value='Get Started')
+                input#gettingstarted(type='submit', value='Get Started')
     footer ©2016 mywins, inc
