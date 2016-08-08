@@ -27,7 +27,7 @@ html
 		.tab-group
 		each game, index in gameTypes
 			.tab
-				input(id='#{game.type} + (index + 1)', type='radio', name='tabs')
+				input(id='#{game.type} + (index + 1)' id=, type='radio', name='tabs')
 				label(for='#{game.type} + (index + 1)', style='background:#{game.color};')
 					img(src='#{game.icons}', height='20', width='20')
 					| &nbsp; #{game.type}
@@ -71,10 +71,9 @@ html
 												td #{stands.userName}
 												td #{stands.rating}
 		each teams, index in teamStuff
-			p HELLO I AM HERE
 			.tab_teams
-				input(id='#{teams.type} + (index + 1)', type='radio', name='tabs')
-				label(for='#{teams.type} + (index + 1)', style='background:#{games.color};')
+				input(id='#{teams.type} + (index + 1)', id='tab +(index+1)', type='radio', name='tabs')
+				label(for='#{teams.type} + (index + 1)', for='tab + (index+1)', style='background:#{games.color};')
 					img(src='#{games.icons}', height='20', width='20')
 					| &nbsp; #{teams.type} #{teams.name}
 				.tab-content_teams
@@ -171,7 +170,7 @@ html
 
 				label(for='newTeamGame') + Add New Team Game
 				.tab-content.newGames.newTeam
-					form.teamGame(action='/addgametypeteam', method="post")
+					form.teamGame(action='/addgametypeteam', method='post')
 						input#pingRadioTeam(type='radio', name='sport', value='1')
 						label#pingBocTeam.btn(for='pingRadioTeam')
 							img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/ping-pong-color.png?alt=media&token=6939542f-b9b0-4bb7-9fa0-5c864b964d0c')
@@ -226,7 +225,7 @@ html
 									for opponent in allUsers
 										if userInfo.id !== opponent.id
 											option(value='#{opponent.id}') #{opponent.userName}
-										//-each team in teams make an option
+										//- each team in teams make an option
 										//- option(value='#{user.id}') #{user.name}
 								input(type="text", name="user1_id", style={display:'none'}, value="#{userInfo.id}")
 								input(type='text', name='teamName', placeholder='create team name', required='')

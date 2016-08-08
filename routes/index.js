@@ -100,7 +100,6 @@ router.post('/addgametypeteam', function(req, res, next) {
     })
   })
 
-    //change favorite game
 router.post('/:id/:gameid', function(req, res, next) {
         Edit.changeFavorite(req.params.id, req.params.gameid).then(function() {
             Edit.getUserName(req.cookies.user).then(function(user) {

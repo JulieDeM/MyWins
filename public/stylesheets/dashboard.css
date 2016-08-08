@@ -143,6 +143,7 @@ td{
 }
 .createTeam input{
   margin-top: 1em;
+  margin-left: 10px;
 }
 .styled-select {
   width: 240px;
