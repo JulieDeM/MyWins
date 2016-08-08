@@ -6,7 +6,7 @@ var Two = require('../lib/two_v_two');
 var Edit = require('../lib/editlogic');
 var Dashboard = require('../lib/queries')
 var Val = require('../lib/formValidation')
-/* GET home page. */
+    /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('splashpage');
 });
@@ -89,51 +89,54 @@ router.post('/:username', function(req, res, next) {
     })
     //change favorite game
 router.post('/:id/:gameid', function(req, res, next) {
-        Edit.changeFavorite(req.params.id, req.params.gameid).then(function() {
-            Edit.getUserName(req.cookies.user).then(function(user) {
-                res.redirect(`/${user.rows[0].userName}`)
-            })
+    Edit.changeFavorite(req.params.id, req.params.gameid).then(function() {
+        Edit.getUserName(req.cookies.user).then(function(user) {
+            res.redirect(`/${user.rows[0].userName}`)
         })
     })
+})
 
-    // Ricky's work below
- router.get('/:username', function(req, res, next) {
-     var currUserID = req.cookies.user;
-     Dash.readUser(req.params.username).then(function(user) {
-         Dash.readGameTypes(user.rows[0].id).then(function(gametypes) {
-             Dash.readGameStats(user.rows[0].id).then(function(all) {
-                 Dash.readGameRecords(user.rows[0].id).then(function(records) {
-                     Dash.readTeams(user.rows[0].id).then(function(teams) {
-                         Dash.readTeamRecords(user.rows[0].id).then(function(teamrecords) {
-                             Dash.readAllTeamNames().then(function(allTeams) {
-                                 Dash.readAllUsers().then(function(allUsers) {
-                                   Dash.readSingleGameStandings().then(function(singleStandings){
-                                     Dash.readTeamGameStandings().then(function(teamStandings){
-                                     res.render('dash', {
-                                         currUserID: currUserID,
-                                         faveGame: user.rows[0].favorite_game_id,
-                                         userInfo: user.rows[0],
-                                         gameTypes: gametypes.rows,
-                                         gameStats: all.rows,
-                                         gameRecords: records.rows,
-                                         allUsers: allUsers.rows,
-                                         teamStuff: teams.rows,
-                                         teamRecords: teamrecords.rows,
-                                         allTeams: allTeams.rows,
-                                         singleStandings: singleStandings.rows,
-                                         teamStandings: teamStandings.rows
-                                     })
-                                 })
-                             })
-                         })
-                     })
-                 })
+// Ricky's work below
+router.get('/:username', function(req, res, next) {
+    var currUserID = req.cookies.user;
+    Dash.readUser(req.params.username).then(function(user) {
+        Dash.readGameTypes(user.rows[0].id).then(function(gametypes) {
+            Dash.readGameStats(user.rows[0].id).then(function(all) {
+                Dash.readGameRecords(user.rows[0].id).then(function(records) {
+                    Dash.readTeams(user.rows[0].id).then(function(teams) {
+                        Dash.readTeamRecords(user.rows[0].id).then(function(teamrecords) {
+                            Dash.readAllTeamNames().then(function(allTeams) {
+                                Dash.readAllUsers().then(function(allUsers) {
+                                    Dash.readSingleGameStandings().then(function(singleStandings) {
+                                        Dash.readTeamGameStandings().then(function(teamStandings) {
+                                            var input = user.rows[0].image_url;
+                                            var photo = input.replace('$1', '?');
+                                            res.render('dash', {
+                                                photo: photo,
+                                                currUserID: currUserID,
+                                                faveGame: user.rows[0].favorite_game_id,
+                                                userInfo: user.rows[0],
+                                                gameTypes: gametypes.rows,
+                                                gameStats: all.rows,
+                                                gameRecords: records.rows,
+                                                allUsers: allUsers.rows,
+                                                teamStuff: teams.rows,
+                                                teamRecords: teamrecords.rows,
+                                                allTeams: allTeams.rows,
+                                                singleStandings: singleStandings.rows,
+                                                teamStandings: teamStandings.rows
+                                            })
+                                        })
+                                    })
+                                })
+                            })
+                        })
+                    })
                 })
-              })
-             })
-         });
-     })
- });
+            })
+        });
+    })
+});
 
 router.post('/addrecord', function(req, res, next) {
     Dash.createGameRecord(

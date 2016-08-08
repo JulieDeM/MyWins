@@ -1,45 +1,45 @@
 doctype html
 html
-  head
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
-    link(rel='stylesheet', href='/stylesheets/loadpagecss.css', media='screen', title='no title', charset='utf-8')
-    title
-  body
-    meta(http-equiv='refresh', content='3;url=/#{userName}')
-    #banner
-      header
-      a(href='/')
-        img#logo(src='/images/mywinslogo@1x.png', alt='mywins')
-    #main-image
-      .bothlandf
-        #whitebox
-          .top
-            #userpic
-              span#userpic2
-                img#userpics(src='#{photo}', alt='userpic')
-            #fbname
-              span#fbname2
-                h1 #{firstName} #{lastName}
-            #username
-              span#username2
-                p #{userName}
-            span#greencircle
-              p#onehundred  100 
-          .bottom
-            p#submit Submit 5 game records to get your rating!
-            p#yourrating
-              | Your rating will go up or down depending on the rating of the friends you compete against.
-            link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
-            link(href='loading.css')
-            .container
-              .loader
-                .loader--dot
-                .loader--dot
-                .loader--dot
-                .loader--dot
-                .loader--dot
-                .loader--dot
-                .loader--text
-    footer ©2016 mywins, inc
+	head
+		meta(charset='utf-8')
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+		link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
+		link(rel='stylesheet', href='/stylesheets/loadpagecss.css', media='screen', title='no title', charset='utf-8')
+		title
+	body
+		meta(http-equiv='refresh', content='3;url=/#{userName}')
+		#banner
+			header
+			a(href='/')
+				img#logo(src='/images/mywinslogo@1x.png', alt='mywins')
+		#main-image
+			.bothlandf
+				#whitebox
+					.top
+						#userpic
+							span#userpic2
+								img#userpics(src='#{photo}', alt='userpic')
+						#fbname
+							span#fbname2
+								h1 #{firstName} #{lastName}
+						#username
+							span#username2
+								p #{userName}
+						span#greencircle
+							p#onehundred  100 
+					.bottom
+						p#submit Submit 5 game records to get your rating!
+						p#yourrating
+							| Your rating will go up or down depending on the rating of the friends you compete against.
+						link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
+						link(href='loading.css')
+						.container
+							.loader
+								.loader--dot
+								.loader--dot
+								.loader--dot
+								.loader--dot
+								.loader--dot
+								.loader--dot
+								.loader--text
+		footer ©2016 mywins, inc
