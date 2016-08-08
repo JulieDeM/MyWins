@@ -6,6 +6,7 @@ var Two = require('../lib/two_v_two');
 var Edit = require('../lib/editlogic');
 var Dashboard = require('../lib/queries')
 var Val = require('../lib/formValidation')
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('splashpage');
@@ -80,13 +81,25 @@ router.get('/loading', function(req, res, next) {
     })
 });
 //posting team game form to database
-router.post('/:username', function(req, res, next) {
-        Dash.createGameType(req.params.username, req.body.userid, req.body.sport).then(function() {
-            Dash.createGameTypeTeam(req.params.username, req.body.userid, req.body.sport).then(function() {
-                res.redirect('/:username')
-            })
+router.post('/addgametype', function(req, res, next) {
+        Dash.createGameType(req.body.user1_id, req.body.sport).then(function() {
+          Edit.getUserName(req.cookies.user).then(function(user) {
+              res.redirect(`/${user.rows[0].userName}`)
+          })
         })
     })
+router.post('/addgametypeteam', function(req, res, next) {
+  Dash.createGameTypeTeam(req.body.user1_id, req.body.user2_id, req.body.teamName, req.body.sport).then(function() {
+    Dash.getTeamId(req.body.teamName).then(function(id){
+      Dash.createTeamGameID(id.rows[0].id, req.body.sport).then(function(){
+        Edit.getUserName(req.cookies.user).then(function(user) {
+        res.redirect(`/${user.rows[0].userName}`)
+          })
+        })
+      })
+    })
+  })
+
     //change favorite game
 router.post('/:id/:gameid', function(req, res, next) {
         Edit.changeFavorite(req.params.id, req.params.gameid).then(function() {
@@ -109,7 +122,10 @@ router.post('/:id/:gameid', function(req, res, next) {
                                  Dash.readAllUsers().then(function(allUsers) {
                                    Dash.readSingleGameStandings().then(function(singleStandings){
                                      Dash.readTeamGameStandings().then(function(teamStandings){
+                                       var input = user.rows[0].image_url;
+                                       var photo = input.replace('$1', '?');
                                      res.render('dash', {
+                                        photo: photo,
                                          currUserID: currUserID,
                                          faveGame: user.rows[0].favorite_game_id,
                                          userInfo: user.rows[0],
