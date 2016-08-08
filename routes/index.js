@@ -28,7 +28,7 @@ router.get('/:username', function(req, res, next){
             Dash.readTeamRecords(user.rows[0].id).then(function(teamrecords){
               Dash.readAllTeamNames().then(function(allTeams){
                 Dash.readAllUsers().then(function(allUsers){
-                  res.render('testdash', {
+                  res.render('dashboard_final', {
                     userInfo: user.rows[0],
                     gameTypes: gametypes.rows,
                     gameStats: all.rows,
@@ -58,7 +58,13 @@ router.post('/addrecord', function(req, res, next){
         var updatedPlayers = One.runMath(user1, user2, req.body.user1_score, req.body.user2_score)
         Dash.updatePlayer(updatedPlayers[0], user1.user_game_id).then(function(){
           Dash.updatePlayer(updatedPlayers[1], user2.user_game_id).then(function(){
-            res.redirect('/')
+            console.log(req.body.user1_id);
+            Dash.readUserId(req.body.user1_id).then(function(userStuff){
+              console.log(userStuff);
+              var userName = userStuff.rows[0].userName;
+              console.log(userName);
+              res.redirect('/' + userName)
+            })
           })
         })
       })
@@ -77,7 +83,10 @@ router.post('/addteamrecord', function(req, res, next){
         var updatedTeams = Two.runMath(team1, team2, req.body.team1_score, req.body.team2_score);
         Dash.updateTeam(updatedTeams[0], team1.team_game_id).then(function(){
           Dash.updateTeam(updatedTeams[1], team2.team_game_id).then(function(){
-            res.redirect('/bestplayer')
+            Dash.readTeamId(req.body.team1_id).then(function(teamStuff){
+              res.redirect('/' + teamStuff.rows[0].name)
+
+            })
           })
         })
       })
