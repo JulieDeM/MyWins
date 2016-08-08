@@ -6,11 +6,11 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
+
 var routes = require('./routes/index');
-var signup = require('./routes/signup');
-var dashboard = require('./routes/dashboard');
 var authRoutes = require('./routes/auth');
 var newgametypes = require('./routes/newgametypes')
+
 var FacebookStrategy = require('passport-facebook').Strategy;
 var passport = require('passport');
 var Signup = require('./lib/signup');
@@ -65,8 +65,6 @@ passport.deserializeUser(function(user, done) {
 
 app.use('/', routes);
 app.use('/auth', authRoutes);
-app.use('/signup', signup);
-app.use('/dashboard', dashboard);
 app.use('/newgame', newgametypes);
 
 
