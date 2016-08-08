@@ -76,9 +76,11 @@ router.get('/noSport', function(req,res,next){
 router.get('/loading', function(req,res,next){
   Dashboard.readUser(req.cookies.user).then(function(output){
     var info = output.rows[0]
+    // arr.push(info)
     var photo = info.image_url.replace('$1', '?');
-    console.log(output);
-    res.render('loadpage', {photo : photo, firstName : info.firstName, lastName : info.lastName, userName : info.userName})
+    // console.log(output);
+    res.render('loadpage', {photo : photo, firstName : info.firstName, lastName : info.lastName, userName : info.userName});
+    // setTimeout(function(){res.redirect("/demjules")}, 1000)
   })
 });
 

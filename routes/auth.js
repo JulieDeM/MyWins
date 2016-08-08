@@ -7,25 +7,47 @@ router.get('/facebook', passport.authenticate('facebook', {
     scope: 'public_profile'
 }));
 
-router.get('/profile', isLoggedIn, function(req, res) {
+// router.get('/profile', isLoggedIn, function(req, res) {
+//     res.cookie('user', req.user.id)
+//     Signup.findUser(req.user).then(function(user) {
+//         if (user.rows[0].userName === undefined) {
+//           console.log(user.rows[0].userName);
+//           var input = user.rows[0].image_url;
+//           var photo = input.replace('$1', '?');
+//             res.render('pageafterfb', {
+//                 user: user.rows[0],
+//                 photo: photo
+//             })
+//         } else {
+//             res.render('dash', {
+//                 user: user.rows[0],
+//                 photo: photo
+//             })
+//           }
+//     });
+// });
+
+
+ router.get('/profile', isLoggedIn, function(req, res) {
     res.cookie('user', req.user.id)
     Signup.findUser(req.user).then(function(user) {
-        if (user.rows[0].username === undefined) {
+      console.log(user.rows);
+        if (user.rows[0].userName === null || undefined) {
           var input = user.rows[0].image_url;
           var photo = input.replace('$1', '?');
             res.render('pageafterfb', {
                 user: user.rows[0],
                 photo: photo
             })
-            res.render
         } else {
-            res.render('dash', {
-                user: user.rows[0],
-                photo: photo
-            })
+            res.redirect(`/${user.rows[0].userName}`)
           }
     });
 });
+
+
+
+
 // router.get('/profile', isLoggedIn, function(req, res) {
 //     res.cookie('user', req.user.id)
 //     Signup.findUser(req.user).then(function(user) {

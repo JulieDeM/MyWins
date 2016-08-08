@@ -1,12 +1,14 @@
 doctype html
 html
   head
+    //- meta(http-equiv='refresh', content='10;url=http://www.somewhere.com/')
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/stylesheets/loadpagecss.css', media='screen', title='no title', charset='utf-8')
     title
   body
+    meta(http-equiv='refresh', content='3;url=/#{userName}')
     #banner
       header
       a(href='/')
@@ -23,7 +25,7 @@ html
                 h1 #{firstName} #{lastName}
             #username
               span#username2
-                p "#{userName}"
+                p #{userName}
             span#greencircle
               p#onehundred  100 
           .bottom
@@ -42,3 +44,7 @@ html
                 .loader--dot
                 .loader--text
     footer ©2016 mywins, inc
+    //- script.
+    //-       setTimeout(function() {
+    //-       res.redirect("/demjules")
+    //-       }, 3000);
