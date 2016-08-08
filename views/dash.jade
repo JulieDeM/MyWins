@@ -70,15 +70,16 @@ html
 												td #{index+1}
 												td #{stands.userName}
 												td #{stands.rating}
-		each team, index in teamStuff
-			.tab
+		each teams, index in teamStuff
+			p HELLO I AM HERE
+			.tab_teams
 				input(id='#{teams.type} + (index + 1)', type='radio', name='tabs')
 				label(for='#{teams.type} + (index + 1)', style='background:#{games.color};')
 					img(src='#{games.icons}', height='20', width='20')
 					| &nbsp; #{teams.type} #{teams.name}
-				.tab-content
-					.recordsAndStandings
-						.gameRecords
+				.tab-content_teams
+					.recordsAndStandings_teams
+						.gameRecords_teams
 							form(id = "addNewTeamGame" + (index+1), action='/addteamrecord', method='post')
 								select(name="team2_id")
 									for opp in allTeams
@@ -97,9 +98,9 @@ html
 												td #{allTeams[records.team1_id -1].name}
 												td #{records.team1_score} - #{records.team2_score}
 												td #{allTeams[records.team2_id -1].name}
-						.currentStandings
-							p.current current standings:
-							.currentTable
+						.currentStandings_teams
+							p.current_teams current standings:
+							.currentTable_teams
 								table
 									tbody
 										each teamstands, index in teamStandings
