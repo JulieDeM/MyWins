@@ -143,11 +143,10 @@ body{
 #quotes{
   margin-top: 1em;
   columns: 3;
-  column-width: 3em;
   flex-wrap: wrap;
   color: #4A4A4A;
   font-size: 20px;
-  padding-left: 3.5em;
+  padding-left: 7em;
   font-family: 'Varela Round', sans-serif;
 }
 p{
@@ -157,8 +156,8 @@ i{
   display: flex;
   flex-wrap: wrap;
   font-size: 60px;
-  margin-left: 4em;
-
+  margin-left: 4.5em;
+  font-size: 20px;
 }
 footer{
   background: #9b9b9b;

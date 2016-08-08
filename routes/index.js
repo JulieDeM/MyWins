@@ -70,16 +70,13 @@ router.get('/noSport', function(req, res, next) {
 router.get('/loading', function(req, res, next) {
     Dashboard.readUser(req.cookies.user).then(function(output) {
         var info = output.rows[0]
-            // arr.push(info)
         var photo = info.image_url.replace('$1', '?');
-        // console.log(output);
         res.render('loadpage', {
             photo: photo,
             firstName: info.firstName,
             lastName: info.lastName,
             userName: info.userName
         });
-        // setTimeout(function(){res.redirect("/demjules")}, 1000)
     })
 });
 //posting team game form to database
@@ -98,38 +95,46 @@ router.post('/:id/:gameid', function(req, res, next) {
             })
         })
     })
+
     // Ricky's work below
-router.get('/:username', function(req, res, next) {
-    var currUserID = req.cookies.user;
-    Dash.readUser(req.params.username).then(function(user) {
-        Dash.readGameTypes(user.rows[0].id).then(function(gametypes) {
-            Dash.readGameStats(user.rows[0].id).then(function(all) {
-                Dash.readGameRecords(user.rows[0].id).then(function(records) {
-                    Dash.readTeams(user.rows[0].id).then(function(teams) {
-                        Dash.readTeamRecords(user.rows[0].id).then(function(teamrecords) {
-                            Dash.readAllTeamNames().then(function(allTeams) {
-                                Dash.readAllUsers().then(function(allUsers) {
-                                    res.render('dash', {
-                                        currUserID: currUserID,
-                                        faveGame: user.rows[0].favorite_game_id,
-                                        userInfo: user.rows[0],
-                                        gameTypes: gametypes.rows,
-                                        gameStats: all.rows,
-                                        gameRecords: records.rows,
-                                        allUsers: allUsers.rows,
-                                        teamStuff: teams.rows,
-                                        teamRecords: teamrecords.rows,
-                                        allTeams: allTeams.rows
-                                    })
-                                })
-                            })
-                        })
-                    })
+ router.get('/:username', function(req, res, next) {
+     var currUserID = req.cookies.user;
+     Dash.readUser(req.params.username).then(function(user) {
+         Dash.readGameTypes(user.rows[0].id).then(function(gametypes) {
+             Dash.readGameStats(user.rows[0].id).then(function(all) {
+                 Dash.readGameRecords(user.rows[0].id).then(function(records) {
+                     Dash.readTeams(user.rows[0].id).then(function(teams) {
+                         Dash.readTeamRecords(user.rows[0].id).then(function(teamrecords) {
+                             Dash.readAllTeamNames().then(function(allTeams) {
+                                 Dash.readAllUsers().then(function(allUsers) {
+                                   Dash.readSingleGameStandings().then(function(singleStandings){
+                                     Dash.readTeamGameStandings().then(function(teamStandings){
+                                     res.render('dash', {
+                                         currUserID: currUserID,
+                                         faveGame: user.rows[0].favorite_game_id,
+                                         userInfo: user.rows[0],
+                                         gameTypes: gametypes.rows,
+                                         gameStats: all.rows,
+                                         gameRecords: records.rows,
+                                         allUsers: allUsers.rows,
+                                         teamStuff: teams.rows,
+                                         teamRecords: teamrecords.rows,
+                                         allTeams: allTeams.rows,
+                                         singleStandings: singleStandings.rows,
+                                         teamStandings: teamStandings.rows
+                                     })
+                                 })
+                             })
+                         })
+                     })
+                 })
                 })
-            })
-        });
-    })
-});
+              })
+             })
+         });
+     })
+ });
+
 router.post('/addrecord', function(req, res, next) {
     Dash.createGameRecord(
         req.body.game_id, req.body.user1_id, req.body.user2_id, req.body.user1_score, req.body.user2_score
