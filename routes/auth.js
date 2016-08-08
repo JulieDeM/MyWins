@@ -7,31 +7,9 @@ router.get('/facebook', passport.authenticate('facebook', {
     scope: 'public_profile'
 }));
 
-// router.get('/profile', isLoggedIn, function(req, res) {
-//     res.cookie('user', req.user.id)
-//     Signup.findUser(req.user).then(function(user) {
-//         if (user.rows[0].userName === undefined) {
-//           console.log(user.rows[0].userName);
-//           var input = user.rows[0].image_url;
-//           var photo = input.replace('$1', '?');
-//             res.render('pageafterfb', {
-//                 user: user.rows[0],
-//                 photo: photo
-//             })
-//         } else {
-//             res.render('dash', {
-//                 user: user.rows[0],
-//                 photo: photo
-//             })
-//           }
-//     });
-// });
-
-
  router.get('/profile', isLoggedIn, function(req, res) {
     res.cookie('user', req.user.id)
     Signup.findUser(req.user).then(function(user) {
-      console.log(user.rows);
         if (user.rows[0].userName === null || undefined) {
           var input = user.rows[0].image_url;
           var photo = input.replace('$1', '?');
@@ -45,24 +23,6 @@ router.get('/facebook', passport.authenticate('facebook', {
     });
 });
 
-
-
-
-// router.get('/profile', isLoggedIn, function(req, res) {
-//     res.cookie('user', req.user.id)
-//     Signup.findUser(req.user).then(function(user) {
-//       console.log(user.rows[0]);
-//         if (user.rows[0].username === undefined) {
-//             res.render('loadpage', {
-//                 user: user.rows[0]
-//             })
-//         } else {
-//             res.render('profile', {
-//                 user: req.user
-//             })
-//           }
-//     });
-// });
 router.get('/facebook/callback',
     passport.authenticate('facebook', {
         failureRedirect: '/'
@@ -72,6 +32,7 @@ router.get('/facebook/callback',
     });
 
 router.get('/logout', function(req, res) {
+    res.clearCookie('user');
     req.logout();
     req.session.destroy(function(err) {
         res.redirect('/');

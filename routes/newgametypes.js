@@ -6,11 +6,11 @@ var One = require('../lib/one_v_one');
 var queries = require('../lib/queries');
 
 //posting individual game form to database
-// router.post('/:username', function(req, res, next){
-//   Dash.createGameType(req.params.username, req.body.userid, req.body.sport).then(function(){
-//       res.redirect('/:username')
-//     })
-// })
+router.post('/:username', function(req, res, next){
+  Dash.createGameType(req.params.username, req.body.userid, req.body.sport).then(function(){
+      res.redirect('/:username')
+    })
+})
 
 //posting team game form to database
 router.post('/:username', function(req,res,next){

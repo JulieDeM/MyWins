@@ -109,7 +109,7 @@ router.get('/:username', function(req, res, next) {
                         Dash.readTeamRecords(user.rows[0].id).then(function(teamrecords) {
                             Dash.readAllTeamNames().then(function(allTeams) {
                                 Dash.readAllUsers().then(function(allUsers) {
-                                    res.render('dashboard_final', {
+                                    res.render('dash', {
                                         currUserID: currUserID,
                                         faveGame: user.rows[0].favorite_game_id,
                                         userInfo: user.rows[0],
