@@ -39,7 +39,7 @@ app.use(passport.session());
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_CLIENT_ID,
     clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-    callbackURL: process.env.HOST + "/auth/facebook/callback",
+    callbackURL: "/auth/facebook/callback",
     redirect: false,
     profileFields: ['id', 'name', 'picture.type(large)']
   },
