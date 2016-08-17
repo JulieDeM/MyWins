@@ -7,7 +7,6 @@ var Edit = require('../lib/editlogic');
 var Dashboard = require('../lib/queries')
 var Val = require('../lib/formValidation')
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
     res.render('splashpage');
 });
@@ -41,7 +40,6 @@ router.post('/validate', function(req, res, next) {
                         res.redirect('/loading')
                     })
                 } else {
-                    console.log("That username has been taken!");
                     res.redirect('/takenUserName')
                 }
             })
@@ -102,14 +100,13 @@ router.post('/addgametypeteam', function(req, res, next) {
 
     //change favorite game
 router.post('/:id/:gameid', function(req, res, next) {
-        Edit.changeFavorite(req.params.id, req.params.gameid).then(function() {
-            Edit.getUserName(req.cookies.user).then(function(user) {
-                res.redirect(`/${user.rows[0].userName}`)
-            })
+    Edit.changeFavorite(req.params.id, req.params.gameid).then(function() {
+        Edit.getUserName(req.cookies.user).then(function(user) {
+            res.redirect(`/${user.rows[0].userName}`)
         })
     })
+})
 
-    // Ricky's work below
  router.get('/:username', function(req, res, next) {
      var currUserID = req.cookies.user;
      Dash.readUser(req.params.username).then(function(user) {
@@ -144,12 +141,12 @@ router.post('/:id/:gameid', function(req, res, next) {
                          })
                      })
                  })
-                })
               })
-             })
-         });
-     })
- });
+            })
+        });
+    })
+  });
+});
 
 router.post('/addrecord', function(req, res, next) {
     Dash.createGameRecord(

@@ -24,92 +24,92 @@ html
 				//- p(style="font-size: 5em; margin-top:-25%;") 108
 				p(style="font-size: 5em; margin-top:-25%;") #{gameStats[0].rating}
 				br
+				p(style="margin-top: -15%; margin-left:28%;") 3rd place
 		.tab-group
 		each game, index in gameTypes
 			.tab
-				input(id='tab + (index + 1)', type='radio', name='tabs')
-				label(for='tab + (index + 1)')
+				input(id='#{game.type} + (index + 1)', type='radio', name='tabs')
+				label(for='#{game.type} + (index + 1)', style='background:#{game.color};')
 					img(src='#{game.icons}', height='20', width='20')
 					| &nbsp; #{game.type}
-				.tab-content
-					.recordsAndStandings
-						.gameRecords
-							form(id = "addNewGame" + (index+1), action='/addrecord', method='post')
-								select(name='user2_id')
-									for opponent in allUsers
-										if userInfo.id !== opponent.id
-											option(value='#{opponent.id}') #{opponent.userName}
-								input(type="text", name="game_id", style={display:'none'}, value="#{game.game_id}")
-								input(type="text", name="user1_id", style={display:'none'}, value="#{userInfo.id}")
-								input(type="number", name="user1_score", placeholder="your score")
-								input(type="number", name="user2_score", placeholder="opponent's score")
-								input(type="submit")
+			.tab-content
+				.recordsAndStandings
+					.gameRecords
+						form(id = "addNewGame" + (index+1), action='/addrecord', method='post')
+							select
+								for opponent in allUsers
+									if userInfo.id !== opponent.id
+										option(value='#{opponent.id}') #{opponent.userName}
+							input(type="text", name="game_id", style={display:'none'}, value="#{game.game_id}")
+							input(type="text", name="user1_id", style={display:'none'}, value="#{userInfo.id}")
+							input(type="number", name="user1_score", placeholder="your score")
+							input(type="number", name="user2_score", placeholder="opponent's score")
+							input(type="submit")
+						table
+							tbody
+								each record in gameRecords
+									if record.game_id === game.game_id
+										if record.user1_id === userInfo.id && userInfo.userName !== record.userName
+											tr
+												td #{userInfo.userName}
+												td #{record.user1_score} - #{record.user2_score}
+												td #{record.userName}
+										else if userInfo.userName !== record.userName
+											tr
+												td #{record.userName}
+												td #{record.user1_score} - #{record.user2_score}
+												td #{userInfo.userName}
+					.currentStandings
+						p.current current standings:
+						.currentTable
 							table
 								tbody
-									each record in gameRecords
-										if record.game_id === game.game_id
-											if record.user1_id === userInfo.id && userInfo.userName !== record.userName
-												tr
-													td #{userInfo.userName}
-													td #{record.user1_score} - #{record.user2_score}
-													td #{record.userName}
-											else if userInfo.userName !== record.userName
-												tr
-													td #{record.userName}
-													td #{record.user1_score} - #{record.user2_score}
-													td #{userInfo.userName}
-						.currentStandings
-							p.current current standings:
-							.currentTable
-								table
-									tbody
-										each stands, index in singleStandings
-											if(index == 10)
-												-break
-											tr
-												td #{index+1}
-												td #{stands.userName}
-												td #{stands.rating}
-		each teams, index in teamStuff
-			p HELLO I AM HERE
-			.tab_teams
-				input(id='tab + (index + 1)', type='radio', name='tabs')
-				label(for='tab + (index + 1)')
+									each stands, index in singleStandings
+										if(index == 10)
+											-break
+										tr
+											td #{index+1}
+											td #stands.userName
+											td #{stands.rating}
+		each team, index in teamStuff
+			.tab
+				input(id='#{teams.type} + (index + 1)', type='radio', name='tabs')
+				label(for='#{teams.type} + (index + 1)', style='background:#{games.color};')
 					img(src='#{games.icons}', height='20', width='20')
 					| &nbsp; #{teams.type} #{teams.name}
-				.tab-content_teams
-					.recordsAndStandings_teams
-						.gameRecords_teams
-							form(id = "addNewTeamGame" + (index+1), action='/addteamrecord', method='post')
-								select(name="team2_id")
-									for opp in allTeams
-										if teams.team_id !== opp.id
-											option(value='#{opp.id}') #{opp.name}
-								input(type="text", name="game_id", style={display: 'none'}, value="#{teams.game_id}")
-								input(type="text", name="team1_id", style={display: 'none'}, value="#{teams.team_id}")
-								input(type="number", name="team1_score", placeholder="your team's score")
-								input(type="number", name="team2_score", placeholder="opponent's score")
-								input(type="submit")
+			.tab-content
+				.recordsAndStandings
+					.gameRecords
+						form(id = "addNewTeamGame" + (index+1), action='/addteamrecord', method='post')
+							select
+								for opp in allTeams
+									if teams.team_id !== opp.id
+										option(value='#{opp.id}') #{opp.name}
+							input(type="text", name="game_id", style={display: 'none'}, value="#{teams.game_id}")
+							input(type="text", name="team1_id", style={display: 'none'}, value="#{teams.team_id}")
+							input(type="number", name="team1_score", placeholder="your team's score")
+							input(type="number", name="team2_score", placeholder="opponent's score")
+							input(type="submit")
+						table
+							tbody
+								each records in teamRecords
+									if records.game_id === teams.game_id && (teams.name === records.name)
+										tr
+											td #{allTeams[records.team1_id -1].name}
+											td #{records.team1_score} - #{records.team2_score}
+											td #{allTeams[records.team2_id -1].name}
+					.currentStandings
+						p.current current standings:
+						.currentTable
 							table
 								tbody
-									each records in teamRecords
-										if records.game_id === teams.game_id && (teams.name === records.name)
-											tr
-												td #{allTeams[records.team1_id -1].name}
-												td #{records.team1_score} - #{records.team2_score}
-												td #{allTeams[records.team2_id -1].name}
-						.currentStandings_teams
-							p.current_teams current standings:
-							.currentTable_teams
-								table
-									tbody
-										each teamstands, index in teamStandings
-											if(index == 10)
-												-break
-											tr
-												td #{index+1}
-												td #{teamstands.name}
-												td #{teamstands.teamRating}
+									each teamstands, index in teamStandings
+										if(index == 10)
+											-break
+										tr
+											td #{index+1}
+											td #{teamstands.name}
+											td #{teamstands.teamRating}
 
 		.tab-group.second
 			.tab.newGame
@@ -162,7 +162,6 @@ html
 							img.color(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/cards-color.png?alt=media&token=1df43d3a-b007-498f-96ec-7b013bf69c29')
 							img.white(src='https://firebasestorage.googleapis.com/v0/b/test-project-2e540.appspot.com/o/cards-white.png?alt=media&token=4ad90906-8ef8-4b5a-b343-8a43b3b78347')
 							|     Cards
-						//- input(type="text", name="user_id", value="#{userInfo.id}", hidden)
 						input(type="text", name="user1_id", style={display:'none'}, value="#{userInfo.id}")
 						input(type="submit")
 
@@ -230,6 +229,5 @@ html
 										//- option(value='#{user.id}') #{user.name}
 								input(type="text", name="user1_id", style={display:'none'}, value="#{userInfo.id}")
 								input(type='text', name='teamName', placeholder='create team name', required='')
-								//- br
 								input(type='submit')
 		footer ©2016 mywins, inc
