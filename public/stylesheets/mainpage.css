@@ -7,7 +7,7 @@
   }
 }
 /* For desktop: */
-.col-1 {width: 8.33%;}
+/*.col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
 .col-4 {width: 33.33%;}
@@ -18,14 +18,14 @@
 .col-9 {width: 75%;}
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
-
+.col-12 {width: 100%;}*/
+/*
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    [class*="col-"] {
+    /*[class*="col-"] {
         width: 100%;
     }
-}
+}*/
 body{
   margin: 0px;
   padding: 0px;
@@ -142,6 +142,7 @@ body{
 }
 #quotes{
   margin-top: 1em;
+  margin-bottom: 0.5em;
   columns: 3;
   flex-wrap: wrap;
   color: #4A4A4A;
