@@ -6,7 +6,7 @@ exports.up = function(knex, Promise) {
     t.string('firstName');
     t.string('lastName');
     t.string('fb_uid');
-    t.integer('favorite_game_id').references('id').inTable('games');
+    t.integer('favorite_game_id').references('games.id');
     t.timestamps();
   })
 };
