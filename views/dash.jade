@@ -64,11 +64,17 @@ html
                             .currentTable
                                 table
                                     tbody
-                                        each stands, index in singleStandings
-                                          if stands.game_id === game.game_id
-                                            tr
-                                              td #{stands.userName}
-                                              td #{stands.rating}
+                                        -var counter = 0
+                                            each stands, index in singleStandings
+                                                if stands.game_id === game.game_id
+                                                    -function inc(){counter +=1}
+                                                    -inc()
+                                                    if(index == 10)
+                                                        -break
+                                                    tr
+                                                        td #{counter}
+                                                        td #{stands.userName}
+                                                        td #{stands.rating}
         each team, index in teamStuff
             .tab
                 input(id='#{teams.type} + (index + 1)', type='radio', name='tabs')
