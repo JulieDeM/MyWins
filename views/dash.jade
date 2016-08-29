@@ -77,8 +77,8 @@ html
                                                         td #{stands.rating}
         each teams, index in teamStuff
             .tab
-                input(id='#{teams.type} + (index + 1)', type='radio', name='tabs')
-                label(for='#{teams.type} + (index + 1)', style='background:#{teams.colors};')
+                input(id='team#{teams.type} + (index + 1)', type='radio', name='tabs')
+                label(for='team#{teams.type} + (index + 1)', style='background:#{teams.colors};')
                     img(src='#{teams.icons}', height='20', width='20')
                     | &nbsp; #{teams.type} #{teams.name}
                 .tab-content
