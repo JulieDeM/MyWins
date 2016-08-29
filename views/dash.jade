@@ -75,11 +75,11 @@ html
                                                         td #{counter}
                                                         td #{stands.userName}
                                                         td #{stands.rating}
-        each team, index in teamStuff
+        each teams, index in teamStuff
             .tab
                 input(id='#{teams.type} + (index + 1)', type='radio', name='tabs')
-                label(for='#{teams.type} + (index + 1)', style='background:#{game.colors};')
-                    img(src='#{games.icons}', height='20', width='20')
+                label(for='#{teams.type} + (index + 1)', style='background:#{teams.colors};')
+                    img(src='#{teams.icons}', height='20', width='20')
                     | &nbsp; #{teams.type} #{teams.name}
                 .tab-content
                     .recordsAndStandings
