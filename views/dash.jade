@@ -24,7 +24,7 @@ html
                 //- p(style="font-size: 5em; margin-top:-25%;") 108
                 p(style="font-size: 5em; margin-top:-25%;") #{gameStats[0].rating}
                 br
-                p(style="margin-top: -15%; margin-left:28%;") 3rd place
+                p(style="margin-top: -15%; margin-left:28%;")
         .tab-group
         each game, index in gameTypes
             .tab
@@ -42,8 +42,8 @@ html
                                             option(value='#{opponent.id}') #{opponent.userName}
                                 input(type="text", name="game_id", style={display:'none'}, value="#{game.game_id}")
                                 input(type="text", name="user1_id", style={display:'none'}, value="#{userInfo.id}")
-                                input(type="number", name="user1_score", placeholder="your score")
-                                input(type="number", name="user2_score", placeholder="opponent's score")
+                                input(type="number", name="user1_score", placeholder="your score", min="0")
+                                input(type="number", name="user2_score", placeholder="opponent's score", min="0")
                                 input(type="submit")
                             table
                                 tbody
@@ -87,8 +87,8 @@ html
                                             option(value='#{opp.id}') #{opp.name}
                                 input(type="text", name="game_id", style={display: 'none'}, value="#{teams.game_id}")
                                 input(type="text", name="team1_id", style={display: 'none'}, value="#{teams.team_id}")
-                                input(type="number", name="team1_score", placeholder="your team's score")
-                                input(type="number", name="team2_score", placeholder="opponent's score")
+                                input(type="number", name="team1_score", placeholder="your team's score", min="0")
+                                input(type="number", name="team2_score", placeholder="opponent's score", min="0")
                                 input(type="submit")
                             table
                                 tbody
