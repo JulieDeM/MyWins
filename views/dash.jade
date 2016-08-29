@@ -36,7 +36,7 @@ html
                     .recordsAndStandings
                         .gameRecords
                             form(id = "addNewGame" + (index+1), action='/addrecord', method='post')
-                                select
+                                select(name="user2_id")
                                     for opponent in allUsers
                                         if userInfo.id !== opponent.id
                                             option(value='#{opponent.id}') #{opponent.userName}
