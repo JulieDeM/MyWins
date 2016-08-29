@@ -29,7 +29,7 @@ html
         each game, index in gameTypes
             .tab
                 input(id='#{game.type} + (index + 1)', type='radio', name='tabs')
-                label(for='#{game.type} + (index + 1)', style='background:#{game.color};')
+                label(for='#{game.type} + (index + 1)', style='background:#{game.colors};')
                     img(src='#{game.icons}', height='20', width='20')
                     | &nbsp; #{game.type}
                 .tab-content
@@ -72,7 +72,7 @@ html
         each team, index in teamStuff
             .tab
                 input(id='#{teams.type} + (index + 1)', type='radio', name='tabs')
-                label(for='#{teams.type} + (index + 1)', style='background:#{games.color};')
+                label(for='#{teams.type} + (index + 1)', style='background:#{game.colors};')
                     img(src='#{games.icons}', height='20', width='20')
                     | &nbsp; #{teams.type} #{teams.name}
                 .tab-content

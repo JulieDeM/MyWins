@@ -140,7 +140,7 @@ p{
 .loader--dot {
   animation-name: loader;
   animation-timing-function: ease-in-out;
-  animation-duration: 3s;
+  animation-duration: 7s;
   animation-iteration-count: infinite;
   height: 20px;
   width: 20px;
@@ -185,7 +185,7 @@ p{
   content: "Loading";
   font-weight: bold;
   animation-name: loading-text;
-  animation-duration: 3s;
+  animation-duration: 7s;
   animation-iteration-count: infinite;
 }
 @keyframes loader {

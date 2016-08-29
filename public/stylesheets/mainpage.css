@@ -31,6 +31,7 @@ body{
   padding: 0px;
   max-width: 1800px;
   width: 100%;
+  height: 100%;
 }
 #main-image{
   background-image: url(/images/players_BG@3x.png);
@@ -142,7 +143,7 @@ body{
 }
 #quotes{
   margin-top: 1em;
-  margin-bottom: 0.5em;
+  /*margin-bottom: 0.5em;*/
   columns: 3;
   flex-wrap: wrap;
   color: #4A4A4A;
