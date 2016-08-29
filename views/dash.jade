@@ -107,13 +107,18 @@ html
                             .currentTable
                                 table
                                     tbody
-                                        each teamstands, index in teamStandings
-                                            if(index == 10)
-                                                -break
-                                            tr
-                                                td #{index+1}
-                                                td #{teamstands.name}
-                                                td #{teamstands.teamRating}
+                                        -var counter = 0
+                                            each teamstands, index in teamStandings
+                                                if teamstands.game_id === teams.game_id
+                                                    -function inc(){counter +=1}
+                                                    -inc()
+                                                    if(index == 10)
+                                                        -break
+                                                    tr
+                                                        td #{counter}
+                                                        td #{teamstands.name}
+                                                        td #{teamstands.teamRating}
+
 
         .tab-group.second
             .tab.newGame
