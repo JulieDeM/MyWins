@@ -65,12 +65,10 @@ html
                                 table
                                     tbody
                                         each stands, index in singleStandings
-                                            if(index == 10)
-                                                -break
+                                          if stands.game_id === game.game_id
                                             tr
-                                                td #{index+1}
-                                                td #{stands.userName}
-                                                td #{stands.rating}
+                                              td #{stands.userName}
+                                              td #{stands.rating}
         each team, index in teamStuff
             .tab
                 input(id='#{teams.type} + (index + 1)', type='radio', name='tabs')

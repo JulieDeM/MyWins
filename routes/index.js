@@ -121,6 +121,8 @@ router.post('/:id/:gameid', function(req, res, next) {
                                      Dash.readTeamGameStandings().then(function(teamStandings){
                                        var input = user.rows[0].image_url;
                                        var photo = input.replace('$1', '?');
+                                       console.log('***********');
+                                       console.log(singleStandings.rows);
                                      res.render('dash', {
                                         photo: photo,
                                          currUserID: currUserID,
