@@ -6,8 +6,8 @@
     display: none;
   }
 }
-/* For desktop: */
-/*.col-1 {width: 8.33%;}
+ For desktop: */
+.col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
 .col-4 {width: 33.33%;}
@@ -18,28 +18,39 @@
 .col-9 {width: 75%;}
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
-.col-12 {width: 100%;}*/
-/*
+.col-12 {width: 100%;}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    /*[class*="col-"] {
+    [class*="col-"] {
         width: 100%;
     }
-}*/
+    [#main-image]{
+      width: 100%;
+      height: 70em;
+      background-repeat:no-repeat;
+    }
+
+}
 body{
   margin: 0px;
   padding: 0px;
   max-width: 1800px;
   width: 100%;
-  height: 100%;
+  height: 97%;
+  max-height: 100%;
 }
 #main-image{
   background-image: url(/images/players_BG@3x.png);
-  width:100%;
-  height: 37em;
-  /*max-height: 100%;*/
-  max-width: 1800px;
+  width: 100%;
+  height: 40em;
+  max-height: 100%;
+  position: relative;
+  /*max-width: 1800px;*/
+  /*width: 100%;
+  height: auto;*/
   background-size: contain;
+  background-repeat:no-repeat;
 }
 #banner{
   width: 100%;
@@ -62,13 +73,9 @@ body{
   background-size: contain;
 }
 #left{
-  margin-left: 10em;
-  margin-top: 15em;
-  margin-right: 10em;
-  border-color: blue;
-}
-#rightside{
-  display: flex;
+  margin-left: 10%;
+  margin-top: 16%;
+  margin-right: 10%;
 }
 #right{
   background-size: contain;
@@ -89,51 +96,56 @@ body{
 }
 #gameon{
   color: #FFFFFF;
-  margin-left: 12em;
-  padding-top: 0.3em;
+  margin-left: 40%;
+  padding-top: 0.6em;
   font-size: 20px;
 }
 /* Kick butt: */
 .kick-butt{
   font-size: 36px;
+  font-size: 2.5vw;
   color: #FFFFFF;
   letter-spacing: -0.09px;
   margin: 0;
   padding: 0;
+  word-wrap: normal;
 }
 #question{
   font-size: 30px;
+  font-size: 1.5vw;
   letter-spacing: -0.09px;
   padding: 10px;
-  padding-left: 3em;
+  padding-left: 4em;
   margin-top: 13px;
 }
 #loginfb{
   width: 20em;
   height: 5em;
   font-size: 20px;
+  font-size: 1.5vw;
   color: #FFFFFF;
   background-color: #34AADC;
   border-radius: 8px;
-  margin: 30px 5px 0px 80px;
+  margin: 1em .5em 0px 1em;
   opacity: 1;
   text-decoration: none;
+  background-size: contain;
 }
 #loginfb:hover{
     opacity:0.8;
   }
-#fbook{
-  width: 35px;
-  height: 60px;
-  margin-top: 14px;
-  margin-left: 2em;
-  border-radius: 5%;
-  align-content: center;
+#fbook {
+    width: 2em;
+    height: 3em;
+    margin-top: 1em;
+    margin-left: 2em;
+    border-radius: 5%;
+    align-content: center;
 }
 #log{
   float: right;
   margin-right:3em;
-  margin-top: 1em;
+  margin-top: 1.5em;
 }
 #containquotes{
   display: flex;
@@ -142,12 +154,14 @@ body{
   align-content: center;
 }
 #quotes{
-  margin-top: 1em;
-  /*margin-bottom: 0.5em;*/
+  margin-top: 2em;
+  position: relative;
+  margin-bottom: -1em;
   columns: 3;
   flex-wrap: wrap;
   color: #4A4A4A;
   font-size: 20px;
+  font-size: 1.5vw;
   padding-left: 7em;
   font-family: 'Varela Round', sans-serif;
 }
@@ -172,5 +186,5 @@ footer{
   left:0px;
   text-align: center;
   line-height: 3em;
-  margin-top: 10%;
+  margin-top: 3.5%;
 }
