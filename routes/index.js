@@ -78,11 +78,14 @@ router.get('/loading', function(req, res, next) {
     });
   })
 });
-//posting team game form to database
+
 router.post('/addgametype', function(req, res, next) {
   Dash.createGameType(req.body.user1_id, req.body.sport).then(function() {
     Edit.getUserName(req.cookies.user).then(function(user) {
-      res.redirect(`/${user.rows[0].userName}`)
+      Dash.addStats(req.body.user1_id, req.body.sport).then(function(){
+        console.log(req.body.sport);
+        res.redirect(`/${user.rows[0].userName}`)
+      })
     })
   })
 })
@@ -192,6 +195,7 @@ router.post('/addteamrecord', function(req, res, next) {
   Dash.createGameRecordTeam(
     req.body.game_id, req.body.team1_id, req.body.team2_id, req.body.team1_score, req.body.team2_score
   ).then(function() {
+    console.log(req.body.team2_score);
     Dash.readTeamStats(req.body.team1_id, req.body.game_id).then(function(results1) {
       Dash.readTeamStats(req.body.team2_id, req.body.game_id).then(function(results2) {
         var team1 = results1.rows[0];
@@ -200,7 +204,8 @@ router.post('/addteamrecord', function(req, res, next) {
         Dash.updateTeam(updatedTeams[0], team1.team_game_id).then(function() {
           Dash.updateTeam(updatedTeams[1], team2.team_game_id).then(function() {
             Dash.readTeamId(req.body.team1_id).then(function(teamStuff) {
-              res.redirect('/' + teamStuff.rows[0].name)
+              console.log(teamStuff.rows[0].name);
+              res.redirect('/' + req.body.user1_id)
             })
           })
         })

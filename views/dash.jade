@@ -85,10 +85,11 @@ html
                     .recordsAndStandings
                         .gameRecords
                             form(id = "addNewTeamGame" + (index+1), action='/addteamrecord', method='post')
-                                select
+                                select(name="team2_id")
                                     for opp in allTeams
                                         if teams.team_id !== opp.id
                                             option(value='#{opp.id}') #{opp.name}
+                                input(type="text", name="user1_id", style={display: 'none'}, value="#{userInfo.userName}")
                                 input(type="text", name="game_id", style={display: 'none'}, value="#{teams.game_id}")
                                 input(type="text", name="team1_id", style={display: 'none'}, value="#{teams.team_id}")
                                 input(type="number", name="team1_score", placeholder="your team's score", min="0")
@@ -227,7 +228,7 @@ html
                             |     Cards
                         .createTeam
                             br
-                            p select a teammate:  
+                            p select a teammate:
                             br
                             .styleSelect
                                 select(name="user2_id")
