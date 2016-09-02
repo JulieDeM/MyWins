@@ -1,13 +1,15 @@
 doctype html
 html
   head
-    meta(charset='utf-8')
+    //- meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     script(src='https://use.fontawesome.com/e6e5153879.js')
     link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
     link(rel='stylesheet', href='/stylesheets/mainpage.css', media='screen', title='no title', charset='utf-8')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
     title
   body
+<<<<<<< HEAD
     #banner
       header
         a(href='/')
@@ -22,6 +24,20 @@ html
           br
           p.kick-butt And keep track of it all.
         div
+=======
+    #container
+      #banner
+        header
+          a(href='/')
+          img#logo(src='/images/mywinslogo@1x.png', alt='mywins')
+          a#signin(href='/auth/facebook') sign in
+      #main-image
+        .bothlandf
+          #left
+            p.kick-butt Kick butt.
+            p.kick-butt Take names.
+            p.kick-butt And keep track of it all.
+>>>>>>> f1aa0c8340fe16f838952cbc0ab450b8201f42df
           #right
             #yellow
               #gameon
@@ -32,6 +48,7 @@ html
                 img#fbook(src='/images/f.png', hspace='20')
                 #log
                   p Sign Up with Facebook
+<<<<<<< HEAD
     #quotes
       i.fa.fa-users(aria-hidden='true')
       p  Compete with your friends
@@ -42,3 +59,15 @@ html
       i.fa.fa-bar-chart
       p See where you stand
     footer ©2016 mywins, inc
+=======
+      #quotes
+        i.fa.fa-users(aria-hidden='true')
+        p  Compete with your friends
+      
+        i.fa.fa-trophy(aria-hidden='true')
+        p Keep track of your wins
+      
+        i.fa.fa-bar-chart
+        p See where you stand
+      footer ©2016 mywins, inc
+>>>>>>> f1aa0c8340fe16f838952cbc0ab450b8201f42df

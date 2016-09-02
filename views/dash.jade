@@ -75,20 +75,21 @@ html
                                                         td #{counter}
                                                         td #{stands.userName}
                                                         td #{stands.rating}
-        each team, index in teamStuff
+        each teams, index in teamStuff
             .tab
-                input(id='#{teams.type} + (index + 1)', type='radio', name='tabs')
-                label(for='#{teams.type} + (index + 1)', style='background:#{game.colors};')
-                    img(src='#{games.icons}', height='20', width='20')
+                input(id='team#{teams.type} + (index + 1)', type='radio', name='tabs')
+                label(for='team#{teams.type} + (index + 1)', style='background:#{teams.colors};')
+                    img(src='#{teams.icons}', height='20', width='20')
                     | &nbsp; #{teams.type} #{teams.name}
                 .tab-content
                     .recordsAndStandings
                         .gameRecords
                             form(id = "addNewTeamGame" + (index+1), action='/addteamrecord', method='post')
-                                select
+                                select(name="team2_id")
                                     for opp in allTeams
                                         if teams.team_id !== opp.id
                                             option(value='#{opp.id}') #{opp.name}
+                                input(type="text", name="user1_id", style={display: 'none'}, value="#{userInfo.userName}")
                                 input(type="text", name="game_id", style={display: 'none'}, value="#{teams.game_id}")
                                 input(type="text", name="team1_id", style={display: 'none'}, value="#{teams.team_id}")
                                 input(type="number", name="team1_score", placeholder="your team's score", min="0")
@@ -107,13 +108,18 @@ html
                             .currentTable
                                 table
                                     tbody
-                                        each teamstands, index in teamStandings
-                                            if(index == 10)
-                                                -break
-                                            tr
-                                                td #{index+1}
-                                                td #{teamstands.name}
-                                                td #{teamstands.teamRating}
+                                        -var counter = 0
+                                            each teamstands, index in teamStandings
+                                                if teamstands.game_id === teams.game_id
+                                                    -function inc(){counter +=1}
+                                                    -inc()
+                                                    if(index == 10)
+                                                        -break
+                                                    tr
+                                                        td #{counter}
+                                                        td #{teamstands.name}
+                                                        td #{teamstands.teamRating}
+
 
         .tab-group.second
             .tab.newGame
@@ -222,7 +228,7 @@ html
                             |     Cards
                         .createTeam
                             br
-                            p select a teammate:  
+                            p select a teammate:
                             br
                             .styleSelect
                                 select(name="user2_id")
