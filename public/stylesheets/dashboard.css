@@ -44,6 +44,7 @@ header{
 }
 .userNames{
   margin-top: -3%;
+  margin-left: 10%;
 }
 .tab{
   background-color: #e8e8e8;
@@ -61,7 +62,10 @@ header{
   background-color: white;
   border-radius: 3px;
   padding: 5px;
-  width: 40%;
+  width: 45%;
+}
+.gameRecords select{
+  width: 35%;
 }
 button {
   margin-left: 31%;
@@ -92,6 +96,7 @@ input[type=submit]{
   background-color: #34AADC;
   color: white;
   border: none;
+  min-width: 15%;
 }
 .gameRecords table{
   margin-top: 1%;
@@ -100,20 +105,23 @@ input[type=submit]{
   background-color: white;
   border-radius: 3px;
   padding: 5px;
-  width: 40%;
+  width: 45%;
   margin-left: 5%;
+  display: flex;
+  flex-direction: column;
 }
 .current{
+  align-self: center;
   margin-top: 2px;
-  margin-left: 35%;
+  width: 100%;
+  text-align: center;
 }
-.currentStandings table{
-  margin: 3% 0% 2% 3%;
+.currentTable{
+  width: 100%
 }
 table{
   display: flex;
   justify-content: space-around;
-  width: 25em;
 }
 td{
   padding: 5px 12px;
@@ -125,7 +133,7 @@ td{
   align-content: space-around;
 }
 .newGames{
-  height: 15em;
+  height: 21em;
   background: white;
   border-radius: 0px 0px 5px 5px;
 }
@@ -143,6 +151,11 @@ td{
 }
 .createTeam input{
   margin-top: 1em;
+  height: 21px;
+}
+.createTeam select{
+  width: 50%;
+  margin-right: 3%;
 }
 .styled-select {
   width: 240px;

@@ -14,14 +14,12 @@ html
             a#signout(href='/auth/logout') sign out
         .userData
             .userImg
-                //- img(src='http://static.boredpanda.com/blog/wp-content/uploads/2016/04/beautiful-fluffy-cat-british-longhair-13.jpg', alt='', height='130', width='130')
                 img(src='#{photo}', alt='#{userInfo.userName}', height='130', width='130')
             .userNames
                 p(style="margin-left:-275%; margin-top:-10%;") #{userInfo.userName}
                 br
                 p(style="margin-left:-275%; margin-top: -25%;") #{userInfo.firstName} #{userInfo.lastName}
             .score
-                //- p(style="font-size: 5em; margin-top:-25%;") 108
                 p(style="font-size: 5em; margin-top:-25%;") #{gameStats[0].rating}
                 br
                 p(style="margin-top: -15%; margin-left:28%;")
@@ -235,8 +233,6 @@ html
                                     for opponent in allUsers
                                         if userInfo.id !== opponent.id
                                             option(value='#{opponent.id}') #{opponent.userName}
-                                        //-each team in teams make an option
-                                        //- option(value='#{user.id}') #{user.name}
                                 input(type="text", name="user1_id", style={display:'none'}, value="#{userInfo.id}")
                                 input(type='text', name='teamName', placeholder='create team name', required='')
                                 input(type='submit')
