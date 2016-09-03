@@ -1,17 +1,17 @@
 * {
-    box-sizing: border-box;
-}
-body{
+  box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  max-width: 1800px;
+  max-width: 100%;
+  max-height: 100%;
 }
 #main-image{
   background-image: url(/images/add_username_bg.png);
-  width:100%;
-  height: 755px;
-  max-height: 755px;
-  max-width: 1800px;
+  /*width:100%;*/
+  max-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
   background-size: contain;
 }
 #banner{
@@ -24,16 +24,21 @@ body{
 }
 .bothlandf{
   display: flex;
+  justify-content: center;
+  align-content: center;
 }
 #whitebox{
   background-color: white;
-  width: 55em;
-  height: 35em;
+  width: 75%;
+  height: 65%;
   float: right;
-  margin-left: 18em;
-  margin-top: 6em;
+  margin-top: 9%;
   border-radius: 8px;
   border-color: purple;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
 #username{
   color: #9B9B9B;
@@ -44,20 +49,14 @@ body{
 }
 #userpics{
   float: left;
-  border-radius: 50%;
   height: 7em;
   width: 7em;
-  margin-left: -1em;
-  margin-top: -1em;
+  border-radius: 50%;
+  margin-top: 10%;
+  margin-left: 15%;
   /*margin: 0.5em 0 5em 4.5em;*/
 }
-#userpic2{
-  float: left;
-  border-radius: 50%;
-  height: 7em;
-  width: 7em;
-  margin: 0.5em 0 5em 4.5em;
-}
+
 #submit{
   color: #4CD964;
   font-family: 'Varela Round', sans-serif;
@@ -72,26 +71,35 @@ body{
 #fbname2{
   margin-top: 7em;
 }
-.bottom{
-  margin-top: 11em;
-}
 #moveme{
   margin-left: 8em;
 }
 #greencircle{
-  background-color: #4CD964;
+  /*background-color: #4CD964;
   height: 10em;
   width: 10em;
   border-radius: 50%;
   float: right;
   margin-right: 6em;
   margin-top: -6em;
+  color: white;*/
+  background-color: #4CD964;
+  height: 7em;
+  width: 7em;
+  border-radius: 50%;
+  float: right;
+  margin-right: 6em;
+  margin-top: -3.15em;
   color: white;
 }
 #onehundred{
-  font-weight: bold;
+  /*font-weight: bold;
   margin: 0.6em 0 5px 11px;
   font-size: 70px;
+  text-shadow: 2px 2px 4px #000000;*/
+  font-weight: bold;
+  margin: 0.6em 0 5px 11px;
+  font-size: 3em;
   text-shadow: 2px 2px 4px #000000;
 }
 p{
@@ -131,7 +139,7 @@ p{
   height: 20px;
   width: 250px;
   position: absolute;
-  top: 25em;
+  top: 25%;
   bottom: 0;
   left: 0;
   right: 0;
