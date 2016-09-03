@@ -45,12 +45,17 @@ body{
   width: 100%;
   height: 40em;
   max-height: 100%;
-  position: relative;
+  /*position: relative;*/
   /*max-width: 1800px;*/
   /*width: 100%;
   height: auto;*/
   background-size: contain;
   background-repeat:no-repeat;
+}
+#redbackground{
+  max-height: 60%;
+  width: 100%;
+  background-color: #E94760;
 }
 #banner{
   width: 100%;
@@ -79,12 +84,16 @@ body{
 }
 #right{
   background-size: contain;
+  position: relative;
   background-color: white;
-  width: 35em;
-  height: 20em;
+  max-width: 40%;
+  max-height: 20%;
+  /*max-height: 300px;*/
   float: right;
-  margin-right: 10em;
-  margin-top: 10em;
+  /*margin-right: 10em;
+  margin-top: 10em;*/
+  margin-right: 5%;
+  margin-top: 10%;
   border-radius: 8px;
   border-color: purple;
 }
@@ -92,13 +101,15 @@ body{
   background-color: #FFCC00;
   border-radius: 8px 8px 0px 0px;
   width: 100%;
-  height: 4em;
+  height: 14%;
+  position: relative;
 }
 #gameon{
   color: #FFFFFF;
   margin-left: 40%;
   padding-top: 0.6em;
   font-size: 20px;
+  font-size: 1.8vw;
 }
 /* Kick butt: */
 .kick-butt{
@@ -154,9 +165,10 @@ body{
   align-content: center;
 }
 #quotes{
-  margin-top: 2em;
-  position: relative;
-  margin-bottom: -1em;
+  /*margin-top: 5%;*/
+  max-height: 5%;
+  position: relative;;
+margin-bottom: -1%;
   columns: 3;
   flex-wrap: wrap;
   color: #4A4A4A;
