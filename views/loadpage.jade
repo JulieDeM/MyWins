@@ -5,6 +5,7 @@ html
 		meta(name='viewport', content='width=device-width, initial-scale=1.0')
 		link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
 		link(rel='stylesheet', href='/stylesheets/loadpagecss.css', media='screen', title='no title', charset='utf-8')
+		link(href='loading.css')
 		title
 	body
 		meta(http-equiv='refresh', content='10;url=/#{userName}')
@@ -22,17 +23,16 @@ html
 						#fbname
 							span#fbname2
 								h1 #{firstName} #{lastName}
-						#username
-							span#username2
-								p #{userName}
+							#username
+								span#username2
+									p #{userName}
 						span#greencircle
 							p#onehundred  100 
 					.bottom
 						p#submit Submit 5 game records to get your rating!
+						br
 						p#yourrating
 							| Your rating will go up or down depending on the rating of the friends you compete against.
-						link(href='https://fonts.googleapis.com/css?family=Varela+Round', rel='stylesheet', type='text/css')
-						link(href='loading.css')
 					.container
 						.loader
 							.loader--dot
@@ -41,5 +41,6 @@ html
 							.loader--dot
 							.loader--dot
 							.loader--dot
+							br
 							.loader--text
 		footer ©2016 mywins, inc
